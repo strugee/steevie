@@ -1,7 +1,7 @@
-package { 'emacs'
+package { 'emacs':
   ensure => latest,
 }
 
-package { 'vim'
+package { 'vim':
   ensure => latest,
 }

@@ -1,7 +1,7 @@
-package { 'zsh'
+package { 'zsh':
   ensure => latest,
 }
 
-package { 'zsh-doc'
+package { 'zsh-doc':
   ensure => latest,
 }

@@ -1,19 +1,19 @@
-package { 'git'
+package { 'git':
   ensure => latest,
 }
 
-package { 'git-doc'
+package { 'git-doc':
   ensure => latest,
 }
 
-package { 'git-svn'
+package { 'git-svn':
   ensure => latest,
 }
 
-package { 'mercurial'
+package { 'mercurial':
   ensure => latest,
 }
 
-package { 'subversion'
+package { 'subversion':
   ensure => latest,
 }
