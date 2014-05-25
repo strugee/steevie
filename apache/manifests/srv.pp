@@ -21,4 +21,11 @@ class apache::srv {
     mode   => 0755,
   }
 
+  file { '/srv/http/wiki':
+    ensure => directory,
+    owner  => root,
+    group  => root,
+    mode   => 0755,
+  }
+    
 }
