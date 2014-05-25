@@ -1,12 +1,12 @@
-<VirtualHost strugee.net:80>
+<VirtualHost friendicastrugee.net:80>
 	ServerAdmin webmaster@localhost
 
-	DocumentRoot /srv/http/default
+	DocumentRoot /srv/http/friendica
 	<Directory />
 		Options FollowSymLinks
 		AllowOverride None
 	</Directory>
-	<Directory /srv/http/default>
+	<Directory /srv/http/friendica>
 		Options Indexes FollowSymLinks MultiViews
 		AllowOverride None
 		Order allow,deny
