@@ -7,7 +7,7 @@ class apache::server {
 
   file { '/etc/apache2/apache2.conf':
     ensure     => file,
-    source     => '/home/alex/Development/steevie/infrastructure/apache/apache2.conf',
+    source     => 'puppet:///modules/apache/apache2.conf',
     mode       => '0644',
   }
 
@@ -15,7 +15,7 @@ class apache::server {
     ensure     => directory,
     recurse    => true,
     owner      => root,
-    source     => '/home/alex/Development/steevie/infrastructure/apache/conf.d/',
+    source     => 'puppet:///modules/apache/conf.d/',
     require    => Package['apache2'],
   }
 
