@@ -1,4 +1,4 @@
-class apache {
+class apache::server {
 
   package { 'apache2':
     ensure     => latest,
@@ -28,4 +28,4 @@ class apache {
 
 }
 
-include apache
+include server

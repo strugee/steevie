@@ -1,5 +1,5 @@
-<VirtualHost friendicastrugee.net:80>
-	ServerAdmin webmaster@localhost
+<VirtualHost *:80>
+	ServerName friendica.strugee.net
 
 	DocumentRoot /srv/http/friendica
 	<Directory />

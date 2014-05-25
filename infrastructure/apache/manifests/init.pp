@@ -3,3 +3,5 @@ class apache {
   include srv
   include sites
 }
+
+include apache

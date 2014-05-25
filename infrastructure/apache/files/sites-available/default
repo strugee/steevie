@@ -1,5 +1,5 @@
-<VirtualHost strugee.net:80>
-	ServerAdmin webmaster@localhost
+<VirtualHost *:80>
+	ServerName strugee.net
 
 	DocumentRoot /srv/http/default
 	<Directory />

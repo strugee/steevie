@@ -1,10 +1,10 @@
-class apache-sites {
+class apache::sites {
 
   file { '/etc/apache2/ports.conf':
     ensure     => file,
     owner      => root,
     group      => root,
-    source     => '/home/alex/Development/steevie/infrastructure/apache/ports.conf',
+    source     => '/home/alex/Development/steevie/infrastructure/apache/files/ports.conf',
     #require    => Package['apache2'],
   }
   
@@ -13,7 +13,7 @@ class apache-sites {
     recurse    => true,
     owner      => root,
     group      => root,
-    source     => '/home/alex/Development/steevie/infrastructure/apache/sites-available',
+    source     => '/home/alex/Development/steevie/infrastructure/apache/files/sites-available',
     #require    => Package['apache2'],
   }
 
@@ -35,8 +35,6 @@ class apache-sites {
     #require    => Package['apache2'],
   }
 
-  #file { '/etc/apache2/sites-enabled
-
 }
 
-include apache-sites
+include apache::sites
