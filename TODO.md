@@ -39,8 +39,8 @@
 
 ### High priority 
 
-1. pump.io
-2. Diaspora*
+1. Friendica
+2. pump.io
 3. OwnCloud
 4. MediaWiki
 5. LEAP
