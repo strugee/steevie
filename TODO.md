@@ -31,9 +31,10 @@
 
 ### Low priority
 
-1. Tor hidden services
-2. I2P support
-3. IPSec
+1. Hubot
+2. Tor hidden services
+3. I2P support
+4. IPSec
 
 ## Applications
 
@@ -48,7 +49,8 @@
 ### Medium priority
 
 1. Ghost
-2. XMPP server
+2. Convergence.io resolver (the fork, not Moxie's version)
+3. XMPP server
 
 ### Low priority
 
