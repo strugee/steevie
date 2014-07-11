@@ -22,4 +22,9 @@ apache::vhost { 'www.strugee.net':
   port     => 80,
   docroot  => '/srv/http/default/',
 }
+
+apache::vhost { 'ssh.strugee.net':
+  port     => 80,
+  docroot  => '/srv/http/default/',
+  default_vhost => true,
 }
