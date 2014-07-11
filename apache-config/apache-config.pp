@@ -15,10 +15,11 @@ include apache::mod::setenvif
 
 apache::vhost { 'strugee.net':
   port     => 80,
-  docroot  => '/srv/http/default',
+  docroot  => '/srv/http/default/',
 }
 
 apache::vhost { 'www.strugee.net':
   port     => 80,
-  docroot  => '/srv/http/default',
+  docroot  => '/srv/http/default/',
+}
 }
