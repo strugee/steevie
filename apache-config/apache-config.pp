@@ -7,6 +7,12 @@ class { 'apache':
   default_vhost        => false,
 }
 
+include apache::mod::dir
+include apache::mod::autoindex
+include apache::mod::mime
+include apache::mod::negotiation
+include apache::mod::setenvif
+
 apache::vhost { 'strugee.net':
   port     => 80,
   docroot  => '/srv/http/default',
