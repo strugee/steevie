@@ -12,6 +12,7 @@ include apache::mod::autoindex
 include apache::mod::mime
 include apache::mod::negotiation
 include apache::mod::setenvif
+include apache::mod::deflate
 
 apache::vhost { 'strugee.net':
   port     => 80,
