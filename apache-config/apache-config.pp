@@ -17,7 +17,7 @@ include apache::mod::deflate
 include apache::mod::ssl
 
 apache::vhost { 'strugee.net':
-  port     => 80,
+  port     => 443,
   docroot  => '/srv/http/default/',
   ssl	   => true,
   ssl_cert => '/etc/ssl/certs/mailserver.pem',
