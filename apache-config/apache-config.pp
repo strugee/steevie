@@ -20,6 +20,8 @@ apache::vhost { 'strugee.net plaintext':
   servername      => 'strugee.net',
   port            => '80',
   docroot         => '/srv/http/default/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://strugee.net/',
 }
 
 apache::vhost { 'strugee.net ssl':
@@ -33,4 +35,5 @@ apache::vhost { 'strugee.net ssl':
   ssl           => true,
   ssl_cert      => '/etc/ssl/certs/mailserver.pem',
   ssl_key       => '/etc/ssl/private/mailserver.pem',
+  block		=> 'scm',
 }
