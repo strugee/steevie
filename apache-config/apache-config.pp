@@ -16,7 +16,14 @@ include apache::mod::setenvif
 include apache::mod::deflate
 include apache::mod::ssl
 
-apache::vhost { 'strugee.net':
+apache::vhost { 'strugee.net plaintext':
+  port 	          => 80,
+  docroot 	  => '/srv/http/default/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://strugee.net/',
+}
+
+apache::vhost { 'strugee.net ssl':
   port          => 443,
   docroot       => '/srv/http/default/',
   serveraliases => [
