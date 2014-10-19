@@ -14,8 +14,10 @@ include apache::mod::mime
 include apache::mod::negotiation
 include apache::mod::setenvif
 include apache::mod::deflate
-include apache::mod::ssl
 include apache::mod::php
+class { 'apache::mod::ssl':
+  ssl_protocol => 'all -SSLv2 -SSLv3',
+}
 
 apache::vhost { 'strugee.net plaintext':
   servername      => 'strugee.net',
