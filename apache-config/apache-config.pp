@@ -15,6 +15,7 @@ include apache::mod::negotiation
 include apache::mod::setenvif
 include apache::mod::deflate
 include apache::mod::ssl
+include apache::mod::php
 
 apache::vhost { 'strugee.net plaintext':
   servername      => 'strugee.net',
@@ -36,4 +37,23 @@ apache::vhost { 'strugee.net ssl':
   ssl_cert      => '/etc/ssl/certs/mailserver.pem',
   ssl_key       => '/etc/ssl/private/mailserver.pem',
   block		=> 'scm',
+}
+
+apache::vhost { 'cloud.strugee.net plaintext':
+  servername       => 'cloud.strugee.net',
+  port        	   => '80',
+  docroot	   => '/var/www/owncloud',
+  redirect_status  => 'permanent',
+  redirect_dest    => 'https://cloud.strugee.net/',
+}
+
+apache::vhost { 'cloud.strugee.net ssl':
+  servername  	   => 'cloud.strugee.net',
+  port		   => '443',
+  docroot	   => '/var/www/owncloud',
+  ssl 		   => true,
+  ssl_cert	   => '/etc/ssl/certs/mailserver.pem',
+  ssl_key	   => '/etc/ssl/private/mailserver.pem',
+  block		   => 'scm',
+  override	   => 'all',
 }
