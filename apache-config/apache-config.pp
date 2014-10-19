@@ -15,9 +15,7 @@ include apache::mod::negotiation
 include apache::mod::setenvif
 include apache::mod::deflate
 include apache::mod::php
-class { 'apache::mod::ssl':
-  ssl_protocol => 'all -SSLv2 -SSLv3',
-}
+include apache::mod::ssl
 
 apache::vhost { 'strugee.net plaintext':
   servername      => 'strugee.net',
@@ -39,6 +37,7 @@ apache::vhost { 'strugee.net ssl':
   ssl_cert      => '/etc/ssl/certs/mailserver.pem',
   ssl_key       => '/etc/ssl/private/mailserver.pem',
   block		=> 'scm',
+  ssl_protocol  => 'all -SSLv2 -SSLv3',
 }
 
 apache::vhost { 'mail.strugee.net plaintext':
@@ -57,6 +56,7 @@ apache::vhost { 'mail.strugee.net ssl':
   ssl_cert      => '/etc/ssl/certs/mailserver.pem',
   ssl_key       => '/etc/ssl/private/mailserver.pem',
   block		=> 'scm',
+  ssl_protocol  => 'all -SSLv2 -SSLv3',
 }
 
 apache::vhost { 'cloud.strugee.net plaintext':
@@ -76,4 +76,5 @@ apache::vhost { 'cloud.strugee.net ssl':
   ssl_key	   => '/etc/ssl/private/mailserver.pem',
   block		   => 'scm',
   override	   => 'all',
+  ssl_protocol     => 'all -SSLv2 -SSLv3',
 }
