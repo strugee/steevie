@@ -120,3 +120,11 @@ apache::vhost { 'cloud.strugee.net ssl':
   override	   => 'all',
   ssl_protocol     => 'all -SSLv2 -SSLv3',
 }
+
+apache::vhost { 'wiki.strugee.net plaintext':
+  servername       => 'wiki.strugee.net',
+  port             => '80',
+  docroot          => '/var/lib/mediawiki',
+  redirect_status  => 'permanent',
+  redirect_dest    => 'https://wiki.strugee.net/',
+}
