@@ -17,6 +17,25 @@ include apache::mod::deflate
 include apache::mod::php
 include apache::mod::ssl
 
+apache::vhost { 'null.strugee.net plaintext':
+  servername      => 'null.strugee.net',
+  port            => '80',
+  docroot         => '/srv/http/fallback/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://null.strugee.net/',
+}
+
+apache::vhost { 'null.strugee.net ssl':
+  servername    => 'null.strugee.net',
+  port          => '443',
+  docroot       => '/srv/http/fallback/',
+  ssl           => true,
+  ssl_cert      => '/etc/ssl/certs/mailserver.pem',
+  ssl_key       => '/etc/ssl/private/mailserver.pem',
+  block		=> 'scm',
+  ssl_protocol  => 'all -SSLv2 -SSLv3',
+}
+
 apache::vhost { 'strugee.net plaintext':
   servername      => 'strugee.net',
   port            => '80',
