@@ -131,35 +131,41 @@ apache::vhost { 'wiki.strugee.net plaintext':
 
 apache::vhost { 'wiki.strugee.net ssl':
   servername         => 'wiki.strugee.net',
-  port               => '80',
+  port               => '443',
   docroot            => '/var/lib/mediawiki',
   ssl                => true,
   ssl_cert           => '/etc/ssl/certs/mailserver.pem',
   ssl_key            => '/etc/ssl/private/mailserver.pem',
   block              => 'scm',
-  override           => 'all',
   ssl_protocol       => 'all -SSLv2 -SSLv3',
   directories        => [
     {
       path           => '/var/lib/mediawiki',
       provider       => 'directory',
       options        => ['+FollowSymLinks'],
-      override       => 'all',
+      allow_override => 'all',
       order          => 'Allow,Deny',
       allow          => 'from all',
     },
     {
       path           => '/var/lib/mediawiki/config',
       provider       => 'directory',
-      options        => '-FollowSymLinks',
-      override       => 'none',
+      options        => ['-FollowSymLinks'],
+      allow_override => 'none',
+      php_admin_flag => 'engine off',
+    },
+    {
+      path           => '/var/lib/mediawiki/images',
+      provider       => 'directory',
+      options        => ['-FollowSymLinks'],
+      allow_override => 'none',
       php_admin_flag => 'engine off',
     },
     {
       path           => '/var/lib/mediawiki/upload',
       provider       => 'directory',
-      options        => '-FollowSymLinks',
-      override       => 'none',
+      options        => ['-FollowSymLinks'],
+      allow_override => 'none',
       php_admin_flag => 'engine off',
     }
   ]
