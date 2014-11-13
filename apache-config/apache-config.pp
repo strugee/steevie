@@ -41,7 +41,7 @@ apache::vhost { 'fallback catchall plaintext':
   port            => '80',
   docroot         => '/srv/http/fallback/',
   redirect_status => 'permanent',
-  redirect_dest   => 'https://null.strugee.net',
+  redirect_dest   => 'https://null.strugee.net/',
   default_vhost   => true,
 }
 
@@ -50,7 +50,7 @@ apache::vhost { 'fallback catchall ssl':
   port          => '443',
   docroot       => '/srv/http/fallback/',
   redirect_status => 'permanent',
-  redirect_dest   => 'https://null.strugee.net',
+  redirect_dest   => 'https://null.strugee.net/',
   ssl           => true,
   ssl_cert      => '/etc/ssl/certs/mailserver.pem',
   ssl_key       => '/etc/ssl/private/mailserver.pem',
