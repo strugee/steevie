@@ -170,3 +170,32 @@ apache::vhost { 'wiki.strugee.net ssl':
     }
   ]
 }
+
+# apache::vhost { 'util.private.strugee.net plaintext':
+#   servername         => 'util.private.strugee.net',
+#   port               => '80',
+#   docroot            => '/dev/null',
+#   redirect_status    => 'permanent',
+#   redirect_dest      => 'https://util.private.strugee.net/',
+# }
+
+# apache::vhost { 'util.private.strugee.net ssl':
+#   servername         => 'util.private.strugee.net',
+#   port               => '443',
+#   docroot            => '/dev/null',
+#   ssl                => true,
+#   ssl_cert           => '/etc/ssl/certs/mailserver.pem',
+#   ssl_key            => '/etc/ssl/private/mailserver.pem',
+#   block              => 'scm',
+#   ssl_protocol       => 'all -SSLv2 -SSLv3',
+#   directories        => [
+#     {
+#       path           => '/usr/share/phpmyadmin',
+#       provider       => 'directory',
+#       options        => ['FollowSymLinks'],
+#       allow_override => 'all',
+#       order          => 'Allow,Deny',
+#       allow          => 'from all',
+#     }
+#   ]
+# }
