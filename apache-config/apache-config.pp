@@ -16,6 +16,7 @@ include apache::mod::setenvif
 include apache::mod::deflate
 include apache::mod::php
 include apache::mod::ssl
+include apache::mod::rewrite
 
 apache::vhost { 'null.strugee.net plaintext':
   servername      => 'null.strugee.net',
@@ -169,29 +170,14 @@ apache::vhost { 'wiki.strugee.net ssl':
       php_admin_flag => 'engine off',
     }
   ],
-  aliases            => [
+  rewrites           => [
     {
-      alias          => '/wiki',
-      path           => '/var/lib/mediawiki/index.php',
+      rewrite_rule   => '^/?wiki(/.*)?$ %{DOCUMENT_ROOT}/index.php [L]',
     },
     {
-      alias          => 'index.php',
-      path           => '/var/lib/mediawiki/index.php',
-    },
-    {
-      alias          => '/skins',
-      path           => '/var/lib/mediawiki/skins',
-    },
-    {
-      alias          => '/images',
-      path           => '/var/lib/mediawiki/images',
-    },
-    {
-      alias          => '/',
-      path           => '/var/lib/mediawiki/index.php',
-    },
-
-  ]
+      rewrite_rule   => '^/*$ %{DOCUMENT_ROOT}/index.php [L]',
+    }
+  ],
 }
 
 # apache::vhost { 'util.private.strugee.net plaintext':
