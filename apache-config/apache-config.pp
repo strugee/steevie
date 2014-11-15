@@ -168,6 +168,29 @@ apache::vhost { 'wiki.strugee.net ssl':
       allow_override => 'none',
       php_admin_flag => 'engine off',
     }
+  ],
+  aliases            => [
+    {
+      alias          => '/wiki',
+      path           => '/var/lib/mediawiki/index.php',
+    },
+    {
+      alias          => 'index.php',
+      path           => '/var/lib/mediawiki/index.php',
+    },
+    {
+      alias          => '/skins',
+      path           => '/var/lib/mediawiki/skins',
+    },
+    {
+      alias          => '/images',
+      path           => '/var/lib/mediawiki/images',
+    },
+    {
+      alias          => '/',
+      path           => '/var/lib/mediawiki/index.php',
+    },
+
   ]
 }
 
