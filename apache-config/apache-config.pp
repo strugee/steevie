@@ -18,6 +18,8 @@ include apache::mod::php
 include apache::mod::ssl
 include apache::mod::rewrite
 include apache::mod::status
+include apache::mod::expires
+include apache::mod::headers
 
 apache::vhost { 'null.strugee.net plaintext':
   servername      => 'null.strugee.net',
