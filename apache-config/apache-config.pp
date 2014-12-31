@@ -34,6 +34,7 @@ apache::vhost { 'null.strugee.net ssl':
   ssl_cert      => '/etc/ssl/certs/mailserver.pem',
   ssl_key       => '/etc/ssl/private/mailserver.pem',
   ssl_chain     => '/etc/ssl/certs/StartSSL_Class1.pem',
+  ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
   block		=> 'scm',
   ssl_protocol  => 'all -SSLv2 -SSLv3',
 }
@@ -57,6 +58,7 @@ apache::vhost { 'fallback catchall ssl':
   ssl_cert      => '/etc/ssl/certs/mailserver.pem',
   ssl_key       => '/etc/ssl/private/mailserver.pem',
   ssl_chain     => '/etc/ssl/certs/StartSSL_Class1.pem',
+  ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
   block		=> 'scm',
   ssl_protocol  => 'all -SSLv2 -SSLv3',
   default_vhost	=> true,
@@ -82,6 +84,7 @@ apache::vhost { 'strugee.net ssl':
   ssl_cert      => '/etc/ssl/certs/mailserver.pem',
   ssl_key       => '/etc/ssl/private/mailserver.pem',
   ssl_chain     => '/etc/ssl/certs/StartSSL_Class1.pem',
+  ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
   block		=> 'scm',
   ssl_protocol  => 'all -SSLv2 -SSLv3',
 }
@@ -102,6 +105,7 @@ apache::vhost { 'mail.strugee.net ssl':
   ssl_cert      => '/etc/ssl/certs/mailserver.pem',
   ssl_key       => '/etc/ssl/private/mailserver.pem',
   ssl_chain     => '/etc/ssl/certs/StartSSL_Class1.pem',
+  ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
   block		=> 'scm',
   ssl_protocol  => 'all -SSLv2 -SSLv3',
 }
@@ -122,6 +126,7 @@ apache::vhost { 'cloud.strugee.net ssl':
   ssl_cert	   => '/etc/ssl/certs/mailserver.pem',
   ssl_key	   => '/etc/ssl/private/mailserver.pem',
   ssl_chain        => '/etc/ssl/certs/StartSSL_Class1.pem',
+  ssl_cipher       => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
   block		   => 'scm',
   override	   => 'all',
   ssl_protocol     => 'all -SSLv2 -SSLv3',
@@ -143,6 +148,7 @@ apache::vhost { 'wiki.strugee.net ssl':
   ssl_cert           => '/etc/ssl/certs/mailserver.pem',
   ssl_key            => '/etc/ssl/private/mailserver.pem',
   ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
+  ssl_cipher         => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
   block              => 'scm',
   ssl_protocol       => 'all -SSLv2 -SSLv3',
   directories        => [
