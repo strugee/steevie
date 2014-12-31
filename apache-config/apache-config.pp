@@ -17,6 +17,7 @@ include apache::mod::deflate
 include apache::mod::php
 include apache::mod::ssl
 include apache::mod::rewrite
+include apache::mod::status
 
 apache::vhost { 'null.strugee.net plaintext':
   servername      => 'null.strugee.net',
