@@ -20,6 +20,8 @@ include apache::mod::rewrite
 include apache::mod::status
 include apache::mod::expires
 include apache::mod::headers
+apache::mod { 'env': }
+include apache::mod::cgi
 
 apache::vhost { 'null.strugee.net plaintext':
   servername      => 'null.strugee.net',
@@ -223,6 +225,38 @@ apache::vhost { 'wiki.strugee.net ssl':
     },
     {
       rewrite_rule   => '^/*$ %{DOCUMENT_ROOT}/index.php [L]',
+    }
+  ],
+}
+
+apache::vhost { 'bugzilla.strugee.net plaintext':
+  servername         => 'bugzilla.strugee.net',
+  port               => '80',
+  docroot            => '/srv/http/bugzilla',
+  redirect_status    => 'permanent',
+  redirect_dest      => 'https://bugzilla.strugee.net/',
+}
+
+apache::vhost { 'bugzilla.strugee.net ssl':
+  servername         => 'bugzilla.strugee.net',
+  port               => '443',
+  docroot            => '/srv/http/bugzilla',
+  ssl                => true,
+  ssl_cert           => '/etc/ssl/certs/mailserver.pem',
+  ssl_key            => '/etc/ssl/private/mailserver.pem',
+  ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
+  ssl_cipher         => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block              => 'scm',
+  ssl_protocol       => 'all -SSLv2 -SSLv3',
+  access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
+  directories        => [
+    {
+      path           => '/srv/http/bugzilla',
+      provider       => 'directory',
+      addhandlers    => [{ handler => 'cgi-script', extensions => ['.cgi']}],
+      options        => ['+ExecCGI', '+FollowSymLinks'],
+      allow_override => 'Limit FileInfo Indexes Options',
+      directoryindex => 'index.cgi index.html',
     }
   ],
 }
