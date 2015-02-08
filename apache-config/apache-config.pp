@@ -290,3 +290,29 @@ apache::vhost { 'bugzilla.strugee.net ssl':
 #     }
 #   ]
 # }
+
+apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
+  servername      => 'isthefieldcontrolsystemdown.com',
+  port            => '80',
+  docroot         => '/srv/http/isthefieldcontrolsystemdown.com/',
+  serveraliases   => [
+    'www.isthefieldcontrolsystemdown.com',
+  ],
+  block           => 'scm',
+}
+
+# apache::vhost { 'isthefieldcontrolsystemdown.com ssl':
+#   servername    => 'isthefieldcontrolsystemdown.com',
+#   port          => '443',
+#   docroot       => '/srv/http/isthefieldcontrolsystemdown.com/',
+#   serveraliases => [
+#     'www.isthefieldcontrolsystemdown.com',
+#   ],
+#   ssl           => true,
+#   ssl_cert      => '/etc/ssl/certs/mailserver.pem',
+#   ssl_key       => '/etc/ssl/private/mailserver.pem',
+#   ssl_chain     => '/etc/ssl/certs/StartSSL_Class1.pem',
+#   ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+#   block		=> 'scm',
+#   ssl_protocol  => 'all -SSLv2 -SSLv3',
+# }
