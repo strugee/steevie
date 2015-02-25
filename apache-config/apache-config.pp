@@ -167,6 +167,14 @@ apache::vhost { 'cloud.strugee.net ssl':
   block		   => 'scm',
   override	   => 'all',
   ssl_protocol     => 'all -SSLv2 -SSLv3',
+  directories      => [
+    {
+      path           => '/var/www/owncloud',
+      provider       => 'directory',
+      options        => ['+FollowSymLinks'],
+      allow_override => 'all',
+    }
+  ]
 }
 
 apache::vhost { 'wiki.strugee.net plaintext':
