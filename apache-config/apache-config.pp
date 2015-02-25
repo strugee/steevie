@@ -241,6 +241,7 @@ apache::vhost { 'bugzilla.strugee.net plaintext':
   servername         => 'bugzilla.strugee.net',
   port               => '80',
   docroot            => '/srv/http/bugzilla',
+  docroot_group      => 'www-data',
   redirect_status    => 'permanent',
   redirect_dest      => 'https://bugzilla.strugee.net/',
 }
@@ -249,6 +250,7 @@ apache::vhost { 'bugzilla.strugee.net ssl':
   servername         => 'bugzilla.strugee.net',
   port               => '443',
   docroot            => '/srv/http/bugzilla',
+  docroot_group      => 'www-data',
   ssl                => true,
   ssl_cert           => '/etc/ssl/certs/mailserver.pem',
   ssl_key            => '/etc/ssl/private/mailserver.pem',
