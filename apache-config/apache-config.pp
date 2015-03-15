@@ -326,3 +326,10 @@ apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
 #   block		=> 'scm',
 #   ssl_protocol  => 'all -SSLv2 -SSLv3',
 # }
+
+apache::vhost { 'tumblr.strugee.net':
+  servername      => 'tumblr.strugee.net',
+  port            => '80',
+  docroot         => '/var/empty',
+  rewrites        => [ { rewrite_rule => ['^.*$ - [G]'] } ],
+}
