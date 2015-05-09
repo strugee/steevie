@@ -105,7 +105,7 @@ apache::vhost { 'mail.strugee.net plaintext':
 apache::vhost { 'mail.strugee.net ssl':
   servername    => 'mail.strugee.net',
   port          => '443',
-  docroot       => '/var/lib/roundcube/',
+  docroot       => '/var/empty',
   ssl           => true,
   ssl_cert      => '/etc/ssl/certs/mailserver.pem',
   ssl_key       => '/etc/ssl/private/mailserver.pem',
@@ -113,38 +113,7 @@ apache::vhost { 'mail.strugee.net ssl':
   ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
   block		=> 'scm',
   ssl_protocol  => 'all -SSLv2 -SSLv3',
-  directories        => [
-    {
-      path           => '/var/lib/roundcube/',
-      provider       => 'directory',
-      options        => ['+FollowSymLinks'],
-      allow_override => 'all',
-      order          => 'Allow,Deny',
-      allow          => 'from all',
-    },
-    {
-      path           => '/var/lib/roundcube/config',
-      provider       => 'directory',
-      options        => ['-FollowSymLinks'],
-      allow_override => 'none',
-    },
-    {
-      path           => '/var/lib/mediawiki/temp',
-      provider       => 'directory',
-      options        => ['-FollowSymLinks'],
-      allow_override => 'none',
-      order          => 'Allow,Deny',
-      deny           => 'from all',
-    },
-    {
-      path           => '/var/lib/roundcube/logs',
-      provider       => 'directory',
-      options        => ['-FollowSymLinks'],
-      allow_override => 'none',
-      order          => 'Allow,Deny',
-      deny           => 'from all',
-    }
-  ],
+  rewrites        => [ { rewrite_rule => ['^.*$ - [L,R=503]'] } ],
 }
 
 apache::vhost { 'cloud.strugee.net plaintext':
