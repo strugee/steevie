@@ -119,8 +119,7 @@ apache::vhost { 'mail.strugee.net ssl':
       provider       => 'directory',
       options        => ['+FollowSymLinks'],
       allow_override => 'all',
-      order          => 'Allow,Deny',
-      allow          => 'from all',
+      require        => 'all granted',
     },
     {
       path           => '/var/lib/roundcube/config',
@@ -133,8 +132,7 @@ apache::vhost { 'mail.strugee.net ssl':
       provider       => 'directory',
       options        => ['-FollowSymLinks'],
       allow_override => 'none',
-      order          => 'Allow,Deny',
-      deny           => 'from all',
+      require        => 'all denied',
     }
   ],
 }
