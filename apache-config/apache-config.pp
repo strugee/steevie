@@ -171,8 +171,7 @@ apache::vhost { 'wiki.strugee.net ssl':
       provider       => 'directory',
       options        => ['+FollowSymLinks'],
       allow_override => 'all',
-      order          => 'Allow,Deny',
-      allow          => 'from all',
+      require        => 'all granted',
     },
     {
       path           => '/var/lib/mediawiki/config',
