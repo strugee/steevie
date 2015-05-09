@@ -129,14 +129,6 @@ apache::vhost { 'mail.strugee.net ssl':
       allow_override => 'none',
     },
     {
-      path           => '/var/lib/mediawiki/temp',
-      provider       => 'directory',
-      options        => ['-FollowSymLinks'],
-      allow_override => 'none',
-      order          => 'Allow,Deny',
-      deny           => 'from all',
-    },
-    {
       path           => '/var/lib/roundcube/logs',
       provider       => 'directory',
       options        => ['-FollowSymLinks'],
