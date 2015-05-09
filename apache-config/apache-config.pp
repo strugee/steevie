@@ -254,7 +254,7 @@ apache::vhost { 'bugzilla.strugee.net ssl':
       provider       => 'directory',
       addhandlers    => [{ handler => 'cgi-script', extensions => ['.cgi']}],
       options        => ['+ExecCGI', '+FollowSymLinks'],
-      allow_override => 'Limit FileInfo Indexes Options',
+      allow_override => 'Limit FileInfo Indexes Options AuthConfig',
       directoryindex => 'index.cgi index.html',
     }
   ],
