@@ -281,7 +281,7 @@ apache::vhost { 'piwik.strugee.net ssl':
   docroot            => '/srv/http/piwik',
   docroot_group      => 'www-data',
   ssl                => true,
-  ssl_cert           => '/etc/ssl/certs/null.strugee.net.pem',
+  ssl_cert           => '/etc/ssl/certs/piwik.strugee.net.pem',
   ssl_key            => '/etc/ssl/private/mailserver.pem',
   ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
   ssl_cipher         => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
