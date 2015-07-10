@@ -266,6 +266,31 @@ apache::vhost { 'bugzilla.strugee.net ssl':
   ],
 }
 
+apache::vhost { 'piwik.strugee.net plaintext':
+  servername         => 'piwik.strugee.net',
+  port               => '80',
+  docroot            => '/srv/http/piwik',
+  docroot_group      => 'www-data',
+  redirect_status    => 'permanent',
+  redirect_dest      => 'https://piwik.strugee.net/',
+}
+
+apache::vhost { 'piwik.strugee.net ssl':
+  servername         => 'piwik.strugee.net',
+  port               => '443',
+  docroot            => '/srv/http/piwik',
+  docroot_group      => 'www-data',
+  ssl                => true,
+  ssl_cert           => '/etc/ssl/certs/null.strugee.net.pem',
+  ssl_key            => '/etc/ssl/private/mailserver.pem',
+  ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
+  ssl_cipher         => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block              => 'scm',
+  ssl_protocol       => 'all -SSLv2 -SSLv3',
+  access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
+}
+
+
 # apache::vhost { 'util.private.strugee.net plaintext':
 #   servername         => 'util.private.strugee.net',
 #   port               => '80',
