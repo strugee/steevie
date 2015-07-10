@@ -22,6 +22,8 @@ include apache::mod::expires
 include apache::mod::headers
 apache::mod { 'env': }
 include apache::mod::cgi
+include apache::mod::proxy
+include apache::mod::proxy_http
 
 apache::vhost { 'null.strugee.net plaintext':
   servername      => 'null.strugee.net',
@@ -290,6 +292,34 @@ apache::vhost { 'piwik.strugee.net ssl':
   access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
 }
 
+apache::vhost { 'etherpad.strugee.net plaintext':
+  servername         => 'etherpad.strugee.net',
+  port               => '80',
+  docroot            => '/srv/http/etherpad',
+  docroot_group      => 'www-data',
+  redirect_status    => 'permanent',
+  redirect_dest      => 'https://etherpad.strugee.net/',
+}
+
+apache::vhost { 'etherpad.strugee.net ssl':
+  servername         => 'etherpad.strugee.net',
+  port               => '443',
+  docroot            => '/srv/http/etherpad',
+  docroot_group      => 'etherpad',
+  ssl                => true,
+  ssl_cert           => '/etc/ssl/certs/etherpad.strugee.net.pem',
+  ssl_key            => '/etc/ssl/private/mailserver.pem',
+  ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
+  ssl_cipher         => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block              => 'scm',
+  ssl_protocol       => 'all -SSLv2 -SSLv3',
+  access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
+  proxy_pass         => [
+    { 'path' => '/', 'url' => 'http://localhost:9001/',
+      'reverse_urls' => 'http://localhost:9001' },
+  ],
+  proxy_preserve_host => true,
+}
 
 # apache::vhost { 'util.private.strugee.net plaintext':
 #   servername         => 'util.private.strugee.net',
