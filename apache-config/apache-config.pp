@@ -91,7 +91,7 @@ apache::vhost { 'strugee.net ssl':
   redirect_status => ['temp', 'temp', 'temp'],
   redirect_dest => ['https://cloud.strugee.net/remote.php/webdav/', 'https://cloud.strugee.net/remote.php/caldav/', 'https://cloud.strugee.net/remote.php/carddav/'],
   ssl           => true,
-  ssl_cert      => '/etc/ssl/certs/mailserver.pem',
+  ssl_cert      => '/etc/ssl/certs/www.strugee.net.pem',
   ssl_key       => '/etc/ssl/private/mailserver.pem',
   ssl_chain     => '/etc/ssl/certs/StartSSL_Class1.pem',
   ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
