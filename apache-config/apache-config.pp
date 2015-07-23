@@ -112,7 +112,7 @@ apache::vhost { 'mail.strugee.net ssl':
   port          => '443',
   docroot       => '/var/lib/roundcube/',
   ssl           => true,
-  ssl_cert      => '/etc/ssl/certs/mailserver.pem',
+  ssl_cert      => '/etc/ssl/certs/mail.strugee.net.pem',
   ssl_key       => '/etc/ssl/private/mailserver.pem',
   ssl_chain     => '/etc/ssl/certs/StartSSL_Class1.pem',
   ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
