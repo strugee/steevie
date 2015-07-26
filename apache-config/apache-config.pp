@@ -24,6 +24,7 @@ apache::mod { 'env': }
 include apache::mod::cgi
 include apache::mod::proxy
 include apache::mod::proxy_http
+apache::mod { 'proxy_wstunnel': }
 
 apache::vhost { 'null.strugee.net plaintext':
   servername      => 'null.strugee.net',
@@ -317,6 +318,35 @@ apache::vhost { 'etherpad.strugee.net ssl':
   proxy_pass         => [
     { 'path' => '/', 'url' => 'http://localhost:9001/',
       'reverse_urls' => 'http://localhost:9001' },
+  ],
+  proxy_preserve_host => true,
+}
+
+apache::vhost { 'pump.strugee.net plaintext':
+  servername         => 'pump.strugee.net',
+  port               => '80',
+  docroot            => '/var/empty',
+  redirect_status    => 'permanent',
+  redirect_dest      => 'https://pump.strugee.net/',
+}
+
+apache::vhost { 'pump.strugee.net ssl':
+  servername         => 'pump.strugee.net',
+  port               => '443',
+  docroot            => '/var/empty',
+  ssl                => true,
+  ssl_cert           => '/etc/ssl/certs/pump.strugee.net.pem',
+  ssl_key            => '/etc/ssl/private/mailserver.pem',
+  ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
+  ssl_cipher         => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block              => 'scm',
+  ssl_protocol       => 'all -SSLv2 -SSLv3',
+  access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
+  proxy_pass         => [
+    { 'path' => '/main/realtime/sockjs', 'url' => 'ws://localhost:31337/main/realtime/sockjs',
+      'reverse_urls' => 'http://localhost:31337/main/realtime/sockjs' },
+    { 'path' => '/', 'url' => 'http://localhost:31337/',
+      'reverse_urls' => 'http://localhost:31337/' },
   ],
   proxy_preserve_host => true,
 }
