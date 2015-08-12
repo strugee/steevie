@@ -342,11 +342,12 @@ apache::vhost { 'pump.strugee.net ssl':
   block              => 'scm',
   ssl_protocol       => 'all -SSLv2 -SSLv3',
   access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
+  ssl_proxyengine    => true,
   proxy_pass         => [
     { 'path' => '/main/realtime/sockjs', 'url' => 'ws://localhost:31337/main/realtime/sockjs',
       'reverse_urls' => 'http://localhost:31337/main/realtime/sockjs' },
-    { 'path' => '/', 'url' => 'http://localhost:31337/',
-      'reverse_urls' => 'http://localhost:31337/' },
+    { 'path' => '/', 'url' => 'https://localhost:31337/',
+      'reverse_urls' => 'https://localhost:31337/' },
   ],
   proxy_preserve_host => true,
 }
