@@ -351,6 +351,29 @@ apache::vhost { 'pump.strugee.net ssl':
   ],
   proxy_preserve_host => true,
 }
+apache::vhost { 'friendica.strugee.net plaintext':
+  servername         => 'friendica.strugee.net',
+  port               => '80',
+  docroot            => '/srv/http/friendica',
+  redirect_status    => 'permanent',
+  redirect_dest      => 'https://friendica.strugee.net/',
+}
+
+apache::vhost { 'friendica.strugee.net ssl':
+  servername         => 'friendica.strugee.net',
+  port               => '443',
+  docroot            => '/srv/http/friendica',
+  ssl                => true,
+  ssl_cert           => '/etc/ssl/certs/friendica.strugee.net.pem',
+  ssl_key            => '/etc/ssl/private/mailserver.pem',
+  ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
+  ssl_cipher         => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block              => 'scm',
+  ssl_protocol       => 'all -SSLv2 -SSLv3',
+  access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
+  options	     => ['All'],
+  override	     => 'all',
+}
 
 # apache::vhost { 'util.private.strugee.net plaintext':
 #   servername         => 'util.private.strugee.net',
