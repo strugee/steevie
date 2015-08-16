@@ -24,6 +24,10 @@ apache::mod { 'env': }
 include apache::mod::cgi
 include apache::mod::proxy
 include apache::mod::proxy_http
+include apache::mod::proxy_balancer
+apache::mod { 'lbmethod_byrequests': }
+# This is a bug in Apache
+apache::mod { 'slotmem_shm': }
 apache::mod { 'proxy_wstunnel': }
 include apache::mod::alias
 
@@ -375,6 +379,46 @@ apache::vhost { 'friendica.strugee.net ssl':
   access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
   options	     => ['All'],
   override	     => 'all',
+}
+
+apache::vhost { 'huginn.strugee.net plaintext':
+  servername         => 'huginn.strugee.net',
+  port               => '80',
+  docroot            => '/srv/http/huginn',
+  redirect_status    => 'permanent',
+  redirect_dest      => 'https://huginn.strugee.net/',
+}
+
+apache::vhost { 'huginn.strugee.net ssl':
+  servername         => 'huginn.strugee.net',
+  port               => '443',
+  docroot            => '/srv/http/huginn',
+  ssl                => true,
+  ssl_cert           => '/etc/ssl/certs/null.strugee.net.pem',
+  ssl_key            => '/etc/ssl/private/mailserver.pem',
+  ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
+  ssl_cipher         => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block              => 'scm',
+  ssl_protocol       => 'all -SSLv2 -SSLv3',
+  access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
+  rewrites	     => [
+    {
+      rewrite_cond   => ['%{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f'],
+      rewrite_rule   => ['^/(.*)$ balancer://upstream%{REQUEST_URI} [P,QSA,L]']
+    }
+  ],
+  custom_fragment    => "    <Proxy balancer://upstream>
+        BalancerMember http://127.0.0.1:61328
+    </Proxy>
+
+    ProxyRequests Off
+    ProxyVia On
+    ProxyPreserveHost On
+    RequestHeader set X_FORWARDED_PROTO https
+
+    <Proxy *>
+        Require all granted
+    </Proxy>",
 }
 
 apache::vhost { 'util.strugee.net plaintext':
