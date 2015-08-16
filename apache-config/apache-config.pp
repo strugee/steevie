@@ -25,6 +25,7 @@ include apache::mod::cgi
 include apache::mod::proxy
 include apache::mod::proxy_http
 apache::mod { 'proxy_wstunnel': }
+include apache::mod::alias
 
 apache::vhost { 'null.strugee.net plaintext':
   servername      => 'null.strugee.net',
@@ -351,6 +352,7 @@ apache::vhost { 'pump.strugee.net ssl':
   ],
   proxy_preserve_host => true,
 }
+
 apache::vhost { 'friendica.strugee.net plaintext':
   servername         => 'friendica.strugee.net',
   port               => '80',
@@ -375,35 +377,68 @@ apache::vhost { 'friendica.strugee.net ssl':
   override	     => 'all',
 }
 
-# apache::vhost { 'util.private.strugee.net plaintext':
-#   servername         => 'util.private.strugee.net',
-#   port               => '80',
-#   docroot            => '/dev/null',
-#   redirect_status    => 'permanent',
-#   redirect_dest      => 'https://util.private.strugee.net/',
-# }
+apache::vhost { 'util.strugee.net plaintext':
+  servername         => 'util.strugee.net',
+  port               => '80',
+  docroot            => '/var/empty',
+  redirect_status    => 'permanent',
+  redirect_dest      => 'https://util.strugee.net/',
+}
 
-# apache::vhost { 'util.private.strugee.net ssl':
-#   servername         => 'util.private.strugee.net',
-#   port               => '443',
-#   docroot            => '/dev/null',
-#   ssl                => true,
-#   ssl_cert           => '/etc/ssl/certs/mailserver.pem',
-#   ssl_key            => '/etc/ssl/private/mailserver.pem',
-#   ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
-#   block              => 'scm',
-#   ssl_protocol       => 'all -SSLv2 -SSLv3',
-#   directories        => [
-#     {
-#       path           => '/usr/share/phpmyadmin',
-#       provider       => 'directory',
-#       options        => ['FollowSymLinks'],
-#       allow_override => 'all',
-#       order          => 'Allow,Deny',
-#       allow          => 'from all',
-#     }
-#   ]
-# }
+apache::vhost { 'util.strugee.net ssl':
+  servername         => 'util.strugee.net',
+  port               => '443',
+  docroot            => '/var/empty',
+  ssl                => true,
+  ssl_cert           => '/etc/ssl/certs/mailserver.pem',
+  ssl_key            => '/etc/ssl/private/mailserver.pem',
+  ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
+  block              => 'scm',
+  ssl_protocol       => 'all -SSLv2 -SSLv3',
+  aliases            => [
+    {
+      alias          => '/phpmyadmin',
+      path           => '/usr/share/phpmyadmin',
+    }
+  ],
+  directories        => [
+    {
+      path           => '/var/empty',
+      provider       => 'directory',
+      require        => 'all granted',
+    },
+    {
+      path           => '/usr/share/phpmyadmin',
+      provider       => 'directory',
+      options        => ['FollowSymLinks'],
+      allow_override => 'all',
+      require        => 'all granted',
+      php_flag      => 'magic_quotes_gpc Off',
+    },
+    {
+      path           => '/usr/share/phpmyadmin/libraries',
+      provider       => 'directory',
+      options        => ['FollowSymLinks'],
+      allow_override => 'all',
+      require        => 'all denied',
+    },
+    {
+      path           => '/usr/share/phpmyadmin/setup/lib',
+      provider       => 'directory',
+      options        => ['FollowSymLinks'],
+      allow_override => 'all',
+      require        => 'all denied',
+    },
+    # TODO
+    {
+      path           => '/usr/share/phpmyadmin/setup',
+      provider       => 'directory',
+      options        => ['FollowSymLinks'],
+      allow_override => 'all',
+      require        => 'all denied',
+    }
+  ]
+}
 
 apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
   servername      => 'isthefieldcontrolsystemdown.com',
