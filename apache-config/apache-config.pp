@@ -30,6 +30,7 @@ apache::mod { 'lbmethod_byrequests': }
 apache::mod { 'slotmem_shm': }
 apache::mod { 'proxy_wstunnel': }
 include apache::mod::alias
+include apache::mod::passenger
 
 apache::vhost { 'null.strugee.net plaintext':
   servername      => 'null.strugee.net',
@@ -494,6 +495,29 @@ apache::vhost { 'util.strugee.net ssl':
       sethandler     => 'server-status',
     },
   ],
+}
+
+apache::vhost { 'pod.strugee.net plaintext':
+  servername         => 'pod.strugee.net',
+  port               => '80',
+  docroot            => '/srv/http/diaspora/public',
+  redirect_status    => 'permanent',
+  redirect_dest      => 'https://pod.strugee.net/',
+}
+
+apache::vhost { 'pod.strugee.net ssl':
+  servername         => 'pod.strugee.net',
+  port               => '443',
+  docroot            => '/srv/http/diaspora/public',
+  passenger_app_root => '/srv/http/diaspora',
+  passenger_app_env  => 'production',
+  passenger_ruby     => '/usr/bin/ruby',
+  ssl                => true,
+  ssl_cert           => '/etc/ssl/certs/mailserver.pem',
+  ssl_key            => '/etc/ssl/private/mailserver.pem',
+  ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
+  block              => 'scm',
+  ssl_protocol       => 'all -SSLv2 -SSLv3',
 }
 
 apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
