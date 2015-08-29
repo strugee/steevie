@@ -139,6 +139,13 @@ apache::vhost { 'mail.strugee.net ssl':
       allow_override => 'none',
     },
     {
+      path           => '/var/lib/roundcube/temp',
+      provider       => 'directory',
+      options        => ['-FollowSymLinks'],
+      allow_override => 'none',
+      require        => 'all denied',
+    },
+    {
       path           => '/var/lib/roundcube/logs',
       provider       => 'directory',
       options        => ['-FollowSymLinks'],
@@ -480,8 +487,13 @@ apache::vhost { 'util.strugee.net ssl':
       options        => ['FollowSymLinks'],
       allow_override => 'all',
       require        => 'all denied',
-    }
-  ]
+    },
+    {
+      path           => '/server-status',
+      provider       => 'location',
+      sethandler     => 'server-status',
+    },
+  ],
 }
 
 apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
