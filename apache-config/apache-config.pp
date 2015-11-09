@@ -400,33 +400,17 @@ apache::vhost { 'huginn.strugee.net plaintext':
 apache::vhost { 'huginn.strugee.net ssl':
   servername         => 'huginn.strugee.net',
   port               => '443',
-  docroot            => '/srv/http/huginn',
+  docroot            => '/srv/http/huginn/public',
+  passenger_app_root => '/srv/http/huginn',
+  passenger_app_env  => 'production',
+  passenger_ruby     => '/usr/bin/ruby',
   ssl                => true,
-  ssl_cert           => '/etc/ssl/certs/null.strugee.net.pem',
+  ssl_cert           => '/etc/ssl/certs/huginn.strugee.net.pem',
   ssl_key            => '/etc/ssl/private/mailserver.pem',
   ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
   ssl_cipher         => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
   block              => 'scm',
   ssl_protocol       => 'all -SSLv2 -SSLv3',
-  access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
-  rewrites	     => [
-    {
-      rewrite_cond   => ['%{DOCUMENT_ROOT}/%{REQUEST_FILENAME} !-f'],
-      rewrite_rule   => ['^/(.*)$ balancer://upstream%{REQUEST_URI} [P,QSA,L]']
-    }
-  ],
-  custom_fragment    => "    <Proxy balancer://upstream>
-        BalancerMember http://127.0.0.1:61328
-    </Proxy>
-
-    ProxyRequests Off
-    ProxyVia On
-    ProxyPreserveHost On
-    RequestHeader set X_FORWARDED_PROTO https
-
-    <Proxy *>
-        Require all granted
-    </Proxy>",
 }
 
 apache::vhost { 'util.strugee.net plaintext':
