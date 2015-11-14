@@ -31,6 +31,7 @@ apache::mod { 'slotmem_shm': }
 apache::mod { 'proxy_wstunnel': }
 include apache::mod::alias
 include apache::mod::passenger
+include apache::mod::wsgi
 
 apache::vhost { 'null.strugee.net plaintext':
   servername      => 'null.strugee.net',
@@ -502,6 +503,81 @@ apache::vhost { 'pod.strugee.net ssl':
   ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
   block              => 'scm',
   ssl_protocol       => 'all -SSLv2 -SSLv3',
+}
+
+apache::vhost { 'media.strugee.net plaintext':
+  servername         => 'media.strugee.net',
+  port               => '80',
+  docroot            => '/srv/http/mediagoblin',
+  redirect_status    => 'permanent',
+  redirect_dest      => 'https://media.strugee.net/',
+}
+
+apache::vhost { 'media.strugee.net ssl':
+  servername         => 'media.strugee.net',
+  port               => '443',
+  docroot            => '/srv/http/mediagoblin',
+  ssl                => true,
+  ssl_cert           => '/etc/ssl/certs/www.strugee.net.pem',
+  ssl_key            => '/etc/ssl/private/mailserver.pem',
+  ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
+  block              => 'scm',
+  ssl_protocol       => 'all -SSLv2 -SSLv3',
+  aliases            => [
+    { alias          => '/mgoblin_static/',
+      path           => '/srv/http/mediagoblin/mediagoblin/static/',
+    },
+    { alias          => '/mgoblin_media/',
+      path           => '/srv/http/mediagoblin/user_dev/media/public/',
+    },
+    { alias          => '/theme_static/',
+      path           => '/srv/http/mediagoblin/user_dev/theme_static/',
+    },
+    { alias          => '/plugin_static/',
+      path           => '/srv/http/mediagoblin/user_dev/plugin_static/',
+    },
+  ],
+  wsgi_script_aliases => {
+    '/'              => '/srv/http/mediagoblin/wsgi.py',
+  },
+  wsgi_daemon_process => 'gmg',
+  wsgi_daemon_process_options =>
+  {
+    user              => 'mediagoblin',
+    group             => 'mediagoblin',
+    processes         => '2',
+    threads           => '10',
+    umask             => '0007',
+    inactivity-timeout => '900',
+    maximum-requests  => '1000',
+    python-path       => '/srv/http/mediagoblin/:/srv/http/mediagoblin/lib/python2.7/site-packages/',
+  },
+  wsgi_pass_authorization => 'On',
+  wsgi_application_group => '%{GLOBAL}',
+  wsgi_process_group  => 'gmg',
+  headers             => 'set X-Content-Type-Options nosniff',
+  directories        => [
+    {
+      path           => '/srv/http/mediagoblin/static',
+      provider       => 'directory',
+      require        => 'all granted',
+    },
+    {
+      path           => '/srv/http/mediagoblin/user_dev/media/public',
+      provider       => 'directory',
+      require        => 'all granted',
+    },
+    {
+      path           => '/srv/http/mediagoblin/user_dev/theme_static',
+      provider       => 'directory',
+      require        => 'all granted',
+    },
+    {
+      path           => '/srv/http/mediagoblin/user_dev/plugin_static',
+      provider       => 'directory',
+      require        => 'all granted',
+    },
+  ]
 }
 
 apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
