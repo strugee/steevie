@@ -52,6 +52,7 @@ apache::vhost { 'null.strugee.net ssl':
   ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
   block		=> 'scm',
   ssl_protocol  => 'all -SSLv2 -SSLv3',
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'fallback catchall plaintext':
@@ -77,6 +78,7 @@ apache::vhost { 'fallback catchall ssl':
   block		=> 'scm',
   ssl_protocol  => 'all -SSLv2 -SSLv3',
   default_vhost	=> true,
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'strugee.net plaintext':
@@ -105,6 +107,7 @@ apache::vhost { 'strugee.net ssl':
   ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
   block		=> 'scm',
   ssl_protocol  => 'all -SSLv2 -SSLv3',
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'mail.strugee.net plaintext':
@@ -155,6 +158,7 @@ apache::vhost { 'mail.strugee.net ssl':
       require        => 'all denied',
     }
   ],
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'cloud.strugee.net plaintext':
@@ -187,7 +191,8 @@ apache::vhost { 'cloud.strugee.net ssl':
       options        => ['+FollowSymLinks'],
       allow_override => 'all',
     }
-  ]
+  ],
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'wiki.strugee.net plaintext':
@@ -247,6 +252,7 @@ apache::vhost { 'wiki.strugee.net ssl':
       rewrite_rule   => '^/*$ %{DOCUMENT_ROOT}/index.php [L]',
     }
   ],
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'bugzilla.strugee.net plaintext':
@@ -281,6 +287,7 @@ apache::vhost { 'bugzilla.strugee.net ssl':
       directoryindex => 'index.cgi index.html',
     }
   ],
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'piwik.strugee.net plaintext':
@@ -305,6 +312,7 @@ apache::vhost { 'piwik.strugee.net ssl':
   block              => 'scm',
   ssl_protocol       => 'all -SSLv2 -SSLv3',
   access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'etherpad.strugee.net plaintext':
@@ -334,6 +342,7 @@ apache::vhost { 'etherpad.strugee.net ssl':
       'reverse_urls' => 'http://localhost:9001' },
   ],
   proxy_preserve_host => true,
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'pump.strugee.net plaintext':
@@ -364,6 +373,7 @@ apache::vhost { 'pump.strugee.net ssl':
       'reverse_urls' => 'https://localhost:31337/' },
   ],
   proxy_preserve_host => true,
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'friendica.strugee.net plaintext':
@@ -388,6 +398,7 @@ apache::vhost { 'friendica.strugee.net ssl':
   access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
   options	     => ['All'],
   override	     => 'all',
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'huginn.strugee.net plaintext':
@@ -412,6 +423,7 @@ apache::vhost { 'huginn.strugee.net ssl':
   ssl_cipher         => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
   block              => 'scm',
   ssl_protocol       => 'all -SSLv2 -SSLv3',
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'util.strugee.net plaintext':
@@ -480,6 +492,7 @@ apache::vhost { 'util.strugee.net ssl':
       sethandler     => 'server-status',
     },
   ],
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'pod.strugee.net plaintext':
@@ -503,6 +516,7 @@ apache::vhost { 'pod.strugee.net ssl':
   ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
   block              => 'scm',
   ssl_protocol       => 'all -SSLv2 -SSLv3',
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'media.strugee.net plaintext':
@@ -555,7 +569,11 @@ apache::vhost { 'media.strugee.net ssl':
   wsgi_pass_authorization => 'On',
   wsgi_application_group => '%{GLOBAL}',
   wsgi_process_group  => 'gmg',
-  headers             => 'set X-Content-Type-Options nosniff',
+  headers             => [
+    'set X-Content-Type-Options: nosniff',
+    'set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+
+  ],
   directories        => [
     {
       path           => '/srv/http/mediagoblin/static',
@@ -577,7 +595,7 @@ apache::vhost { 'media.strugee.net ssl':
       provider       => 'directory',
       require        => 'all granted',
     },
-  ]
+  ],
 }
 
 apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
@@ -604,6 +622,7 @@ apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
 #   ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
 #   block		=> 'scm',
 #   ssl_protocol  => 'all -SSLv2 -SSLv3',
+#   headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 # }
 
 apache::vhost { 'tumblr.strugee.net':
