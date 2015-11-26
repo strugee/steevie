@@ -532,7 +532,7 @@ apache::vhost { 'media.strugee.net ssl':
   port               => '443',
   docroot            => '/srv/http/mediagoblin',
   ssl                => true,
-  ssl_cert           => '/etc/ssl/certs/www.strugee.net.pem',
+  ssl_cert           => '/etc/ssl/certs/media.strugee.net.pem',
   ssl_key            => '/etc/ssl/private/mailserver.pem',
   ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
   block              => 'scm',
