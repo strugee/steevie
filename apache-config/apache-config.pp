@@ -628,6 +628,37 @@ apache::vhost { 'znc.strugee.net ssl':
   headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
+apache::vhost { 'framadate.strugee.net plaintext':
+  servername       => 'framadate.strugee.net',
+  port        	   => '80',
+  docroot	   => '/srv/http/framadate',
+  redirect_status  => 'permanent',
+  redirect_dest    => 'https://framadate.strugee.net/',
+}
+
+apache::vhost { 'framadate.strugee.net ssl':
+  servername  	   => 'framadate.strugee.net',
+  port		   => '443',
+  docroot	   => '/srv/http/framadate',
+  ssl 		   => true,
+  ssl_cert	   => '/etc/ssl/certs/framadate.strugee.net.crt',
+  ssl_key	   => '/etc/ssl/private/mailserver.pem',
+  ssl_chain        => '/etc/ssl/certs/StartCom_Class1_DV.pem',
+  ssl_cipher       => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block		   => 'scm',
+  override	   => 'all',
+  ssl_protocol     => 'all -SSLv2 -SSLv3',
+    directories        => [
+    {
+      path           => '/srv/http/framadate/',
+      provider       => 'directory',
+      allow_override => 'all',
+      require        => 'all granted',
+    },
+  ],
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
+
 apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
   servername      => 'isthefieldcontrolsystemdown.com',
   port            => '80',
