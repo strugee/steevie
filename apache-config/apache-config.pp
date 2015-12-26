@@ -598,6 +598,36 @@ apache::vhost { 'media.strugee.net ssl':
   ],
 }
 
+apache::vhost { 'znc.strugee.net plaintext':
+  servername         => 'znc.strugee.net',
+  port               => '80',
+  docroot            => '/var/empty',
+  redirect_status    => 'permanent',
+  redirect_dest      => 'https://znc.strugee.net/',
+}
+
+apache::vhost { 'znc.strugee.net ssl':
+  servername         => 'znc.strugee.net',
+  port               => '443',
+  docroot            => '/var/empty',
+  ssl                => true,
+  ssl_cert           => '/etc/ssl/certs/znc.strugee.net.pem',
+  ssl_key            => '/etc/ssl/private/mailserver.pem',
+  ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
+  ssl_cipher         => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block              => 'scm',
+  ssl_protocol       => 'all -SSLv2 -SSLv3',
+  access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
+  ssl_proxyengine    => true,
+  proxy_pass         => [
+    { 'path' => '/', 'url' => 'https://localhost:7000/',
+      'reverse_urls' => 'https://localhost:7000/' },
+  ],
+  custom_fragment    => 'SSLProxyVerify none',
+  proxy_preserve_host => true,
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
+
 apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
   servername      => 'isthefieldcontrolsystemdown.com',
   port            => '80',
