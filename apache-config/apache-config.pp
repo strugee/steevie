@@ -93,10 +93,6 @@ apache::vhost { 'strugee.net ssl':
   servername    => 'strugee.net',
   port          => '443',
   docroot       => '/srv/http/default/',
-  serveraliases => [
-    'www.strugee.net',
-    'ssh.strugee.net',
-  ],
   redirect_source => ['/.well-known/webdav', '/.well-known/caldav', '/.well-known/carddav'],
   redirect_status => ['temp', 'temp', 'temp'],
   redirect_dest => ['https://cloud.strugee.net/remote.php/webdav/', 'https://cloud.strugee.net/remote.php/caldav/', 'https://cloud.strugee.net/remote.php/carddav/'],
@@ -107,7 +103,37 @@ apache::vhost { 'strugee.net ssl':
   ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
   block		=> 'scm',
   ssl_protocol  => 'all -SSLv2 -SSLv3',
-  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+  headers       => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
+
+apache::vhost { 'www.strugee.net_plaintext':
+  servername      => 'www.strugee.net',
+  port            => '80',
+  serveraliases => [
+    'ssh.strugee.net',
+  ],
+  docroot         => '/srv/http/default/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://strugee.net/',
+}
+
+apache::vhost { 'www.strugee.net_ssl':
+  servername      => 'www.strugee.net',
+  port            => '443',
+  docroot         => '/srv/http/default/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://strugee.net/',
+  serveraliases   => [
+    'ssh.strugee.net',
+  ],
+  ssl             => true,
+  ssl_cert        => '/etc/ssl/certs/www.strugee.net.pem',
+  ssl_key         => '/etc/ssl/private/mailserver.pem',
+  ssl_chain       => '/etc/ssl/certs/StartSSL_Class1.pem',
+  ssl_cipher      => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block	          => 'scm',
+  ssl_protocol    => 'all -SSLv2 -SSLv3',
+  headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'mail.strugee.net plaintext':
