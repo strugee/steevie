@@ -218,7 +218,10 @@ apache::vhost { 'cloud.strugee.net ssl':
       allow_override => 'all',
     }
   ],
-  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+    headers             => [
+      'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+      'Unset Content-Security-Policy',
+    ],
 }
 
 apache::vhost { 'wiki.strugee.net plaintext':
