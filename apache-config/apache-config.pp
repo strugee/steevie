@@ -831,3 +831,49 @@ apache::vhost { 'tumblr.strugee.net':
   docroot         => '/var/empty',
   rewrites        => [ { rewrite_rule => ['^.*$ - [G]'] } ],
 }
+
+apache::vhost { 'samuelgray.org plaintext':
+  servername      => 'samuelgray.org',
+  port            => '80',
+  docroot         => '/srv/http/samuelgray.org/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://samuelgray.org/',
+}
+
+apache::vhost { 'samuelgray.org ssl':
+  servername    => 'samuelgray.org',
+  port          => '443',
+  docroot       => '/srv/http/samuelgray.org/',
+  ssl           => true,
+  ssl_cert      => '/etc/ssl/certs/www.samuelgray.org.crt',
+  ssl_key       => '/etc/ssl/private/mailserver.pem',
+  ssl_chain     => '/etc/ssl/certs/www.samuelgray.org_intermediate.crt',
+  ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block		=> 'scm',
+  ssl_protocol  => 'all -SSLv2 -SSLv3',
+  headers       => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
+
+apache::vhost { 'www.samuelgray.org_plaintext':
+  servername      => 'www.samuelgray.org',
+  port            => '80',
+  docroot         => '/srv/http/samuelgray.org/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://samuelgray.org/',
+}
+
+apache::vhost { 'www.samuelgray.org_ssl':
+  servername      => 'www.samuelgray.org',
+  port            => '443',
+  docroot         => '/srv/http/samuelgray.org/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://samuelgray.org/',
+  ssl             => true,
+  ssl_cert        => '/etc/ssl/certs/www.samuelgray.org.crt',
+  ssl_key         => '/etc/ssl/private/mailserver.pem',
+  ssl_chain       => '/etc/ssl/certs/StartSSL_Class1.pem',
+  ssl_cipher      => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block	          => 'scm',
+  ssl_protocol    => 'all -SSLv2 -SSLv3',
+  headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
