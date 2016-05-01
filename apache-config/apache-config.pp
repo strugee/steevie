@@ -33,6 +33,8 @@ include apache::mod::alias
 include apache::mod::passenger
 include apache::mod::wsgi
 
+# STRUGEE.NET
+
 apache::vhost { 'null.strugee.net plaintext':
   servername      => 'null.strugee.net',
   port            => '80',
@@ -744,84 +746,14 @@ apache::vhost { 'git.strugee.net_ssl':
   headers            => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
-apache::vhost { 'media.saasrobotics.com plaintext':
-  servername         => 'media.saasrobotics.com',
-  port               => '80',
-  docroot            => '/srv/http/media.saasrobotics.com',
-  redirect_status    => 'permanent',
-  redirect_dest      => 'https://media.saasrobotics.com/',
+apache::vhost { 'tumblr.strugee.net':
+  servername      => 'tumblr.strugee.net',
+  port            => '80',
+  docroot         => '/var/empty',
+  rewrites        => [ { rewrite_rule => ['^.*$ - [G]'] } ],
 }
 
-apache::vhost { 'media.saasrobotics.com ssl':
-  servername         => 'media.saasrobotics.com',
-  port               => '443',
-  docroot            => '/srv/http/media.saasrobotics.com',
-  ssl                => true,
-  ssl_cert           => '/etc/ssl/certs/null.strugee.net.pem',
-  ssl_key            => '/etc/ssl/private/mailserver.pem',
-  ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
-  block              => 'scm',
-  ssl_protocol       => 'all -SSLv2 -SSLv3',
-  aliases            => [
-    { alias          => '/mgoblin_static/',
-      path           => '/srv/http/media.saasrobotics.com/media.saasrobotics.com/static/',
-    },
-    { alias          => '/mgoblin_media/',
-      path           => '/var/lib/media.saasrobotics.com/media/public/',
-    },
-    { alias          => '/theme_static/',
-      path           => '/srv/http//media.saasrobotics.com/user_dev/theme_static/',
-    },
-    { alias          => '/plugin_static/',
-      path           => '/srv/http/media.saasrobotics.com/user_dev/plugin_static/',
-    },
-  ],
-  wsgi_script_aliases => {
-    '/'              => '/srv/http/media.saasrobotics.com/wsgi.py',
-  },
-  wsgi_daemon_process => 'gmg-saasrobotics',
-  wsgi_daemon_process_options =>
-  {
-    user              => 'mediagoblin',
-    group             => 'mediagoblin',
-    processes         => '2',
-    threads           => '10',
-    umask             => '0007',
-    inactivity-timeout => '900',
-    maximum-requests  => '1000',
-    python-path       => '/srv/http/media.saasrobotics.com/:/srv/http/media.saasrobotics.com/lib/python2.7/site-packages/',
-  },
-  wsgi_pass_authorization => 'On',
-  wsgi_application_group => '%{GLOBAL}',
-  wsgi_process_group  => 'gmg-saasrobotics',
-  headers             => [
-    'set X-Content-Type-Options: nosniff',
-    'set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
-
-  ],
-  directories        => [
-    {
-      path           => '/srv/http/media.saasrobotics.com/static',
-      provider       => 'directory',
-      require        => 'all granted',
-    },
-    {
-      path           => '/srv/http/media.saasrobotics.com/user_dev/media/public',
-      provider       => 'directory',
-      require        => 'all granted',
-    },
-    {
-      path           => '/srv/http/media.saasrobotics.com/user_dev/theme_static',
-      provider       => 'directory',
-      require        => 'all granted',
-    },
-    {
-      path           => '/srv/http/media.saasrobotics.com/user_dev/plugin_static',
-      provider       => 'directory',
-      require        => 'all granted',
-    },
-  ],
-}
+# ISTHEFIELDCONTROLSYSTEMDOWN.COM
 
 apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
   servername      => 'isthefieldcontrolsystemdown.com',
@@ -850,12 +782,7 @@ apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
 #   headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 # }
 
-apache::vhost { 'tumblr.strugee.net':
-  servername      => 'tumblr.strugee.net',
-  port            => '80',
-  docroot         => '/var/empty',
-  rewrites        => [ { rewrite_rule => ['^.*$ - [G]'] } ],
-}
+# SAMUELGRAY.ORG
 
 apache::vhost { 'samuelgray.org plaintext':
   servername      => 'samuelgray.org',
