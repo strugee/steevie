@@ -719,6 +719,31 @@ apache::vhost { 'u.strugee.net ssl':
   headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
+apache::vhost { 'git.strugee.net_plaintext':
+  servername         => 'git.strugee.net',
+  port               => '80',
+  docroot            => '/opt/gitlab/embedded/service/gitlab-rails/public/',
+  redirect_status    => 'permanent',
+  redirect_dest      => 'https://git.strugee.net/',
+}
+
+apache::vhost { 'git.strugee.net_ssl':
+  servername         => 'git.strugee.net',
+  port               => '443',
+  docroot            => '/opt/gitlab/embedded/service/gitlab-rails/public/',
+  passenger_app_root => '/opt/gitlab/embedded/service/gitlab-rails/',
+  passenger_app_env  => 'production',
+  passenger_ruby     => '/usr/bin/ruby',
+  passenger_user     => 'git',
+  ssl                => true,
+  ssl_cert           => '/etc/ssl/certs/git.strugee.net.pem',
+  ssl_key            => '/etc/ssl/private/mailserver.pem',
+  ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
+  block              => 'scm',
+  ssl_protocol       => 'all -SSLv2 -SSLv3',
+  headers            => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
+
 apache::vhost { 'media.saasrobotics.com plaintext':
   servername         => 'media.saasrobotics.com',
   port               => '80',
