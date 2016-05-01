@@ -829,3 +829,51 @@ apache::vhost { 'www.samuelgray.org_ssl':
   ssl_protocol    => 'all -SSLv2 -SSLv3',
   headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
+
+# NODECOMPAT.COM
+
+apache::vhost { 'nodecompat.com_plaintext':
+  servername      => 'nodecompat.com',
+  port            => '80',
+  docroot         => '/srv/http/nodecompat.com/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://nodecompat.com/',
+}
+
+apache::vhost { 'nodecompat.com_ssl':
+  servername    => 'nodecompat.com',
+  port          => '443',
+  docroot       => '/srv/http/nodecompat.com/',
+  ssl           => true,
+  ssl_cert      => '/etc/letsencrypt/live/nodecompat.com/cert.pem',
+  ssl_key       => '/etc/letsencrypt/live/nodecompat.com/privkey.pem',
+  ssl_chain     => '/etc/letsencrypt/live/nodecompat.com/chain.pem',
+  ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block		=> 'scm',
+  ssl_protocol  => 'all -SSLv2 -SSLv3',
+  headers       => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
+
+apache::vhost { 'www.nodecompat.com_plaintext':
+  servername      => 'www.nodecompat.com',
+  port            => '80',
+  docroot         => '/srv/http/nodecompat.com/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://nodecompat.com/',
+}
+
+apache::vhost { 'www.nodecompat.com_ssl':
+  servername      => 'www.nodecompat.com',
+  port            => '443',
+  docroot         => '/srv/http/nodecompat.com/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://nodecompat.com/',
+  ssl             => true,
+  ssl_cert      => '/etc/letsencrypt/live/nodecompat.com/cert.pem',
+  ssl_key       => '/etc/letsencrypt/live/nodecompat.com/privkey.pem',
+  ssl_chain     => '/etc/letsencrypt/live/nodecompat.com/chain.pem',
+  ssl_cipher      => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block	          => 'scm',
+  ssl_protocol    => 'all -SSLv2 -SSLv3',
+  headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
