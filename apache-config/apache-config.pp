@@ -541,13 +541,14 @@ apache::vhost { 'pod.strugee.net ssl':
   passenger_app_root => '/srv/http/diaspora',
   passenger_app_env  => 'production',
   passenger_ruby     => '/usr/bin/ruby',
+  passenger_user     => 'diaspora',
   ssl                => true,
   ssl_cert           => '/etc/ssl/certs/pod.strugee.net.pem',
   ssl_key            => '/etc/ssl/private/mailserver.pem',
   ssl_chain          => '/etc/ssl/certs/StartSSL_Class1.pem',
   block              => 'scm',
   ssl_protocol       => 'all -SSLv2 -SSLv3',
-  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+  headers            => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'media.strugee.net plaintext':
