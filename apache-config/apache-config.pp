@@ -6,6 +6,7 @@ class { 'apache':
   service_ensure       => running,
   default_vhost        => false,
   mpm_module           => 'prefork',
+  serveradmin          => 'webmaster@strugee.net',
 }
 
 include apache::mod::dir
