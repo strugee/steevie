@@ -33,6 +33,15 @@ include apache::mod::alias
 include apache::mod::passenger
 include apache::mod::wsgi
 
+apache::custom_config { 'OCSP stapling':
+  content => '
+    SSLUseStapling          on
+    SSLStaplingResponderTimeout 5
+    SSLStaplingReturnResponderErrors off
+    SSLStaplingCache        shmcb:/var/run/ocsp(128000)
+',
+}
+
 # STRUGEE.NET
 
 apache::vhost { 'null.strugee.net plaintext':
