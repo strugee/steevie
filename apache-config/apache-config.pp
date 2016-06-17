@@ -105,6 +105,13 @@ apache::vhost { 'strugee.net ssl':
   servername    => 'strugee.net',
   port          => '443',
   docroot       => '/srv/http/default/',
+  custom_fragment => 'AddDefaultCharset utf-8
+                      AddCharset utf-8 .css
+                      AddCharset utf-8 .js
+                      AddCharset utf-8 .xml
+                      AddCharset utf-8 CNAME
+                      AddCharset utf-8 COPYING
+',
   redirect_source => ['/.well-known/webdav', '/.well-known/caldav', '/.well-known/carddav'],
   redirect_status => ['temp', 'temp', 'temp'],
   redirect_dest => ['https://cloud.strugee.net/remote.php/webdav/', 'https://cloud.strugee.net/remote.php/caldav/', 'https://cloud.strugee.net/remote.php/carddav/'],
