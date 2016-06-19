@@ -361,6 +361,9 @@ apache::vhost { 'piwik.strugee.net ssl':
   ssl_protocol       => 'all -SSLv2 -SSLv3',
   access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
   headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+  php_admin_values    => {
+    'always_populate_raw_post_data' => '-1',
+  },
 }
 
 apache::vhost { 'etherpad.strugee.net plaintext':
