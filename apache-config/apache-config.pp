@@ -771,7 +771,23 @@ apache::vhost { 'tumblr.strugee.net':
   servername      => 'tumblr.strugee.net',
   port            => '80',
   docroot         => '/var/empty',
-  rewrites        => [ { rewrite_rule => ['^.*$ - [G]'] } ],
+  redirect_status => 'permanent',
+  redirect_dest   => 'https://tumblr.strugee.net/',
+}
+
+apache::vhost { 'tumblr.strugee.net_ssl':
+  servername    => 'tumblr.strugee.net',
+  port          => '443',
+  docroot       => '/var/empty',
+  rewrites      => [ { rewrite_rule => ['^.*$ - [G]'] } ],
+  ssl           => true,
+  ssl_cert      => '/etc/letsencrypt/live/strugee.net/cert.pem',
+  ssl_key       => '/etc/letsencrypt/live/strugee.net/privkey.pem',
+  ssl_chain     => '/etc/letsencrypt/live/strugee.net/chain.pem',
+  ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block		=> 'scm',
+  ssl_protocol  => 'all -SSLv2 -SSLv3',
+  headers       => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 # ISTHEFIELDCONTROLSYSTEMDOWN.COM
