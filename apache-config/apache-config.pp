@@ -780,7 +780,7 @@ apache::vhost { 'tumblr.strugee.net_ssl':
   port          => '443',
   docroot       => '/var/empty',
   redirect_source  => ['/post/71618120911/bitcoin-magical-thinking-and-political-ideology', '/post/71618120911', '/'],
-  redirect_status  => ['temp', 'temp', 'gone'],
+  redirect_status  => ['permanent', 'permanent', 'gone'],
   redirect_dest    => ['https://strugee.net/blog/2016/05/re-bitcoin', 'https://strugee.net/blog/2016/05/re-bitcoin', ''],
   ssl           => true,
   ssl_cert      => '/etc/letsencrypt/live/strugee.net/cert.pem',
