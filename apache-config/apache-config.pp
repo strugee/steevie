@@ -33,6 +33,7 @@ apache::mod { 'proxy_wstunnel': }
 include apache::mod::alias
 include apache::mod::passenger
 include apache::mod::wsgi
+include apache::mod::userdir
 
 apache::custom_config { 'OCSP stapling':
   content => '
@@ -41,6 +42,10 @@ apache::custom_config { 'OCSP stapling':
     SSLStaplingReturnResponderErrors off
     SSLStaplingCache        shmcb:/var/run/ocsp(128000)
 ',
+}
+
+apache::custom_config { 'global_userdir_disable':
+  content => 'UserDir disabled',
 }
 
 # STRUGEE.NET
@@ -790,6 +795,31 @@ apache::vhost { 'tumblr.strugee.net_ssl':
   block		=> 'scm',
   ssl_protocol  => 'all -SSLv2 -SSLv3',
   headers       => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
+
+apache::vhost { 'people.strugee.net_plaintext':
+  servername      => 'people.strugee.net',
+  port            => '80',
+  docroot         => '/srv/http/fallback/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://people.strugee.net/',
+}
+
+apache::vhost { 'people.strugee.net ssl':
+  servername      => 'people.strugee.net',
+  port            => '443',
+  docroot         => '/var/empty',
+  custom_fragment => 'UserDir enabled
+UserDir public_html
+UserDir disabled root',
+  ssl             => true,
+  ssl_cert        => '/etc/letsencrypt/live/strugee.net/cert.pem',
+  ssl_key         => '/etc/letsencrypt/live/strugee.net/privkey.pem',
+  ssl_chain       => '/etc/letsencrypt/live/strugee.net/chain.pem',
+  ssl_cipher      => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block	          => 'scm',
+  ssl_protocol    => 'all -SSLv2 -SSLv3',
+  headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 # ISTHEFIELDCONTROLSYSTEMDOWN.COM
