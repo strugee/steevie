@@ -117,9 +117,9 @@ apache::vhost { 'strugee.net ssl':
                       AddCharset utf-8 CNAME
                       AddCharset utf-8 COPYING
 ',
-  redirect_source => ['/.well-known/webdav', '/.well-known/caldav', '/.well-known/carddav'],
-  redirect_status => ['temp', 'temp', 'temp'],
-  redirect_dest => ['https://cloud.strugee.net/remote.php/webdav/', 'https://cloud.strugee.net/remote.php/caldav/', 'https://cloud.strugee.net/remote.php/carddav/'],
+  redirect_source => ['/.well-known/webdav', '/.well-known/caldav', '/.well-known/carddav', '/index'],
+  redirect_status => ['temp', 'temp', 'temp', 'permanent'],
+  redirect_dest => ['https://cloud.strugee.net/remote.php/webdav/', 'https://cloud.strugee.net/remote.php/caldav/', 'https://cloud.strugee.net/remote.php/carddav/', '/'],
   ssl           => true,
   ssl_cert      => '/etc/letsencrypt/live/strugee.net/cert.pem',
   ssl_key       => '/etc/letsencrypt/live/strugee.net/privkey.pem',
