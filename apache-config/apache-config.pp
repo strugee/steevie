@@ -836,8 +836,8 @@ apache::vhost { 'pumabot.strugee.net_ssl':
   docroot         => '/var/empty',
   ssl_proxyengine    => true,
   proxy_pass         => [
-    { 'path' => '/', 'url' => 'https://localhost:6378/',
-      'reverse_urls' => 'https://localhost:6378/' },
+    { 'path' => '/', 'url' => 'http://localhost:6378/',
+      'reverse_urls' => 'http://localhost:6378/' },
   ],
   proxy_preserve_host => true,
   ssl             => true,
