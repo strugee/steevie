@@ -822,6 +822,34 @@ UserDir disabled root',
   headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
+apache::vhost { 'pumabot.strugee.net_plaintext':
+  servername      => 'pumabot.strugee.net',
+  port            => '80',
+  docroot         => '/var/empty',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://pumabot.strugee.net/',
+}
+
+apache::vhost { 'pumabot.strugee.net_ssl':
+  servername      => 'pumabot.strugee.net',
+  port            => '443',
+  docroot         => '/var/empty',
+  ssl_proxyengine    => true,
+  proxy_pass         => [
+    { 'path' => '/', 'url' => 'https://localhost:6378/',
+      'reverse_urls' => 'https://localhost:6378/' },
+  ],
+  proxy_preserve_host => true,
+  ssl             => true,
+  ssl_cert        => '/etc/letsencrypt/live/strugee.net/cert.pem',
+  ssl_key         => '/etc/letsencrypt/live/strugee.net/privkey.pem',
+  ssl_chain       => '/etc/letsencrypt/live/strugee.net/chain.pem',
+  ssl_cipher      => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block	          => 'scm',
+  ssl_protocol    => 'all -SSLv2 -SSLv3',
+  headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
+
 # ISTHEFIELDCONTROLSYSTEMDOWN.COM
 
 apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
