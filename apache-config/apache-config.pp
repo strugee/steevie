@@ -761,7 +761,7 @@ apache::vhost { 'git.strugee.net_ssl':
   docroot            => '/opt/gitlab/embedded/service/gitlab-rails/public/',
   passenger_app_root => '/opt/gitlab/embedded/service/gitlab-rails/',
   passenger_app_env  => 'production',
-  passenger_ruby     => '/usr/bin/ruby',
+  passenger_ruby     => '/opt/gitlab/embedded/bin/ruby',
   passenger_user     => 'git',
   ssl                => true,
   ssl_cert           => '/etc/letsencrypt/live/strugee.net/cert.pem',
