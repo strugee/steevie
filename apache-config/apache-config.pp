@@ -9,6 +9,9 @@ class { 'apache':
   serveradmin          => 'webmaster@strugee.net',
 }
 
+apache::listen { '216.160.72.225:80': }
+apache::listen { '216.160.72.225:443': }
+
 include apache::mod::dir
 include apache::mod::autoindex
 include apache::mod::mime
@@ -52,6 +55,7 @@ apache::custom_config { 'global_userdir_disable':
 
 apache::vhost { 'null.strugee.net plaintext':
   servername      => 'null.strugee.net',
+  ip              => '216.160.72.225',
   port            => '80',
   docroot         => '/srv/http/fallback/',
   redirect_status => 'permanent',
@@ -60,6 +64,7 @@ apache::vhost { 'null.strugee.net plaintext':
 
 apache::vhost { 'null.strugee.net ssl':
   servername    => 'null.strugee.net',
+  ip              => '216.160.72.225',
   port          => '443',
   docroot       => '/srv/http/fallback/',
   ssl           => true,
@@ -74,6 +79,7 @@ apache::vhost { 'null.strugee.net ssl':
 
 apache::vhost { 'fallback catchall plaintext':
   servername      => 'redirect.null.strugee.net',
+  ip              => '216.160.72.225',
   port            => '80',
   docroot         => '/srv/http/fallback/',
   redirect_status => 'permanent',
@@ -83,6 +89,7 @@ apache::vhost { 'fallback catchall plaintext':
 
 apache::vhost { 'fallback catchall ssl':
   servername    => 'redirect.null.strugee.net',
+  ip              => '216.160.72.225',
   port          => '443',
   docroot       => '/srv/http/fallback/',
   redirect_status => 'permanent',
@@ -100,6 +107,7 @@ apache::vhost { 'fallback catchall ssl':
 
 apache::vhost { 'strugee.net plaintext':
   servername      => 'strugee.net',
+  ip              => '216.160.72.225',
   port            => '80',
   docroot         => '/srv/http/default/',
   redirect_status => 'permanent',
@@ -108,6 +116,7 @@ apache::vhost { 'strugee.net plaintext':
 
 apache::vhost { 'strugee.net ssl':
   servername    => 'strugee.net',
+  ip              => '216.160.72.225',
   port          => '443',
   docroot       => '/srv/http/default/',
   custom_fragment => 'AddDefaultCharset utf-8
@@ -132,6 +141,7 @@ apache::vhost { 'strugee.net ssl':
 
 apache::vhost { 'www.strugee.net_plaintext':
   servername      => 'www.strugee.net',
+  ip              => '216.160.72.225',
   port            => '80',
   serveraliases => [
     'ssh.strugee.net',
@@ -143,6 +153,7 @@ apache::vhost { 'www.strugee.net_plaintext':
 
 apache::vhost { 'www.strugee.net_ssl':
   servername      => 'www.strugee.net',
+  ip              => '216.160.72.225',
   port            => '443',
   docroot         => '/srv/http/default/',
   redirect_status => 'permanent',
@@ -162,6 +173,7 @@ apache::vhost { 'www.strugee.net_ssl':
 
 apache::vhost { 'mail.strugee.net plaintext':
   servername      => 'mail.strugee.net',
+  ip              => '216.160.72.225',
   port            => '80',
   docroot         => '/var/lib/roundcube/',
   redirect_status => 'permanent',
@@ -170,6 +182,7 @@ apache::vhost { 'mail.strugee.net plaintext':
 
 apache::vhost { 'mail.strugee.net ssl':
   servername    => 'mail.strugee.net',
+  ip              => '216.160.72.225',
   port          => '443',
   docroot       => '/var/lib/roundcube/',
   ssl           => true,
@@ -213,6 +226,7 @@ apache::vhost { 'mail.strugee.net ssl':
 
 apache::vhost { 'cloud.strugee.net plaintext':
   servername       => 'cloud.strugee.net',
+  ip              => '216.160.72.225',
   port        	   => '80',
   docroot	   => '/var/www/owncloud',
   redirect_status  => 'permanent',
@@ -221,6 +235,7 @@ apache::vhost { 'cloud.strugee.net plaintext':
 
 apache::vhost { 'cloud.strugee.net ssl':
   servername  	   => 'cloud.strugee.net',
+  ip              => '216.160.72.225',
   port		   => '443',
   docroot	   => '/var/www/owncloud',
   redirect_source  => ['/.well-known/webdav', '/.well-known/caldav', '/.well-known/carddav'],
@@ -250,6 +265,7 @@ apache::vhost { 'cloud.strugee.net ssl':
 
 apache::vhost { 'wiki.strugee.net plaintext':
   servername         => 'wiki.strugee.net',
+  ip              => '216.160.72.225',
   port               => '80',
   docroot            => '/var/lib/mediawiki',
   redirect_status    => 'permanent',
@@ -258,6 +274,7 @@ apache::vhost { 'wiki.strugee.net plaintext':
 
 apache::vhost { 'wiki.strugee.net ssl':
   servername         => 'wiki.strugee.net',
+  ip              => '216.160.72.225',
   port               => '443',
   docroot            => '/var/lib/mediawiki',
   ssl                => true,
@@ -310,6 +327,7 @@ apache::vhost { 'wiki.strugee.net ssl':
 
 apache::vhost { 'bugzilla.strugee.net plaintext':
   servername         => 'bugzilla.strugee.net',
+  ip              => '216.160.72.225',
   port               => '80',
   docroot            => '/srv/http/bugzilla',
   docroot_group      => 'www-data',
@@ -319,6 +337,7 @@ apache::vhost { 'bugzilla.strugee.net plaintext':
 
 apache::vhost { 'bugzilla.strugee.net ssl':
   servername         => 'bugzilla.strugee.net',
+  ip              => '216.160.72.225',
   port               => '443',
   docroot            => '/srv/http/bugzilla',
   docroot_group      => 'www-data',
@@ -345,6 +364,7 @@ apache::vhost { 'bugzilla.strugee.net ssl':
 
 apache::vhost { 'piwik.strugee.net plaintext':
   servername         => 'piwik.strugee.net',
+  ip              => '216.160.72.225',
   port               => '80',
   docroot            => '/srv/http/piwik',
   docroot_group      => 'www-data',
@@ -354,6 +374,7 @@ apache::vhost { 'piwik.strugee.net plaintext':
 
 apache::vhost { 'piwik.strugee.net ssl':
   servername         => 'piwik.strugee.net',
+  ip              => '216.160.72.225',
   port               => '443',
   docroot            => '/srv/http/piwik',
   docroot_group      => 'www-data',
@@ -373,6 +394,7 @@ apache::vhost { 'piwik.strugee.net ssl':
 
 apache::vhost { 'etherpad.strugee.net plaintext':
   servername         => 'etherpad.strugee.net',
+  ip              => '216.160.72.225',
   port               => '80',
   docroot            => '/srv/http/etherpad',
   docroot_group      => 'www-data',
@@ -382,6 +404,7 @@ apache::vhost { 'etherpad.strugee.net plaintext':
 
 apache::vhost { 'etherpad.strugee.net ssl':
   servername         => 'etherpad.strugee.net',
+  ip              => '216.160.72.225',
   port               => '443',
   docroot            => '/srv/http/etherpad',
   docroot_group      => 'etherpad',
@@ -403,6 +426,7 @@ apache::vhost { 'etherpad.strugee.net ssl':
 
 apache::vhost { 'pump.strugee.net plaintext':
   servername         => 'pump.strugee.net',
+  ip              => '216.160.72.225',
   port               => '80',
   docroot            => '/var/empty',
   redirect_status    => 'permanent',
@@ -411,6 +435,7 @@ apache::vhost { 'pump.strugee.net plaintext':
 
 apache::vhost { 'pump.strugee.net ssl':
   servername         => 'pump.strugee.net',
+  ip              => '216.160.72.225',
   port               => '443',
   docroot            => '/var/empty',
   ssl                => true,
@@ -434,6 +459,7 @@ apache::vhost { 'pump.strugee.net ssl':
 
 apache::vhost { 'friendica.strugee.net plaintext':
   servername         => 'friendica.strugee.net',
+  ip              => '216.160.72.225',
   port               => '80',
   docroot            => '/srv/http/friendica',
   redirect_status    => 'permanent',
@@ -442,6 +468,7 @@ apache::vhost { 'friendica.strugee.net plaintext':
 
 apache::vhost { 'friendica.strugee.net ssl':
   servername         => 'friendica.strugee.net',
+  ip              => '216.160.72.225',
   port               => '443',
   docroot            => '/srv/http/friendica',
   ssl                => true,
@@ -459,6 +486,7 @@ apache::vhost { 'friendica.strugee.net ssl':
 
 apache::vhost { 'huginn.strugee.net plaintext':
   servername         => 'huginn.strugee.net',
+  ip              => '216.160.72.225',
   port               => '80',
   docroot            => '/srv/http/huginn',
   redirect_status    => 'permanent',
@@ -467,6 +495,7 @@ apache::vhost { 'huginn.strugee.net plaintext':
 
 apache::vhost { 'huginn.strugee.net ssl':
   servername         => 'huginn.strugee.net',
+  ip              => '216.160.72.225',
   port               => '443',
   docroot            => '/srv/http/huginn/public',
   passenger_app_root => '/srv/http/huginn',
@@ -484,6 +513,7 @@ apache::vhost { 'huginn.strugee.net ssl':
 
 apache::vhost { 'util.strugee.net plaintext':
   servername         => 'util.strugee.net',
+  ip              => '216.160.72.225',
   port               => '80',
   docroot            => '/var/empty',
   redirect_status    => 'permanent',
@@ -492,6 +522,7 @@ apache::vhost { 'util.strugee.net plaintext':
 
 apache::vhost { 'util.strugee.net ssl':
   servername         => 'util.strugee.net',
+  ip              => '216.160.72.225',
   port               => '443',
   docroot            => '/var/empty',
   ssl                => true,
@@ -553,6 +584,7 @@ apache::vhost { 'util.strugee.net ssl':
 
 apache::vhost { 'pod.strugee.net plaintext':
   servername         => 'pod.strugee.net',
+  ip              => '216.160.72.225',
   port               => '80',
   docroot            => '/srv/http/diaspora/public',
   redirect_status    => 'permanent',
@@ -561,6 +593,7 @@ apache::vhost { 'pod.strugee.net plaintext':
 
 apache::vhost { 'pod.strugee.net ssl':
   servername         => 'pod.strugee.net',
+  ip              => '216.160.72.225',
   port               => '443',
   docroot            => '/srv/http/diaspora/public',
   passenger_app_root => '/srv/http/diaspora',
@@ -578,6 +611,7 @@ apache::vhost { 'pod.strugee.net ssl':
 
 apache::vhost { 'media.strugee.net plaintext':
   servername         => 'media.strugee.net',
+  ip              => '216.160.72.225',
   port               => '80',
   docroot            => '/srv/http/mediagoblin',
   redirect_status    => 'permanent',
@@ -586,6 +620,7 @@ apache::vhost { 'media.strugee.net plaintext':
 
 apache::vhost { 'media.strugee.net ssl':
   servername         => 'media.strugee.net',
+  ip              => '216.160.72.225',
   port               => '443',
   docroot            => '/srv/http/mediagoblin',
   ssl                => true,
@@ -657,6 +692,7 @@ apache::vhost { 'media.strugee.net ssl':
 
 apache::vhost { 'znc.strugee.net plaintext':
   servername         => 'znc.strugee.net',
+  ip              => '216.160.72.225',
   port               => '80',
   docroot            => '/var/empty',
   redirect_status    => 'permanent',
@@ -665,6 +701,7 @@ apache::vhost { 'znc.strugee.net plaintext':
 
 apache::vhost { 'znc.strugee.net ssl':
   servername         => 'znc.strugee.net',
+  ip              => '216.160.72.225',
   port               => '443',
   docroot            => '/var/empty',
   ssl                => true,
@@ -687,6 +724,7 @@ apache::vhost { 'znc.strugee.net ssl':
 
 apache::vhost { 'framadate.strugee.net plaintext':
   servername       => 'framadate.strugee.net',
+  ip              => '216.160.72.225',
   port        	   => '80',
   docroot	   => '/srv/http/framadate',
   redirect_status  => 'permanent',
@@ -695,6 +733,7 @@ apache::vhost { 'framadate.strugee.net plaintext':
 
 apache::vhost { 'framadate.strugee.net ssl':
   servername  	   => 'framadate.strugee.net',
+  ip              => '216.160.72.225',
   port		   => '443',
   docroot	   => '/srv/http/framadate',
   ssl 		   => true,
@@ -718,6 +757,7 @@ apache::vhost { 'framadate.strugee.net ssl':
 
 apache::vhost { 'u.strugee.net plaintext':
   servername       => 'u.strugee.net',
+  ip              => '216.160.72.225',
   port        	   => '80',
   docroot	   => '/srv/http/polr',
   redirect_status  => 'permanent',
@@ -726,6 +766,7 @@ apache::vhost { 'u.strugee.net plaintext':
 
 apache::vhost { 'u.strugee.net ssl':
   servername  	   => 'u.strugee.net',
+  ip              => '216.160.72.225',
   port		   => '443',
   docroot	   => '/srv/http/polr',
   ssl 		   => true,
@@ -749,6 +790,7 @@ apache::vhost { 'u.strugee.net ssl':
 
 apache::vhost { 'git.strugee.net_plaintext':
   servername         => 'git.strugee.net',
+  ip              => '216.160.72.225',
   port               => '80',
   docroot            => '/opt/gitlab/embedded/service/gitlab-rails/public/',
   redirect_status    => 'permanent',
@@ -757,6 +799,7 @@ apache::vhost { 'git.strugee.net_plaintext':
 
 apache::vhost { 'git.strugee.net_ssl':
   servername         => 'git.strugee.net',
+  ip              => '216.160.72.225',
   port               => '443',
   docroot            => '/opt/gitlab/embedded/service/gitlab-rails/public/',
   passenger_app_root => '/opt/gitlab/embedded/service/gitlab-rails/',
@@ -774,6 +817,7 @@ apache::vhost { 'git.strugee.net_ssl':
 
 apache::vhost { 'tumblr.strugee.net':
   servername      => 'tumblr.strugee.net',
+  ip              => '216.160.72.225',
   port            => '80',
   docroot         => '/var/empty',
   redirect_status => 'permanent',
@@ -782,6 +826,7 @@ apache::vhost { 'tumblr.strugee.net':
 
 apache::vhost { 'tumblr.strugee.net_ssl':
   servername    => 'tumblr.strugee.net',
+  ip              => '216.160.72.225',
   port          => '443',
   docroot       => '/var/empty',
   redirect_source  => ['/post/71618120911/bitcoin-magical-thinking-and-political-ideology', '/post/71618120911', '/'],
@@ -799,6 +844,7 @@ apache::vhost { 'tumblr.strugee.net_ssl':
 
 apache::vhost { 'people.strugee.net_plaintext':
   servername      => 'people.strugee.net',
+  ip              => '216.160.72.225',
   port            => '80',
   docroot         => '/srv/http/fallback/',
   redirect_status => 'permanent',
@@ -807,6 +853,7 @@ apache::vhost { 'people.strugee.net_plaintext':
 
 apache::vhost { 'people.strugee.net ssl':
   servername      => 'people.strugee.net',
+  ip              => '216.160.72.225',
   port            => '443',
   docroot         => '/var/empty',
   custom_fragment => 'UserDir enabled
@@ -824,6 +871,7 @@ UserDir disabled root',
 
 apache::vhost { 'pumabot.strugee.net_plaintext':
   servername      => 'pumabot.strugee.net',
+  ip              => '216.160.72.225',
   port            => '80',
   docroot         => '/var/empty',
   redirect_status => 'permanent',
@@ -832,6 +880,7 @@ apache::vhost { 'pumabot.strugee.net_plaintext':
 
 apache::vhost { 'pumabot.strugee.net_ssl':
   servername      => 'pumabot.strugee.net',
+  ip              => '216.160.72.225',
   port            => '443',
   docroot         => '/var/empty',
   ssl_proxyengine    => true,
@@ -852,6 +901,7 @@ apache::vhost { 'pumabot.strugee.net_ssl':
 
 apache::vhost { 'gradlebot.strugee.net_plaintext':
   servername      => 'gradlebot.strugee.net',
+  ip              => '216.160.72.225',
   port            => '80',
   docroot         => '/var/empty',
   redirect_status => 'permanent',
@@ -860,6 +910,7 @@ apache::vhost { 'gradlebot.strugee.net_plaintext':
 
 apache::vhost { 'gradlebot.strugee.net_ssl':
   servername      => 'gradlebot.strugee.net',
+  ip              => '216.160.72.225',
   port            => '443',
   docroot         => '/var/empty',
   ssl_proxyengine    => true,
@@ -882,6 +933,7 @@ apache::vhost { 'gradlebot.strugee.net_ssl':
 
 apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
   servername      => 'isthefieldcontrolsystemdown.com',
+  ip              => '216.160.72.225',
   port            => '80',
   docroot         => '/srv/http/isthefieldcontrolsystemdown.com/',
   redirect_status => 'permanent',
@@ -894,6 +946,7 @@ apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
 
 apache::vhost { 'isthefieldcontrolsystemdown.com ssl':
   servername    => 'isthefieldcontrolsystemdown.com',
+  ip              => '216.160.72.225',
   port          => '443',
   docroot       => '/srv/http/isthefieldcontrolsystemdown.com/',
   serveraliases => [
@@ -913,6 +966,7 @@ apache::vhost { 'isthefieldcontrolsystemdown.com ssl':
 
 apache::vhost { 'samuelgray.org plaintext':
   servername      => 'samuelgray.org',
+  ip              => '216.160.72.225',
   port            => '80',
   docroot         => '/srv/http/samuelgray.org/',
   redirect_status => 'permanent',
@@ -921,6 +975,7 @@ apache::vhost { 'samuelgray.org plaintext':
 
 apache::vhost { 'samuelgray.org ssl':
   servername    => 'samuelgray.org',
+  ip              => '216.160.72.225',
   port          => '443',
   docroot       => '/srv/http/samuelgray.org/',
   ssl           => true,
@@ -935,6 +990,7 @@ apache::vhost { 'samuelgray.org ssl':
 
 apache::vhost { 'www.samuelgray.org_plaintext':
   servername      => 'www.samuelgray.org',
+  ip              => '216.160.72.225',
   port            => '80',
   docroot         => '/srv/http/samuelgray.org/',
   redirect_status => 'permanent',
@@ -943,6 +999,7 @@ apache::vhost { 'www.samuelgray.org_plaintext':
 
 apache::vhost { 'www.samuelgray.org_ssl':
   servername      => 'www.samuelgray.org',
+  ip              => '216.160.72.225',
   port            => '443',
   docroot         => '/srv/http/samuelgray.org/',
   redirect_status => 'permanent',
@@ -961,6 +1018,7 @@ apache::vhost { 'www.samuelgray.org_ssl':
 
 apache::vhost { 'nodecompat.com_plaintext':
   servername      => 'nodecompat.com',
+  ip              => '216.160.72.225',
   port            => '80',
   docroot         => '/srv/http/nodecompat.com/',
   redirect_status => 'permanent',
@@ -969,6 +1027,7 @@ apache::vhost { 'nodecompat.com_plaintext':
 
 apache::vhost { 'nodecompat.com_ssl':
   servername    => 'nodecompat.com',
+  ip              => '216.160.72.225',
   port          => '443',
   docroot       => '/srv/http/nodecompat.com/',
   ssl           => true,
@@ -983,6 +1042,7 @@ apache::vhost { 'nodecompat.com_ssl':
 
 apache::vhost { 'www.nodecompat.com_plaintext':
   servername      => 'www.nodecompat.com',
+  ip              => '216.160.72.225',
   port            => '80',
   docroot         => '/srv/http/nodecompat.com/',
   redirect_status => 'permanent',
@@ -991,6 +1051,7 @@ apache::vhost { 'www.nodecompat.com_plaintext':
 
 apache::vhost { 'www.nodecompat.com_ssl':
   servername      => 'www.nodecompat.com',
+  ip              => '216.160.72.225',
   port            => '443',
   docroot         => '/srv/http/nodecompat.com/',
   redirect_status => 'permanent',
