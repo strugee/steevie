@@ -915,8 +915,8 @@ apache::vhost { 'gradlebot.strugee.net_ssl':
   docroot         => '/var/empty',
   ssl_proxyengine    => true,
   proxy_pass         => [
-    { 'path' => '/', 'url' => 'http://localhost:6379/',
-      'reverse_urls' => 'http://localhost:6379/' },
+    { 'path' => '/', 'url' => 'http://localhost:6377/',
+      'reverse_urls' => 'http://localhost:6377/' },
   ],
   proxy_preserve_host => true,
   ssl             => true,
