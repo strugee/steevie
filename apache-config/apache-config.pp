@@ -788,32 +788,32 @@ apache::vhost { 'u.strugee.net ssl':
   headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
-apache::vhost { 'git.strugee.net_plaintext':
-  servername         => 'git.strugee.net',
-  ip              => '216.160.72.225',
-  port               => '80',
-  docroot            => '/opt/gitlab/embedded/service/gitlab-rails/public/',
-  redirect_status    => 'permanent',
-  redirect_dest      => 'https://git.strugee.net/',
-}
+# apache::vhost { 'git.strugee.net_plaintext':
+#   servername         => 'git.strugee.net',
+#   ip              => '216.160.72.225',
+#   port               => '80',
+#   docroot            => '/opt/gitlab/embedded/service/gitlab-rails/public/',
+#   redirect_status    => 'permanent',
+#   redirect_dest      => 'https://git.strugee.net/',
+# }
 
-apache::vhost { 'git.strugee.net_ssl':
-  servername         => 'git.strugee.net',
-  ip              => '216.160.72.225',
-  port               => '443',
-  docroot            => '/opt/gitlab/embedded/service/gitlab-rails/public/',
-  passenger_app_root => '/opt/gitlab/embedded/service/gitlab-rails/',
-  passenger_app_env  => 'production',
-  passenger_ruby     => '/opt/gitlab/embedded/bin/ruby',
-  passenger_user     => 'git',
-  ssl                => true,
-  ssl_cert           => '/etc/letsencrypt/live/strugee.net/cert.pem',
-  ssl_key            => '/etc/letsencrypt/live/strugee.net/privkey.pem',
-  ssl_chain          => '/etc/letsencrypt/live/strugee.net/chain.pem',
-  block              => 'scm',
-  ssl_protocol       => 'all -SSLv2 -SSLv3',
-  headers            => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
-}
+# apache::vhost { 'git.strugee.net_ssl':
+#   servername         => 'git.strugee.net',
+#   ip              => '216.160.72.225',
+#   port               => '443',
+#   docroot            => '/opt/gitlab/embedded/service/gitlab-rails/public/',
+#   passenger_app_root => '/opt/gitlab/embedded/service/gitlab-rails/',
+#   passenger_app_env  => 'production',
+#   passenger_ruby     => '/opt/gitlab/embedded/bin/ruby',
+#   passenger_user     => 'git',
+#   ssl                => true,
+#   ssl_cert           => '/etc/letsencrypt/live/strugee.net/cert.pem',
+#   ssl_key            => '/etc/letsencrypt/live/strugee.net/privkey.pem',
+#   ssl_chain          => '/etc/letsencrypt/live/strugee.net/chain.pem',
+#   block              => 'scm',
+#   ssl_protocol       => 'all -SSLv2 -SSLv3',
+#   headers            => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+# }
 
 apache::vhost { 'tumblr.strugee.net':
   servername      => 'tumblr.strugee.net',
