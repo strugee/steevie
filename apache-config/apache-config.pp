@@ -495,12 +495,14 @@ apache::vhost { 'huginn.strugee.net plaintext':
 
 apache::vhost { 'huginn.strugee.net ssl':
   servername         => 'huginn.strugee.net',
-  ip              => '216.160.72.225',
+  ip                 => '216.160.72.225',
   port               => '443',
   docroot            => '/srv/http/huginn/public',
   passenger_app_root => '/srv/http/huginn',
   passenger_app_env  => 'production',
-  passenger_ruby     => '/usr/bin/ruby',
+  passenger_ruby     => '/usr/local/rvm/wrappers/ruby-2.3.0/ruby',
+  passenger_user     => 'huginn',
+  custom_fragment    => 'PassengerGroup huginn',
   ssl                => true,
   ssl_cert           => '/etc/letsencrypt/live/strugee.net/cert.pem',
   ssl_key            => '/etc/letsencrypt/live/strugee.net/privkey.pem',
