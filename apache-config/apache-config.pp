@@ -481,12 +481,12 @@ apache::vhost { 'friendica.strugee.net ssl':
   access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
   options	     => ['All'],
   override	     => 'all',
-  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+  headers            => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'huginn.strugee.net plaintext':
   servername         => 'huginn.strugee.net',
-  ip              => '216.160.72.225',
+  ip                 => '216.160.72.225',
   port               => '80',
   docroot            => '/srv/http/huginn',
   redirect_status    => 'permanent',
@@ -510,7 +510,7 @@ apache::vhost { 'huginn.strugee.net ssl':
   ssl_cipher         => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
   block              => 'scm',
   ssl_protocol       => 'all -SSLv2 -SSLv3',
-  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+  headers            => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 apache::vhost { 'util.strugee.net plaintext':
