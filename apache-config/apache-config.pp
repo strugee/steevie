@@ -263,6 +263,45 @@ apache::vhost { 'cloud.strugee.net ssl':
     ],
 }
 
+apache::vhost { 'cloud-staging.strugee.net plaintext':
+  servername       => 'cloud-staging.strugee.net',
+  ip              => '216.160.72.225',
+  port        	   => '80',
+  docroot	   => '/srv/http/nextcloud',
+  redirect_status  => 'permanent',
+  redirect_dest    => 'https://cloud-staging.strugee.net/',
+}
+
+apache::vhost { 'cloud-staging.strugee.net ssl':
+  servername  	   => 'cloud-staging.strugee.net',
+  ip               => '216.160.72.225',
+  port		   => '443',
+  docroot	   => '/srv/http/nextcloud',
+  redirect_source  => ['/.well-known/webdav', '/.well-known/caldav', '/.well-known/carddav'],
+  redirect_status  => ['temp', 'temp', 'temp'],
+  redirect_dest    => ['https://cloud-staging.strugee.net/remote.php/webdav/', 'https://cloud-staging.strugee.net/remote.php/caldav/', 'https://cloud-staging.strugee.net/remote.php/carddav/'],
+  ssl 		   => true,
+  ssl_cert	   => '/etc/letsencrypt/live/cloud-staging.strugee.net/cert.pem',
+  ssl_key	   => '/etc/letsencrypt/live/cloud-staging.strugee.net/privkey.pem',
+  ssl_chain        => '/etc/letsencrypt/live/cloud-staging.strugee.net/chain.pem',
+  ssl_cipher       => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block		   => 'scm',
+  override	   => 'all',
+  ssl_protocol     => 'all -SSLv2 -SSLv3',
+  directories      => [
+    {
+      path           => '/srv/http/nextcloud',
+      provider       => 'directory',
+      options        => ['+FollowSymLinks'],
+      allow_override => 'all',
+    }
+  ],
+    headers             => [
+      'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+      'Unset Content-Security-Policy',
+    ],
+}
+
 apache::vhost { 'wiki.strugee.net plaintext':
   servername         => 'wiki.strugee.net',
   ip              => '216.160.72.225',
