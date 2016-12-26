@@ -128,7 +128,7 @@ apache::vhost { 'strugee.net ssl':
 ',
   redirect_source => ['/.well-known/webdav', '/.well-known/caldav', '/.well-known/carddav', '/index'],
   redirect_status => ['temp', 'temp', 'temp', 'permanent'],
-  redirect_dest => ['https://cloud.strugee.net/remote.php/webdav/', 'https://cloud.strugee.net/remote.php/caldav/', 'https://cloud.strugee.net/remote.php/carddav/', '/'],
+  redirect_dest => ['https://cloud.strugee.net/remote.php/dav/', 'https://cloud.strugee.net/remote.php/dav', 'https://cloud.strugee.net/remote.php/dav/', '/'],
   ssl           => true,
   ssl_cert      => '/etc/letsencrypt/live/strugee.net/cert.pem',
   ssl_key       => '/etc/letsencrypt/live/strugee.net/privkey.pem',
