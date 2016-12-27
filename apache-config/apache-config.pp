@@ -970,20 +970,14 @@ apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
   docroot         => '/srv/http/isthefieldcontrolsystemdown.com/',
   redirect_status => 'permanent',
   redirect_dest   => 'https://isthefieldcontrolsystemdown.com/',
-  serveraliases   => [
-    'www.isthefieldcontrolsystemdown.com',
-  ],
   block           => 'scm',
 }
 
 apache::vhost { 'isthefieldcontrolsystemdown.com ssl':
   servername    => 'isthefieldcontrolsystemdown.com',
-  ip              => '216.160.72.225',
+  ip            => '216.160.72.225',
   port          => '443',
   docroot       => '/srv/http/isthefieldcontrolsystemdown.com/',
-  serveraliases => [
-    'www.isthefieldcontrolsystemdown.com',
-  ],
   ssl           => true,
   ssl_cert      => '/etc/letsencrypt/live/isthefieldcontrolsystemdown.com/cert.pem',
   ssl_key       => '/etc/letsencrypt/live/isthefieldcontrolsystemdown.com/privkey.pem',
@@ -991,7 +985,33 @@ apache::vhost { 'isthefieldcontrolsystemdown.com ssl':
   ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
   block		=> 'scm',
   ssl_protocol  => 'all -SSLv2 -SSLv3',
-  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+  headers       => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
+
+apache::vhost { 'www.isthefieldcontrolsystemdown.com_plaintext':
+  servername      => 'www.isthefieldcontrolsystemdown.com',
+  ip              => '216.160.72.225',
+  port            => '80',
+  docroot         => '/srv/http/default/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://isthefieldcontrolsystemdown.com/',
+}
+
+apache::vhost { 'www.isthefieldcontrolsystemdown.com_ssl':
+  servername      => 'www.isthefieldcontrolsystemdown.com',
+  ip              => '216.160.72.225',
+  port            => '443',
+  docroot         => '/srv/http/default/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://isthefieldcontrolsystemdown.com/',
+  ssl             => true,
+  ssl_cert        => '/etc/letsencrypt/live/isthefieldcontrolsystemdown.com/cert.pem',
+  ssl_key         => '/etc/letsencrypt/live/isthefieldcontrolsystemdown.com/privkey.pem',
+  ssl_chain       => '/etc/letsencrypt/live/isthefieldcontrolsystemdown.com/chain.pem',
+  ssl_cipher      => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block	          => 'scm',
+  ssl_protocol    => 'all -SSLv2 -SSLv3',
+  headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
 # SAMUELGRAY.ORG
