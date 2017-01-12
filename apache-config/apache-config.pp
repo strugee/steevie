@@ -991,6 +991,32 @@ apache::vhost { 'owntracks.strugee.net_ssl':
   headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
   }
 
+apache::vhost { 'pumpstatus.strugee.net_plaintext':
+  servername      => 'pumpstatus.strugee.net',
+  ip              => '216.160.72.225',
+  port            => '80',
+  docroot         => '/var/empty',
+  redirect_status => 'permanent',
+  redirect_dest   => 'https://pumpstatus.strugee.net/',
+}
+
+apache::vhost { 'pumpstatus.strugee.net_ssl':
+  servername      => 'pumpstatus.strugee.net',
+  ip              => '216.160.72.225',
+  port            => '443',
+  docroot         => '/srv/http/phpservermon',
+  ssl_proxyengine    => true,
+  proxy_preserve_host => true,
+  ssl             => true,
+  ssl_cert        => '/etc/letsencrypt/live/strugee.net/cert.pem',
+  ssl_key         => '/etc/letsencrypt/live/strugee.net/privkey.pem',
+  ssl_chain       => '/etc/letsencrypt/live/strugee.net/chain.pem',
+  ssl_cipher      => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block           => 'scm',
+  ssl_protocol    => 'all -SSLv2 -SSLv3',
+  headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+  }
+
 # ISTHEFIELDCONTROLSYSTEMDOWN.COM
 
 apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
