@@ -1173,3 +1173,56 @@ apache::vhost { 'www.nodecompat.com_ssl':
   ssl_protocol    => 'all -SSLv2 -SSLv3',
   headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
+
+# GPLENFORCED.ORG
+
+apache::vhost { 'gplenforced.org_plaintext':
+  servername      => 'gplenforced.org',
+  ip              => '216.160.72.225',
+  port            => '80',
+  docroot         => '/srv/http/gplenforced.org/',
+  redirect_status => 'permanent',
+  redirect_dest   => 'https://gplenforced.org/',
+  block           => 'scm',
+}
+
+apache::vhost { 'gplenforced.org_ssl':
+  servername    => 'gplenforced.org',
+  ip            => '216.160.72.225',
+  port          => '443',
+  docroot       => '/srv/http/gplenforced.org/',
+  ssl           => true,
+  ssl_cert      => '/etc/letsencrypt/live/gplenforced.org/cert.pem',
+  ssl_key       => '/etc/letsencrypt/live/gplenforced.org/privkey.pem',
+  ssl_chain     => '/etc/letsencrypt/live/gplenforced.org/chain.pem',
+  ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block		=> 'scm',
+  ssl_protocol  => 'all -SSLv2 -SSLv3',
+  headers       => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
+
+apache::vhost { 'www.gplenforced.org_plaintext':
+  servername      => 'www.gplenforced.org',
+  ip              => '216.160.72.225',
+  port            => '80',
+  docroot         => '/srv/http/gplenforced.org/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://gplenforced.org/',
+}
+
+apache::vhost { 'www.gplenforced.org_ssl':
+  servername      => 'www.gplenforced.org',
+  ip              => '216.160.72.225',
+  port            => '443',
+  docroot         => '/srv/http/gplenforced.org/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://gplenforced.org/',
+  ssl             => true,
+  ssl_cert        => '/etc/letsencrypt/live/gplenforced.org/cert.pem',
+  ssl_key         => '/etc/letsencrypt/live/gplenforced.org/privkey.pem',
+  ssl_chain       => '/etc/letsencrypt/live/gplenforced.org/chain.pem',
+  ssl_cipher      => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block	          => 'scm',
+  ssl_protocol    => 'all -SSLv2 -SSLv3',
+  headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
