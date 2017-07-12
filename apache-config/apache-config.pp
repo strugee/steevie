@@ -1226,3 +1226,61 @@ apache::vhost { 'www.gplenforced.org_ssl':
   ssl_protocol    => 'all -SSLv2 -SSLv3',
   headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
+
+# OFFANDONAGAIN.ORG
+
+apache::vhost { 'offandonagain.org_plaintext':
+  servername         => 'offandonagain.org',
+  ip              => '216.160.72.225',
+  port               => '80',
+  docroot            => '/var/empty',
+  redirect_status    => 'permanent',
+  redirect_dest      => 'https://offandonagain.org/',
+}
+
+apache::vhost { 'offandonagain.org_ssl':
+  servername         => 'offandonagain.org',
+  ip                 => '216.160.72.225',
+  port               => '443',
+  docroot            => '/var/empty',
+  ssl                => true,
+  ssl_cert           => '/etc/letsencrypt/live/offandonagain.org/cert.pem',
+  ssl_key            => '/etc/letsencrypt/live/offandonagain.org/privkey.pem',
+  ssl_chain          => '/etc/letsencrypt/live/offandonagain.org/chain.pem',
+  ssl_cipher         => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block              => 'scm',
+  ssl_protocol       => 'all -SSLv2 -SSLv3',
+  access_log_format  => '%v:%p %h %l %u %t \"%m %U\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"',
+  ssl_proxyengine    => true,
+  proxy_pass         => [
+    { 'path' => '/', 'url' => 'http://localhost:92851/',
+      'reverse_urls' => 'http://localhost:92851/' },
+  ],
+  proxy_preserve_host => true,
+  headers             => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
+apache::vhost { 'www.offandonagain.org_plaintext':
+  servername      => 'www.offandonagain.org',
+  ip              => '216.160.72.225',
+  port            => '80',
+  docroot         => '/srv/http/offandonagain.org/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://offandonagain.org/',
+}
+
+apache::vhost { 'www.offandonagain.org_ssl':
+  servername      => 'www.offandonagain.org',
+  ip              => '216.160.72.225',
+  port            => '443',
+  docroot         => '/srv/http/offandonagain.org/',
+  redirect_status => 'permanent',
+  redirect_dest	  => 'https://offandonagain.org/',
+  ssl             => true,
+  ssl_cert        => '/etc/letsencrypt/live/offandonagain.org/cert.pem',
+  ssl_key         => '/etc/letsencrypt/live/offandonagain.org/privkey.pem',
+  ssl_chain       => '/etc/letsencrypt/live/offandonagain.org/chain.pem',
+  ssl_cipher      => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block	          => 'scm',
+  ssl_protocol    => 'all -SSLv2 -SSLv3',
+  headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
