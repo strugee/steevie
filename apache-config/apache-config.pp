@@ -1070,58 +1070,6 @@ apache::vhost { 'www.isthefieldcontrolsystemdown.com_ssl':
   headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
 }
 
-# SAMUELGRAY.ORG
-
-apache::vhost { 'samuelgray.org plaintext':
-  servername      => 'samuelgray.org',
-  ip              => '216.160.72.225',
-  port            => '80',
-  docroot         => '/srv/http/samuelgray.org/',
-  redirect_status => 'permanent',
-  redirect_dest	  => 'https://samuelgray.org/',
-}
-
-apache::vhost { 'samuelgray.org ssl':
-  servername    => 'samuelgray.org',
-  ip              => '216.160.72.225',
-  port          => '443',
-  docroot       => '/srv/http/samuelgray.org/',
-  ssl           => true,
-  ssl_cert      => '/etc/letsencrypt/live/samuelgray.org/cert.pem',
-  ssl_key       => '/etc/letsencrypt/live/samuelgray.org/privkey.pem',
-  ssl_chain     => '/etc/letsencrypt/live/samuelgray.org/chain.pem',
-  ssl_cipher    => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
-  block		=> 'scm',
-  ssl_protocol  => 'all -SSLv2 -SSLv3',
-  headers       => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
-}
-
-apache::vhost { 'www.samuelgray.org_plaintext':
-  servername      => 'www.samuelgray.org',
-  ip              => '216.160.72.225',
-  port            => '80',
-  docroot         => '/srv/http/samuelgray.org/',
-  redirect_status => 'permanent',
-  redirect_dest	  => 'https://samuelgray.org/',
-}
-
-apache::vhost { 'www.samuelgray.org_ssl':
-  servername      => 'www.samuelgray.org',
-  ip              => '216.160.72.225',
-  port            => '443',
-  docroot         => '/srv/http/samuelgray.org/',
-  redirect_status => 'permanent',
-  redirect_dest	  => 'https://samuelgray.org/',
-  ssl             => true,
-  ssl_cert        => '/etc/letsencrypt/live/samuelgray.org/cert.pem',
-  ssl_key         => '/etc/letsencrypt/live/samuelgray.org/privkey.pem',
-  ssl_chain       => '/etc/letsencrypt/live/samuelgray.org/chain.pem',
-  ssl_cipher      => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
-  block	          => 'scm',
-  ssl_protocol    => 'all -SSLv2 -SSLv3',
-  headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
-}
-
 # NODECOMPAT.COM
 
 apache::vhost { 'nodecompat.com_plaintext':
