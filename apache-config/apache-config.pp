@@ -297,21 +297,30 @@ apache::vhost { 'wiki.strugee.net ssl':
       provider       => 'directory',
       options        => ['-FollowSymLinks'],
       allow_override => 'none',
-      php_admin_flag => 'engine off',
+      php_admin_flags => {
+        'engine' => 'off'
+      },
+      custom_fragment => 'AddType text/plain .html .htm .shtml .phtml .php .php3 .php4 .php5 .php7',
     },
     {
       path           => '/var/lib/mediawiki/images',
       provider       => 'directory',
       options        => ['-FollowSymLinks'],
       allow_override => 'none',
-      php_admin_flag => 'engine off',
+      php_admin_flags => {
+        'engine' => 'off'
+      },
+      custom_fragment => 'AddType text/plain .html .htm .shtml .phtml .php .php3 .php4 .php5 .php7',
     },
     {
       path           => '/var/lib/mediawiki/upload',
       provider       => 'directory',
       options        => ['-FollowSymLinks'],
       allow_override => 'none',
-      php_admin_flag => 'engine off',
+      php_admin_flags => {
+        'engine' => 'off'
+      },
+      custom_fragment => 'AddType text/plain .html .htm .shtml .phtml .php .php3 .php4 .php5 .php7',
     }
   ],
   rewrites           => [
