@@ -24,6 +24,7 @@ include apache::mod::rewrite
 include apache::mod::status
 include apache::mod::expires
 include apache::mod::headers
+include apache::mod::version
 apache::mod { 'env': }
 include apache::mod::cgi
 include apache::mod::proxy
