@@ -510,7 +510,7 @@ apache::vhost { 'huginn.strugee.net ssl':
   docroot            => '/srv/http/huginn/public',
   passenger_app_root => '/srv/http/huginn',
   passenger_app_env  => 'production',
-  passenger_ruby     => '/srv/http/huginn/.rvm/wrappers/ruby-2.3.0/ruby',
+  passenger_ruby     => '/srv/http/huginn/.rvm/wrappers/ruby-2.3.1/ruby',
   passenger_user     => 'huginn',
   custom_fragment    => 'PassengerGroup huginn',
   ssl                => true,
