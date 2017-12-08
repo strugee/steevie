@@ -1027,6 +1027,67 @@ apache::vhost { 'pumpstatus.strugee.net_ssl':
   headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
   }
 
+apache::vhost { 'lists.strugee.net_plaintext':
+  servername      => 'lists.strugee.net',
+  ip              => '216.160.72.225',
+  port            => '80',
+  docroot         => '/var/www/lists',
+  redirect_status => 'permanent',
+  redirect_dest   => 'https://lists.strugee.net/',
+}
+
+apache::vhost { 'lists.strugee.net_ssl':
+  servername      => 'lists.strugee.net',
+  ip              => '216.160.72.225',
+  port            => '443',
+  docroot         => '/var/www/lists',
+  aliases            => [
+    {
+      scriptalias    => '/mailman/',
+      path           => '/usr/lib/cgi-bin/mailman/',
+    },
+    {
+      alias          => '/pipermail/',
+      path           => '/var/lib/mailman/archives/public',
+    },
+    {
+      alias          => '/images/mailman/',
+      path           => '/usr/share/images/mailman/',
+    }
+  ],
+  directories        => [
+    {
+      path           => '/usr/lib/cgi-bin/mailman/',
+      provider       => 'directory',
+      options        => ['ExecCGI'],
+      addhandlers    => [{ handler => 'cgi-script', extensions => ['.cgi'] }],
+      allow_override => 'none',
+      require        => 'all granted',
+    },
+    {
+      path           => '/var/lib/mailman/archives/public/',
+      provider       => 'directory',
+      options        => ['FollowSymlinks'],
+      allow_override => 'none',
+      require        => 'all granted',
+    },
+    {
+      path           => '/var/share/images/mailman/',
+      provider       => 'directory',
+      allow_override => 'none',
+      require        => 'all granted',
+    },
+  ],
+  ssl             => true,
+  ssl_cert        => '/etc/letsencrypt/live/strugee.net/cert.pem',
+  ssl_key         => '/etc/letsencrypt/live/strugee.net/privkey.pem',
+  ssl_chain       => '/etc/letsencrypt/live/strugee.net/chain.pem',
+  ssl_cipher      => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block           => 'scm',
+  ssl_protocol    => 'all -SSLv2 -SSLv3',
+  headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
+
 # ISTHEFIELDCONTROLSYSTEMDOWN.COM
 
 apache::vhost { 'isthefieldcontrolsystemdown.com plaintext':
