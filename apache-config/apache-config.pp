@@ -1051,7 +1051,7 @@ apache::vhost { 'lists.strugee.net_ssl':
     },
     {
       alias          => '/pipermail/',
-      path           => '/var/lib/mailman/archives/public',
+      path           => '/var/lib/mailman/archives/public/',
     },
     {
       alias          => '/images/mailman/',
