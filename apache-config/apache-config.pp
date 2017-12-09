@@ -1041,9 +1041,9 @@ apache::vhost { 'lists.strugee.net_ssl':
   ip              => '216.160.72.225',
   port            => '443',
   docroot         => '/var/www/lists',
-  redirect_source => ['/', '/mailman/'],
-  redirect_status => ['temp', 'temp'],
-  redirect_dest => ['/mailman/listinfo', '/mailman/listinfo'],
+  redirectmatch_regexp => ['^/$', '^/mailman/?$'],
+  redirectmatch_status => ['temp', 'temp'],
+  redirectmatch_dest => ['/mailman/listinfo', '/mailman/listinfo'],
   aliases            => [
     {
       scriptalias    => '/mailman/',
