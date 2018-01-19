@@ -1101,8 +1101,8 @@ apache::vhost { 'ssh.strugee.net_ssl':
   docroot         => '/var/empty',
   ssl_proxyengine    => true,
   proxy_pass         => [
-    { 'path' => '/', 'url' => 'http://localhost:2222/',
-      'reverse_urls' => 'http://localhost:2222/' },
+    { 'path' => '/', 'url' => 'http://localhost:10443/',
+      'reverse_urls' => 'http://localhost:10443/' },
   ],
   proxy_preserve_host => true,
   ssl             => true,
