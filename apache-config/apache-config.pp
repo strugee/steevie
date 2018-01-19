@@ -1098,7 +1098,7 @@ apache::vhost { 'ssh.strugee.net_ssl':
   servername      => 'ssh.strugee.net',
   ip              => '216.160.72.225',
   port            => '443',
-  docroot         => '/var/empty',
+  docroot         => '/srv/http/gateone/',
   ssl_proxyengine    => true,
   proxy_pass         => [
     { 'path' => '/ws', 'url' => 'ws://localhost:10443/ws',
