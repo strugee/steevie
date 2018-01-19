@@ -144,9 +144,6 @@ apache::vhost { 'www.strugee.net_plaintext':
   servername      => 'www.strugee.net',
   ip              => '216.160.72.225',
   port            => '80',
-  serveraliases => [
-    'ssh.strugee.net',
-  ],
   docroot         => '/srv/http/default/',
   redirect_status => 'permanent',
   redirect_dest	  => 'https://strugee.net/',
