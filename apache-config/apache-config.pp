@@ -159,9 +159,6 @@ apache::vhost { 'www.strugee.net_ssl':
   docroot         => '/srv/http/default/',
   redirect_status => 'permanent',
   redirect_dest	  => 'https://strugee.net/',
-  serveraliases   => [
-    'ssh.strugee.net',
-  ],
   ssl             => true,
   ssl_cert        => '/etc/letsencrypt/live/strugee.net/cert.pem',
   ssl_key         => '/etc/letsencrypt/live/strugee.net/privkey.pem',
@@ -999,7 +996,7 @@ apache::vhost { 'owntracks.strugee.net_ssl':
   block           => 'scm',
   ssl_protocol    => 'all -SSLv2 -SSLv3',
   headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
-  }
+}
 
 apache::vhost { 'pumpstatus.strugee.net_plaintext':
   servername      => 'pumpstatus.strugee.net',
@@ -1081,6 +1078,36 @@ apache::vhost { 'lists.strugee.net_ssl':
       require        => 'all granted',
     },
   ],
+  ssl             => true,
+  ssl_cert        => '/etc/letsencrypt/live/strugee.net/cert.pem',
+  ssl_key         => '/etc/letsencrypt/live/strugee.net/privkey.pem',
+  ssl_chain       => '/etc/letsencrypt/live/strugee.net/chain.pem',
+  ssl_cipher      => 'HIGH:MEDIUM:!aNULL:!MD5:!RC4',
+  block           => 'scm',
+  ssl_protocol    => 'all -SSLv2 -SSLv3',
+  headers         => 'Set Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"',
+}
+
+apache::vhost { 'ssh.strugee.net_plaintext':
+  servername      => 'ssh.strugee.net',
+  ip              => '216.160.72.225',
+  port            => '80',
+  docroot         => '/var/empty',
+  redirect_status => 'permanent',
+  redirect_dest   => 'https://ssh.strugee.net/',
+}
+
+apache::vhost { 'ssh.strugee.net_ssl':
+  servername      => 'ssh.strugee.net',
+  ip              => '216.160.72.225',
+  port            => '443',
+  docroot         => '/var/empty',
+  ssl_proxyengine    => true,
+  proxy_pass         => [
+    { 'path' => '/', 'url' => 'http://localhost:2222/',
+      'reverse_urls' => 'http://localhost:2222/' },
+  ],
+  proxy_preserve_host => true,
   ssl             => true,
   ssl_cert        => '/etc/letsencrypt/live/strugee.net/cert.pem',
   ssl_key         => '/etc/letsencrypt/live/strugee.net/privkey.pem',
