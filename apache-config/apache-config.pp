@@ -1106,6 +1106,13 @@ apache::vhost { 'ssh.strugee.net_ssl':
     { 'path' => '/', 'url' => 'http://localhost:10443/',
       'reverse_urls' => 'http://localhost:10443/' },
   ],
+  rewrites           => [
+    {
+      rewrite_cond   => '%{HTTP:UPGRADE} ^WebSocket$ [NC]',
+      rewrite_cond   => '%{HTTP:CONNECTION} ^Upgrade$ [NC]',
+      rewrite_rule   => '.* ws://localhost:10443%{REQUEST_URI} [P]',
+    }
+  ],
   proxy_preserve_host => true,
   ssl             => true,
   ssl_cert        => '/etc/letsencrypt/live/strugee.net/cert.pem',
