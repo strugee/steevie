@@ -7,7 +7,7 @@ class { 'apache':
   default_vhost        => false,
   mpm_module           => 'prefork',
   serveradmin          => 'webmaster@strugee.net',
-  keepalive            => true,
+  keepalive            => 'On',
 }
 
 apache::listen { '216.160.72.225:80': }
