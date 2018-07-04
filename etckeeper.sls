@@ -1,0 +1,2 @@
+etckeeper:
+  pkg.installed
