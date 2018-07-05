@@ -1,3 +1,14 @@
+{% macro subclone(method, name, rev) %}
+https://github.com/strugee/{{ name }}.git:
+  git.{{ method }}:
+    - rev: {{ rev }}
+    - branch: {{ rev }}
+    - target: /srv/http/default/{{ name }}
+    - require:
+      - pkg: git
+      - https://github.com/strugee/strugee.github.com.git
+{% endmacro %}
+
 https://github.com/strugee/strugee.github.com.git:
   git.latest:
     - rev: master
@@ -7,34 +18,13 @@ https://github.com/strugee/strugee.github.com.git:
       - pkg: git
 
 {% for name in ['dichotomous-key', 'fractured-reality', 'tidal-waves'] %}
-https://github.com/strugee/{{ name }}.git:
-  git.latest:
-    - rev: gh-pages
-    - branch: gh-pages
-    - target: /srv/http/default/{{ name }}
-    - require:
-      - pkg: git
-      - https://github.com/strugee/strugee.github.com.git
+{{ subclone('latest', name, 'gh-pages') }}
 {% endfor %}
 
-https://github.com/strugee/boeing-pollution.git:
-  git.latest:
-    - rev: master
-    - branch: masters
-    - target: /srv/http/default/boeing-pollution
-    - require:
-      - pkg: git
-      - https://github.com/strugee/strugee.github.com.git
+{{ subclone('latest', 'boeing-pollution', 'master') }}
 
 {% for name in ['cryptography-basics', 'foss-intro', 'https-deployment', 'just-do-it', 'operational-security', 'publishing', 'security-design', 'straticjs', 'webapp-performance', 'webapp-security'] %}
-https://github.com/strugee/presentation-{{ name }}.git:
-  git.latest:
-    - rev: gh-pages
-    - branch: gh-pages
-    - target: /srv/http/default/presentation-{{ name }}
-    - require:
-      - pkg: git
-      - https://github.com/strugee/strugee.github.com.git
+{{ subclone('latest', 'presentation-' + name, 'gh-pages') }}
 {% endfor %}
 
 # XXX TODO: figure out what three/ should be
