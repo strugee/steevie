@@ -1,5 +1,9 @@
 mariadb-server:
-  pkg.installed
+  pkg.installed: []
+  service.running:
+    - name: mariadb
+    - require:
+      - pkg: mariadb-server
 
 mariadb-client:
   pkg.installed
