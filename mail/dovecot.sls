@@ -8,4 +8,4 @@
 dovecot:
   service.running:
     - require:
-      - pkg: dovecot-core
+      - pkg: dovecot-imapd # Pulls in dovecot-core
