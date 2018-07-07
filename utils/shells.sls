@@ -1,7 +1,7 @@
 zsh:
-  pkg: installed
+  pkg.installed
 
 # TODO: apt-mark auto
 
 zsh-doc:
-  pkg: installed
+  pkg.installed
