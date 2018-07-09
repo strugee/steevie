@@ -58,7 +58,8 @@ pumpio-lfnw:
 pumpio-libreplanet:
   git.latest:
     - name: https://github.com/strugee/presentation-pumpio.git
-    - rev: lfnw-2016-build
+    - rev: gh-pages
+    - branch: gh-pages
     - target: /srv/http/default/presentation-pumpio/libreplanet
     - require:
       - pkg: git
