@@ -1,8 +1,12 @@
-{% macro subclone(method, name, rev) %}
+{% macro subclone(method, name, ref) %}
 https://github.com/strugee/{{ name }}.git:
   git.{{ method }}:
-    - rev: {{ rev }}
-    - branch: {{ rev }}
+    {% if method == 'latest' %}
+    - rev: {{ ref }}
+    {% else %}
+    - ref: {{ ref }}
+    {% endif %}
+    - branch: {{ ref }}
     - target: /srv/http/default/{{ name }}
     - require:
       - pkg: git
@@ -33,7 +37,7 @@ https://github.com/strugee/strugee.github.com.git:
 cryptoparty-{{ data[0] }}:
   git.detached:
     - name: https://github.com/strugee/cryptoparty-seattle.git
-    - rev: {{ data[1] }}
+    - ref: {{ data[1] }}
     - target: /srv/http/default/cryptoparty/{{ data[0] }}
     - require:
       - pkg: git
@@ -43,7 +47,7 @@ cryptoparty-{{ data[0] }}:
 pumpio-lfnw:
   git.detached:
     - name: https://github.com/strugee/presentation-pumpio.git
-    - rev: lfnw-2016-build
+    - ref: lfnw-2016-build
     - target: /srv/http/default/presentation-pumpio
     - require:
       - pkg: git
