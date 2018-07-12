@@ -1,7 +1,5 @@
-git:
-  pkg.installed
-
 include:
+  - utils.vcs
   - static.default
   - static.fallback
   - static.nodecompat-com
