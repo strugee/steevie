@@ -6,3 +6,6 @@ apg:
 
 swaks:
   pkg.installed
+
+pv:
+  pkg.installed
