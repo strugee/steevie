@@ -6,5 +6,6 @@ base:
     - unattended-upgrades
     - snapd
     - zfs
+    - bugzilla
     - misc.build-essential
     - misc.ca-certificates
