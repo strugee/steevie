@@ -1,0 +1,2 @@
+lintian:
+  pkg.installed

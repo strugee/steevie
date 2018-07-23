@@ -1,6 +1,7 @@
 base:
   steevie.strugee.net:
     - utils
+    - utils.debian
     - edit
     - static
     - unattended-upgrades
