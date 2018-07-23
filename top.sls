@@ -8,5 +8,6 @@ base:
     - snapd
     - zfs
     - bugzilla
+    - znc
     - misc.build-essential
     - misc.ca-certificates

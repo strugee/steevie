@@ -1,0 +1,12 @@
+[Unit]
+Description=ZNC IRC bouncer
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/znc
+User=znc
+Group=znc
+
+[Install]
+WantedBy=multi-user.target
