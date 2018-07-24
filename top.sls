@@ -13,3 +13,10 @@ base:
     - utils.debian
     - zfs
     - znc
+  failover.strugee.net:
+    - utils
+    - edit
+    - unattended-upgrades
+    - static
+    - misc.ca-certificates
+    - mail-failover
