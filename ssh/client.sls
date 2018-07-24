@@ -6,3 +6,4 @@ openssh-client:
     - owner: root
     - group: root
     - mode: 644
+    - source: salt://ssh/ssh_config

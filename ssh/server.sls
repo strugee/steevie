@@ -6,6 +6,7 @@ openssh-server:
     - owner: root
     - group: root
     - mode: 644
+    - source: salt://ssh/sshd_config
 
 ssh:
   service.enabled:
