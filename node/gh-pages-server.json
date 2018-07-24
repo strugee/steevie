@@ -1,0 +1,7 @@
+{
+  "address": "localhost",
+  "port": 53841,
+  "override": {
+    "strugee/strugee.github.com": "default"
+  }
+}

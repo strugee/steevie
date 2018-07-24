@@ -1,0 +1,14 @@
+[Unit]
+Description=Autodeploy static sites from git repos, just like GitHub Pages
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/gh-pages-server
+Environment=NODE_ENV=production
+User=root
+Nice=-19
+IOSchedulingPriority=0
+
+[Install]
+WantedBy=multi-user.target
