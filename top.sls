@@ -1,6 +1,6 @@
 base:
   steevie.strugee.net:
-    - ssh
+    - ssh.server
     - ssh.client
     - utils
     - utils.debian
