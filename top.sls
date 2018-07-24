@@ -1,15 +1,15 @@
 base:
   steevie.strugee.net:
-    - ssh.server
-    - ssh.client
-    - utils
-    - utils.debian
-    - edit
-    - static
-    - unattended-upgrades
-    - snapd
-    - zfs
     - bugzilla
-    - znc
+    - edit
     - misc.build-essential
     - misc.ca-certificates
+    - snapd
+    - ssh.server
+    - ssh.client
+    - static
+    - unattended-upgrades
+    - utils
+    - utils.debian
+    - zfs
+    - znc
