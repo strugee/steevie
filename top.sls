@@ -1,6 +1,7 @@
 base:
   steevie.strugee.net:
     - ssh
+    - ssh.client
     - utils
     - utils.debian
     - edit
