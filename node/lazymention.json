@@ -1,0 +1,6 @@
+{
+	"port": 7517,
+	"storage": "/var/local/lazymention",
+	"logfile": "/var/log/lazymention.json.log",
+	"domains": ["strugee.net"]
+}
