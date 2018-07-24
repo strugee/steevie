@@ -1,0 +1,14 @@
+[Unit]
+Description=proxy-like server that will show you the DOM of a page after JS runs
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/fulldom-server
+Environment=NODE_ENV=production
+User=nobody
+Nice=-19
+IOSchedulingPriority=0
+
+[Install]
+WantedBy=multi-user.target
