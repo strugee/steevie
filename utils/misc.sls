@@ -9,3 +9,6 @@ swaks:
 
 pv:
   pkg.installed
+
+screen:
+  pkg.installed
