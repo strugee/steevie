@@ -3,6 +3,7 @@ base:
     - apt
     - bugzilla
     - edit
+    - ejabberd
     - misc.build-essential
     - misc.ca-certificates
     - redis
