@@ -5,6 +5,7 @@ base:
     - edit
     - misc.build-essential
     - misc.ca-certificates
+    - redis
     - snapd
     - ssh.server
     - ssh.client
