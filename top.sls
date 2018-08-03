@@ -9,6 +9,7 @@ base:
     - ssh.server
     - ssh.client
     - static
+    - tarsnap
     - unattended-upgrades
     - utils
     - utils.debian
