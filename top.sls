@@ -1,5 +1,6 @@
 base:
   steevie.strugee.net:
+    - apt
     - bugzilla
     - edit
     - misc.build-essential
