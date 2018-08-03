@@ -20,3 +20,6 @@ psmisc:
 
 iotop:
   pkg.installed
+
+ipmitool:
+  pkg.installed
