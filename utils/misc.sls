@@ -12,3 +12,11 @@ pv:
 
 screen:
   pkg.installed
+
+# killall, fuser, pstree (+ others)
+# This feels too important to be in "misc"
+psmisc:
+  pkg.installed
+
+iotop:
+  pkg.installed
