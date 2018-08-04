@@ -8,3 +8,10 @@ zfs-zed:
   service.running:
     - require:
       - pkg: zfs-zed
+
+/etc/udev/rules.d/10-zpool-io-elevator.rules:
+  file.managed:
+    - owner: root
+    - group: root
+    - mode: 644
+    - source: salt://zfs/10-zpool-io-elevator.rules

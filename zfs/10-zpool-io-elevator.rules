@@ -1,0 +1,5 @@
+# Set the I/O scheduler to `noop` for the zpool disk since ZFS has its own internal scheduler and the Linux kernel scheduling interferes with ZFS'
+# The zpool was initialized using a partition instead of the whole disk, so ZFS on Linux doesn't do this for us.
+# Note that this is a good idea since the one partition is, as of August 2018, just reserved for a potential future /boot.
+# Even if it becomes /boot in the future, /boot is so infrequently accessed that it basically will have zero impact on the zpool.
+KERNEL=="sd[a-z]", ATTRS{wwid}=="t10.ATA     HGST HUS724040ALA640                          PN2334PBGSTM4T", ATTR{queue/scheduler}="noop"
