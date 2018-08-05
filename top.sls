@@ -2,6 +2,7 @@ base:
   steevie.strugee.net:
     - apt
     - bugzilla
+    - certbot
     - edit
     - ejabberd
     - etckeeper
