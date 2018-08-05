@@ -6,6 +6,7 @@ base:
     - ejabberd
     - misc.build-essential
     - misc.ca-certificates
+    - motd
     - redis
     - snapd
     - ssh.server
