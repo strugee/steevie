@@ -4,6 +4,8 @@ base:
     - bugzilla
     - edit
     - ejabberd
+    - etckeeper
+    - mariadb
     - misc.build-essential
     - misc.ca-certificates
     - motd
