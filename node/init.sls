@@ -3,8 +3,8 @@ nodesource-repo:
     - name: "deb https://deb.nodesource.com/node_10.x stretch main"
     - file: /etc/apt/sources.list.d/nodesource.list
     - key_url: salt://node/nodesource.key
-#    - require:
-      #- apt-transport-https
+    - require:
+      - apt-transport-https
     - require_in:
       - pkg: nodejs
 
@@ -15,7 +15,7 @@ nodesource-repo-src:
     - key_url: salt://node/nodesource.key
     - require:
       - nodesource-repo
-      #- apt-transport-https
+      - apt-transport-https
     - require_in:
       - pkg: nodejs
 
