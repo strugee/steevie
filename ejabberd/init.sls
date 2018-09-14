@@ -27,4 +27,5 @@ erlang-p1-stun:
     - owner: root
     - group: root
     - mode: 644
+    - makedirs: True
     - source: salt://ejabberd/systemd-override.conf

@@ -6,7 +6,7 @@ redis-server:
   pkg.installed: []
   service.enabled:
     - require:
-      - pkg: redis
+      - pkg: redis-server
 
 redis-tools:
   pkg.installed
