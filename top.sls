@@ -6,6 +6,7 @@ base:
     - edit
     - ejabberd
     - etckeeper
+    - httpd
     - mariadb
     - misc.build-essential
     - misc.ca-certificates
