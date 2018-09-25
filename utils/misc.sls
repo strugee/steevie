@@ -12,3 +12,6 @@ pv:
 
 screen:
   pkg.installed
+
+moreutils:
+  pkg.installed
