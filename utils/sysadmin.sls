@@ -7,3 +7,7 @@ iotop:
 
 ipmitool:
   pkg.installed
+
+# dig, nslookup, nsupdate
+dnsutils:
+  pkg.installed
