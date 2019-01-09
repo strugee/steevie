@@ -19,11 +19,13 @@ base:
     - tarsnap
     - unattended-upgrades
     - utils
+    - utils.apt
     - utils.debian
     - zfs
     - znc
   failover.strugee.net:
     - utils
+    - utils.apt
     - edit
     - unattended-upgrades
     - static

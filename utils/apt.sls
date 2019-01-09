@@ -1,0 +1,2 @@
+aptitude:
+  pkg.installed
