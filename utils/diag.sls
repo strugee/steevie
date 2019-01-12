@@ -1,3 +1,5 @@
+# Diagnostics tools
+
 strace:
   pkg.installed
 
