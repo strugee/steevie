@@ -15,3 +15,6 @@ screen:
 
 moreutils:
   pkg.installed
+
+netcat-openbsd:
+  pkg.installed
