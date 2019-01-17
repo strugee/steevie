@@ -7,6 +7,7 @@ base:
     - ejabberd
     - etckeeper
     - httpd
+    - java
     - mariadb
     - misc.build-essential
     - misc.ca-certificates
