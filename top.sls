@@ -3,7 +3,6 @@ base:
     - apt
     - bugzilla
     - certbot
-    - edit
     - ejabberd
     - etckeeper
     - httpd
@@ -27,7 +26,6 @@ base:
   failover.strugee.net:
     - utils
     - utils.apt
-    - edit
     - unattended-upgrades
     - static
     - misc.ca-certificates
