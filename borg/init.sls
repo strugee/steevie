@@ -7,3 +7,7 @@ include: borgbackup.gdrive-fuse
 # TODO this is installed from backports in prod
 borgbackup:
   pkg.installed
+
+# Needed for the /usr/local/bin/run-borg script
+liblockfile-bin:
+  pkg.installed
