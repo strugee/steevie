@@ -7,6 +7,7 @@ base:
     - etckeeper
     - httpd
     - java
+    - mail.postfix
     - mariadb
     - misc.build-essential
     - misc.ca-certificates
