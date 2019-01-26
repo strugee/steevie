@@ -13,6 +13,7 @@ base:
     - misc.ca-certificates
     - motd
     - redis
+    - smartmontools
     - snapd
     - ssh.server
     - ssh.client
