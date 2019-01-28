@@ -8,3 +8,6 @@ ltrace:
 
 tcpdump:
   pkg.installed
+
+httppie:
+  pkg.installed
