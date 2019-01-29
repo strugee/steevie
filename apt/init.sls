@@ -2,3 +2,6 @@
 
 apt-transport-https:
   pkg.installed
+
+apt-listchanges:
+  pkg.installed
