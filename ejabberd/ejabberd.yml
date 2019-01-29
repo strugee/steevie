@@ -202,7 +202,7 @@ disable_sasl_mechanisms: "digest-md5"
 ## Allowed values are: false optional required required_trusted
 ## You must specify a certificate file.
 ##
-s2s_use_starttls: required
+s2s_use_starttls: required_trusted
 
 ##
 ## s2s_certfile: Specify a certificate file.
