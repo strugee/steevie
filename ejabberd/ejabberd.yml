@@ -539,6 +539,14 @@ acl:
       - "rds-rostov.ru"
       - "rosolina.estate"
       - "kurgan-telecom.ru"
+      - "incognito.cf"
+      - "anyproxy.net"
+      - "buero-ebert.de"
+      - "jabber.domaintechnik.at"
+      - "jabber.5july.org"
+      - "amtserver.com"
+      - "jabber.cd"
+      - "dalunet.cz"
 
   bad_users:
     user_regexp:
