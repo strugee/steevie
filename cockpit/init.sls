@@ -1,0 +1,2 @@
+cockpit:
+  pkg.installed: []

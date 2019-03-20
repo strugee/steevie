@@ -3,6 +3,7 @@ base:
     - apt
     - bugzilla
     - certbot
+    - cockpit
     - ejabberd
     - etckeeper
     - httpd
