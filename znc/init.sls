@@ -48,9 +48,15 @@ https://github.com/jpnurmi/znc-playback.git:
 /usr/local/lib/znc/:
   file.directory
 
+# TODO chmod -x playback.so
 'znc-buildmod /usr/local/src/znc-playback/playback.cpp':
   cmd.run:
     - cwd: /usr/local/lib/znc/
     - creates: /usr/local/lib/znc/playback.so
     - require:
       - file: /usr/local/lib/znc/
+
+/var/lib/znc/.znc/modules:
+  file.symlink:
+    - target: /usr/local/lib/znc
+    - force: True
