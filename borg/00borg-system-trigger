@@ -1,0 +1,3 @@
+DPkg::Post-Invoke      { "touch /var/local/borg-trigger-system-backup"; };
+
+RPM::Post-Invoke      { "touch /var/local/borg-trigger-system-backup"; };

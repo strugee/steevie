@@ -12,3 +12,10 @@ borgbackup:
 # Needed for the /usr/local/bin/run-borg script
 liblockfile-bin:
   pkg.installed
+
+/etc/apt/apt.conf.d/00borg-system-trigger:
+  file.managed:
+    - owner: root
+    - group: root
+    - mode: 644
+    - source: salt://borg/00borg-system-trigger
