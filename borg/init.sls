@@ -2,7 +2,8 @@
 
 # TODO cronjob
 
-include: borgbackup.gdrive-fuse
+include:
+  - borg.gdrive-fuse
 
 # TODO this is installed from backports in prod
 borgbackup:
