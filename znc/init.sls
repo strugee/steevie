@@ -32,3 +32,25 @@ znc:
     - user: root
     - group: root
     - mode: 644
+
+znc-dev:
+  pkg.installed
+
+# TODO pin to a specific commit
+https://github.com/jpnurmi/znc-playback.git:
+  git.latest:
+    - rev: master
+    - branch: master
+    - target: /usr/local/src/znc-playback
+    - require:
+      - pkg: git
+
+/usr/local/lib/znc/:
+  file.directory
+
+'znc-buildmod /usr/local/src/znc-playback/playback.cpp':
+  cmd.run:
+    - cwd: /usr/local/lib/znc/
+    - creates: /usr/local/lib/znc/playback.so
+    - require:
+      - file: /usr/local/lib/znc/
