@@ -13,6 +13,7 @@ base:
     - misc.build-essential
     - misc.ca-certificates
     - motd
+    - nextcloud.elasticsearch
     - redis
     - smartmontools
     - snapd
