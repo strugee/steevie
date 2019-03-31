@@ -14,6 +14,7 @@ base:
     - misc.ca-certificates
     - motd
     - nextcloud.elasticsearch
+    - postgres
     - redis
     - smartmontools
     - snapd
