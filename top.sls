@@ -1,6 +1,7 @@
 base:
   steevie.strugee.net:
     - apt
+    - apt.backports
     - bugzilla
     - certbot
     - cockpit
@@ -36,6 +37,7 @@ base:
     - etckeeper
     - nextcloud.collabora-online
   failover.strugee.net:
+    - apt.backports
     - etckeeper
     - utils
     - utils.apt
