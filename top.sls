@@ -32,6 +32,9 @@ base:
   onlyoffice.lxd:
     - etckeeper
     - nextcloud.onlyoffice
+  collabora-online.lxd:
+    - etckeeper
+    - nextcloud.collabora-online
   failover.strugee.net:
     - etckeeper
     - utils
