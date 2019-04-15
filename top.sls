@@ -14,6 +14,7 @@ base:
     - misc.ca-certificates
     - motd
     - nextcloud.elasticsearch
+    - nextcloud.onlyoffice-db
     - postgres
     - redis
     - smartmontools
@@ -28,6 +29,8 @@ base:
     - utils.debian
     - zfs
     - znc
+  onlyoffice.lxd:
+    - nextcloud.onlyoffice
   failover.strugee.net:
     - utils
     - utils.apt
