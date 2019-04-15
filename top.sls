@@ -30,8 +30,10 @@ base:
     - zfs
     - znc
   onlyoffice.lxd:
+    - etckeeper
     - nextcloud.onlyoffice
   failover.strugee.net:
+    - etckeeper
     - utils
     - utils.apt
     - unattended-upgrades
