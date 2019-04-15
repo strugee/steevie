@@ -101,7 +101,7 @@
 
     <security desc="Altering these defaults potentially opens you to significant risk">
       <seccomp desc="Should we use the seccomp system call filtering." type="bool" default="true">true</seccomp>
-      <capabilities desc="Should we require capabilities to isolate processes into chroot jails" type="bool" default="true">true</capabilities>
+      <capabilities desc="Should we require capabilities to isolate processes into chroot jails" type="bool" default="true">false</capabilities>
     </security>
 
     <storage desc="Backend storage">
