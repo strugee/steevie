@@ -7,6 +7,7 @@ base:
     - cockpit
     - ejabberd
     - etckeeper
+    - gopher
     - httpd
     - java
     - mail.postfix
