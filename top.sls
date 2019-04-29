@@ -37,6 +37,7 @@ base:
   collabora-online.lxd:
     - etckeeper
     - nextcloud.collabora-online
+    - unattended-upgrades
   failover.strugee.net:
     - apt.backports
     - etckeeper
