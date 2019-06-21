@@ -1,3 +1,5 @@
+# TODO run mysql_secure_installation
+
 mariadb-server:
   pkg.installed: []
   service.running:
