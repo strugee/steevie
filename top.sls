@@ -2,6 +2,7 @@ base:
   steevie.strugee.net:
     - apt
     - apt.backports
+    - apt.equivs
     - bugzilla
     - certbot
     - cockpit

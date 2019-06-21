@@ -1,0 +1,2 @@
+equivs:
+  pkg.installed
