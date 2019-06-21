@@ -19,6 +19,7 @@ base:
     - nextcloud.onlyoffice-db
     - postgres
     - redis
+    - ruby
     - smartmontools
     - snapd
     - ssh.server
