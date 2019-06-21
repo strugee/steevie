@@ -9,5 +9,5 @@ ltrace:
 tcpdump:
   pkg.installed
 
-httppie:
+httpie:
   pkg.installed
