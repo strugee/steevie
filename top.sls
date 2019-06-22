@@ -10,6 +10,7 @@ base:
     - etckeeper
     - gopher
     - httpd
+    - huginn
     - java
     - mail.postfix
     - mariadb

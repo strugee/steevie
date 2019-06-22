@@ -1,0 +1,24 @@
+--- huginn.logrotate	2019-06-21 16:48:33.835885060 -0700
++++ huginn.logrotate.new	2019-06-21 16:48:59.455885591 -0700
+@@ -2,14 +2,8 @@
+   daily
+   missingok
+   rotate 180
+-  # must use with delaycompress below
+-  compress
+   dateext
+ 
+-  # this is important if using "compress" since we need to call
+-  # the "lastaction" script below before compressing:
+-  delaycompress
+-
+   # note the lack of the evil "copytruncate" option in this
+   # config.  Unicorn supports the USR1 signal and we send it
+   # as our "lastaction" action:
+@@ -17,4 +11,4 @@
+     pid=/home/huginn/huginn/tmp/pids/unicorn.pid
+     test -s $pid && kill -USR1 "$(cat $pid)"
+   endscript
+-}
+\ No newline at end of file
++}
