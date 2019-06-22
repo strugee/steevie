@@ -21,6 +21,7 @@ base:
     - postgres
     - redis
     - ruby
+    - ruby.foreman
     - smartmontools
     - snapd
     - ssh.server

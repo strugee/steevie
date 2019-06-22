@@ -1,0 +1,2 @@
+ruby-foreman:
+  pkg.installed
