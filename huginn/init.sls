@@ -78,9 +78,16 @@ huginn-writable-dirs:
       - /srv/http/huginn/log
       - /srv/http/huginn/tmp
       - /srv/http/huginn/tmp/pids
-      - /srv/http/huginn/tmp/sockets
     - require:
       - git: huginn-clone
+
+/srv/http/huginn/tmp/sockets:
+  file.directory:
+    - group: www-data
+    - use:
+      - file: huginn-writable-dirs
+    - require:
+      - pkg: apache2
 
 /srv/http/huginn/config/unicorn.rb:
   file.managed:
