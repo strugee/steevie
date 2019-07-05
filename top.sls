@@ -8,6 +8,7 @@ base:
     - cockpit
     - ejabberd
     - etckeeper
+    - fail2ban
     - gopher
     - httpd
     - huginn
