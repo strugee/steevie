@@ -2,7 +2,7 @@ pygopherd:
   pkg.installed: []
   service.running:
     - require:
-      - pkg: zfs-zed
+      - pkg: pygopherd
 
 /etc/pygopherd/:
   file.managed:
