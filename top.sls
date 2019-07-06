@@ -20,6 +20,7 @@ base:
     - motd
     - nextcloud.elasticsearch
     - nextcloud.onlyoffice-db
+    - ntp
     - postgres
     - redis
     - ruby
@@ -46,6 +47,7 @@ base:
   failover.strugee.net:
     - apt.backports
     - etckeeper
+    - ntp
     - utils
     - utils.apt
     - unattended-upgrades
