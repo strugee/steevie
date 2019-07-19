@@ -11,3 +11,6 @@ ipmitool:
 # dig, nslookup, nsupdate
 dnsutils:
   pkg.installed
+
+btrfs-progs:
+  pkg.installed
