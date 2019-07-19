@@ -25,6 +25,7 @@ base:
     - redis
     - ruby
     - ruby.foreman
+    - security
     - smartmontools
     - snapd
     - ssh.server
