@@ -45,6 +45,9 @@ base:
     - etckeeper
     - nextcloud.collabora-online
     - unattended-upgrades
+  minecraft.lxd:
+    - etckeeper
+    - unattended-upgrades
   failover.strugee.net:
     - apt.backports
     - etckeeper
