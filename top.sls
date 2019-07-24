@@ -47,6 +47,8 @@ base:
     - unattended-upgrades
   minecraft.lxd:
     - etckeeper
+    - java
+    - minecraft
     - unattended-upgrades
   failover.strugee.net:
     - apt.backports

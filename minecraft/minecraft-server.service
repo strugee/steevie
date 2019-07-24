@@ -1,0 +1,19 @@
+[Unit]
+Description=Spigot Minecraft Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=java -jar spigot-1.14.4.jar
+WorkingDirectory=/opt/spigot
+Restart=on-failure
+
+PrivateDevices=true
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=true
+
+[Install]
+WantedBy=multi-user.target
+Alias=spigot.service
+Alias=minecraft.service
