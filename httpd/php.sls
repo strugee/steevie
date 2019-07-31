@@ -5,3 +5,7 @@ php7.0:
 # TODO ensure this is enabled
 php7.0-intl:
   pkg.installed
+
+# Also installed for Nextcloud
+php-imagick:
+  pkg.installed
