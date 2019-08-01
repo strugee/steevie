@@ -158,12 +158,16 @@ huginn-assets-precompile:
 
 huginn-foreman:
   cmd.run:
-    - name: 'foreman export -a huginn -u huginn -m web=2,jobs=2 systemd /etc/systemd/system && systemctl daemon-reload'
+    # Web concurrency is managed at the Unicorn level, not systemd
+    - name: 'foreman export -a huginn -u huginn -m web=1,jobs=2 systemd /etc/systemd/system && systemctl daemon-reload'
     - cwd: /srv/http/huginn
     - require:
       - pkg: ruby-foreman
     - onchanges:
       - file: /srv/http/huginn/Procfile
+
+/etc/systemd/system/huginn-web.target.wants/huginn-web@5001.service:
+  file.absent
 
 huginn.target:
   service.enabled:
