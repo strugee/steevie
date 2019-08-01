@@ -166,8 +166,9 @@ huginn-foreman:
     - onchanges:
       - file: /srv/http/huginn/Procfile
 
-/etc/systemd/system/huginn-web.target.wants/huginn-web@5001.service:
-  file.absent
+huginn-web@5001:
+  service.dead:
+    - enable: False
 
 huginn.target:
   service.enabled:
