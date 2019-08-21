@@ -1,4 +1,6 @@
 base:
+  '*':
+    - etckeeper
   steevie.strugee.net:
     - apt
     - apt.backports
@@ -7,7 +9,6 @@ base:
     - certbot
     - cockpit
     - ejabberd
-    - etckeeper
     - fail2ban
     - gopher
     - httpd
@@ -21,6 +22,7 @@ base:
     - nextcloud.elasticsearch
     - nextcloud.onlyoffice-db
     - ntp
+    - node
     - postgres
     - redis
     - ruby
@@ -39,20 +41,20 @@ base:
     - zfs
     - znc
   onlyoffice.lxd:
-    - etckeeper
     - nextcloud.onlyoffice
   collabora-online.lxd:
-    - etckeeper
     - nextcloud.collabora-online
     - unattended-upgrades
   minecraft.lxd:
-    - etckeeper
+    - apt
     - java
     - minecraft
+    - misc.gpg
+    - node.base
+    - node.npm
     - unattended-upgrades
   failover.strugee.net:
     - apt.backports
-    - etckeeper
     - ntp
     - utils
     - utils.apt
