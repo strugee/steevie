@@ -1,6 +1,7 @@
 base:
   '*':
     - etckeeper
+    - unattended-upgrades
   steevie.strugee.net:
     - apt
     - apt.backports
@@ -34,7 +35,6 @@ base:
     - ssh.client
     - static
     - tarsnap
-    - unattended-upgrades
     - utils
     - utils.apt
     - utils.debian
@@ -44,7 +44,6 @@ base:
     - nextcloud.onlyoffice
   collabora-online.lxd:
     - nextcloud.collabora-online
-    - unattended-upgrades
   minecraft.lxd:
     - apt
     - java
@@ -52,13 +51,11 @@ base:
     - misc.gpg
     - node.base
     - node.npm
-    - unattended-upgrades
   failover.strugee.net:
     - apt.backports
     - ntp
     - utils
     - utils.apt
-    - unattended-upgrades
     - static
     - misc.ca-certificates
     - mail-failover
