@@ -48,7 +48,6 @@ base:
     - apt
     - java
     - minecraft
-    - misc.gpg
     - node.base
     - node.npm
   failover.strugee.net:

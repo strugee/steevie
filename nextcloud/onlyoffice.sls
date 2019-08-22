@@ -1,6 +1,5 @@
 # LXD containers are... minimal. *Super* minimal.
 include:
-  - misc.gpg
   - apt.backports
   - apt
 

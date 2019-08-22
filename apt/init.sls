@@ -5,3 +5,6 @@ apt-transport-https:
 
 apt-listchanges:
   pkg.installed
+
+gnupg:
+  pkg.installed
