@@ -2,6 +2,9 @@ base:
   '*':
     - etckeeper
     - unattended-upgrades
+  'virtual:physical':
+    - match: grain
+    - ntp
   steevie.strugee.net:
     - apt
     - apt.backports
@@ -22,7 +25,6 @@ base:
     - motd
     - nextcloud.elasticsearch
     - nextcloud.onlyoffice-db
-    - ntp
     - node
     - postgres
     - redis
