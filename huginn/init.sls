@@ -192,6 +192,8 @@ huginn-foreman:
     # Web concurrency is managed at the Unicorn level, not systemd
     - name: 'foreman export -a huginn -u huginn -m web=1,jobs=2 systemd /etc/systemd/system && systemctl daemon-reload'
     - cwd: /srv/http/huginn
+    - env:
+      - HOME: /srv/http/huginn
     - require:
       - pkg: ruby-foreman
     - onchanges:
