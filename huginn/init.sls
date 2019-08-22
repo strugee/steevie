@@ -222,5 +222,3 @@ huginn-logrotate-patch:
     - hash: md5=c49d0a0957b7a0c423dc52c749d06108
     - require:
       - file: huginn-logrotate
-
-# TODO should we be doing `bundle exec rake production:status` to check for success?
