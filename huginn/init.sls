@@ -81,8 +81,6 @@ huginn-writable-dirs:
       - group
       - mode
     - names:
-      - /var/log/huginn
-      - /srv/http/huginn/tmp
       - /srv/http/huginn/tmp/pids
     - require:
       - git: huginn-clone
@@ -94,6 +92,25 @@ huginn-writable-dirs:
       - file: huginn-writable-dirs
     - require:
       - pkg: apache2
+      - file: /srv/http/huginn/tmp
+
+
+/var/log/huginn:
+  file.directory:
+    - user: root
+    - group: huginn
+    - file_mode: 660
+    - dir_mode: 770
+    - use:
+      - file: huginn-writable-dirs
+    - require:
+      - user: huginn
+
+/srv/http/huginn/tmp:
+  file.directory:
+    - file_mode: 644 # Same as upstream tmp/.gitkeep; prevents dirty working tree
+    - use:
+      - file: huginn-writable-dirs
 
 /srv/http/huginn/config/unicorn.rb:
   file.managed:
