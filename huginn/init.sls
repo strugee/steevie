@@ -148,15 +148,19 @@ huginn-root-perms:
     - require:
       - git: huginn-clone
 
-huginn-bundle-perms-postscript-dirs:
+{% for dir in ['tmp', 'tmp/pids', 'tmp/sockets'] %}
+huginn-bundle-perms-postscript-dirs-{{ dir }}:
   file.directory:
+    - name: /srv/http/huginn/{{ dir }}
     - onchanges:
       - file: huginn-root-perms
     - use:
-      - file: huginn-writable-dirs
+      - file: /srv/http/huginn/{{ dir }}
+{% endfor %}
 
 huginn-bundle-perms-postscript-unicorn:
   file.managed:
+    - name: /srv/http/huginn/config/unicorn.rb
     - onchanges:
       - file: huginn-root-perms
     - use:
