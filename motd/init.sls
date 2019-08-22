@@ -1,6 +1,6 @@
 /etc/motd:
   file.managed:
-    - owner: root
+    - user: root
     - group: root
     - mode: 644
     - source: salt://motd/motd

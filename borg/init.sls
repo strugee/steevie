@@ -15,7 +15,7 @@ liblockfile-bin:
 
 /etc/apt/apt.conf.d/00borg-system-trigger:
   file.managed:
-    - owner: root
+    - user: root
     - group: root
     - mode: 644
     - source: salt://borg/00borg-system-trigger

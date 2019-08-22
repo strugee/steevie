@@ -23,7 +23,7 @@ loolwsd:
 
 /etc/loolwsd/loolwsd.xml:
   file.managed:
-    - owner: lool
+    - user: lool
     - group: lool
     - mode: 640
     - source: salt://nextcloud/loolwsd.xml

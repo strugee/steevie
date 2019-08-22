@@ -3,7 +3,7 @@ openssh-server:
 
 /etc/ssh/sshd_config:
   file.managed:
-    - owner: root
+    - user: root
     - group: root
     - mode: 644
     - source: salt://ssh/sshd_config

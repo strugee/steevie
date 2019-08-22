@@ -10,7 +10,7 @@ lazymention:
 
 /etc/lazymention.json:
   file.managed:
-    - owner: root
+    - user: root
     - group: root
     - mode: 644
     - source: salt://node/lazymention.json
@@ -18,7 +18,7 @@ lazymention:
 # XXX should this have come from the package itself?
 /etc/systemd/system/lazymention.service:
   file.managed:
-    - owner: root
+    - user: root
     - group: root
     - mode: 644
     - source: salt://node/lazymention.service

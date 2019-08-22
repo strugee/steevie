@@ -7,7 +7,7 @@
 
 /etc/apache2:
   file.recurse:
-    - owner: root
+    - user: root
     - group: root
     - dir_mode: 755
     - file_mode: 644

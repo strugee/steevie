@@ -10,14 +10,14 @@ strugee/gh-pages-server:
 
 /etc/gh-pages-server.json:
   file.managed:
-    - owner: root
+    - user: root
     - group: root
     - mode: 644
     - source: salt://node/gh-pages-server.json
 
 /etc/systemd/system/gh-pages-server.service:
   file.managed:
-    - owner: root
+    - user: root
     - group: root
     - mode: 644
     - source: salt://node/gh-pages-server.service

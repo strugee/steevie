@@ -11,7 +11,7 @@ zfs-zed:
 
 /etc/udev/rules.d/10-zpool-io-elevator.rules:
   file.managed:
-    - owner: root
+    - user: root
     - group: root
     - mode: 644
     - source: salt://zfs/10-zpool-io-elevator.rules

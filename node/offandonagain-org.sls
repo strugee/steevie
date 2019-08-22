@@ -18,7 +18,7 @@ offandonagain-org:
 
 /etc/offandonagain.org.json:
   file.managed:
-    - owner: root
+    - user: root
     - group: root
     - mode: 644
     - source: salt://node/offandonagain.org.json

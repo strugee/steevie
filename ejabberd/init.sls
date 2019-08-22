@@ -17,14 +17,14 @@ erlang-p1-stun:
 
 /etc/ejabberd/ejabberd.yml:
   file.managed:
-    - owner: root
+    - user: root
     - group: root
     - mode: 644
     - source: salt://ejabberd/ejabberd.yml
 
 /etc/systemd/system/ejabberd.service.d/override.conf:
   file.managed:
-    - owner: root
+    - user: root
     - group: root
     - mode: 644
     - makedirs: True

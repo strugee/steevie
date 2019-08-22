@@ -3,7 +3,7 @@ openssh-client:
 
 /etc/ssh/ssh_config:
   file.managed:
-    - owner: root
+    - user: root
     - group: root
     - mode: 644
     - source: salt://ssh/ssh_config

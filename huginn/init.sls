@@ -12,7 +12,7 @@ huginn-clone:
 
 /usr/local/src/equivs/huginn:
   file.managed:
-    - owner: root
+    - user: root
     - group: root
     - mode: 644
     - source: salt://huginn/huginn.equivs
