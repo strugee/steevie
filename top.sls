@@ -34,8 +34,8 @@ base:
     - security
     - smartmontools
     - snapd
-    - ssh.server
     - ssh.client
+    - ssh.server
     - static
     - tarsnap
     - utils
@@ -55,9 +55,9 @@ base:
     - node.npm
   failover.strugee.net:
     - apt.backports
+    - mail-failover
+    - misc.ca-certificates
     - ntp
+    - static
     - utils
     - utils.apt
-    - static
-    - misc.ca-certificates
-    - mail-failover
