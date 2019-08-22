@@ -1,3 +1,5 @@
+# TODO run migrations etc. if we update
+
 huginn-clone:
   git.latest:
     - name: https://github.com/huginn/huginn.git
@@ -184,3 +186,5 @@ huginn-logrotate-patch:
   file.patch:
     - name: /etc/logrotate.d/huginn
     - source: salt://huginn/huginn-logrotate.patch
+
+# TODO should we be doing `bundle exec rake production:status` to check for success?
