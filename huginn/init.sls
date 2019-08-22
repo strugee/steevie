@@ -67,6 +67,10 @@ huginn:
   file.symlink:
     - target: /etc/huginn.conf
 
+/srv/http/huginn/log:
+  file.symlink:
+    - target: /var/log/huginn
+
 huginn-writable-dirs:
   file.directory:
     - user: huginn
@@ -77,7 +81,7 @@ huginn-writable-dirs:
       - group
       - mode
     - names:
-      - /srv/http/huginn/log
+      - /var/log/huginn
       - /srv/http/huginn/tmp
       - /srv/http/huginn/tmp/pids
     - require:
