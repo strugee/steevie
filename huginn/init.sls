@@ -122,7 +122,8 @@ huginn-bundler:
   cmd.run:
     - name: 'chown -R huginn:huginn . && sudo -u huginn -H bundle install --deployment --without test development'
     - cwd: /srv/http/huginn
-    - creates: /srv/http/huginn/vendor/bundle
+    - onchanges:
+      - git: huginn-clone
     - require:
       - file: /usr/local/src/equivs/huginn
       - git: huginn-clone
