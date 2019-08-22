@@ -122,6 +122,9 @@ huginn-bundler:
   cmd.run:
     - name: 'chown -R huginn:huginn . && sudo -u huginn -H bundle install --deployment --without test development'
     - cwd: /srv/http/huginn
+    - env:
+      - LANG: 'C.UTF-8'
+      - LC_ALL: 'C.UTF-8'
     - onchanges:
       - git: huginn-clone
     - require:
