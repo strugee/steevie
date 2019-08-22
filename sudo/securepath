@@ -1,0 +1,2 @@
+# Override the main file's secure_path to include Snappy binaries
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"

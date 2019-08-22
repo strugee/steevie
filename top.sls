@@ -5,6 +5,7 @@ base:
   'virtual:physical':
     - match: grain
     - ntp
+    - sudo
   steevie.strugee.net:
     - apt
     - apt.backports
