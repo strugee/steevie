@@ -209,13 +209,18 @@ huginn.target:
       - cmd: huginn-foreman
 
 huginn-logrotate:
-  file.copy_:
+  file.copy:
     - name: /etc/logrotate.d/huginn
     - source: /srv/http/huginn/deployment/logrotate/huginn
+    - require:
+      - git: huginn-clone
 
 huginn-logrotate-patch:
   file.patch:
     - name: /etc/logrotate.d/huginn
     - source: salt://huginn/huginn-logrotate.patch
+    - hash: md5=c49d0a0957b7a0c423dc52c749d06108
+    - require:
+      - file: huginn-logrotate
 
 # TODO should we be doing `bundle exec rake production:status` to check for success?
