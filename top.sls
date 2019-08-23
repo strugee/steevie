@@ -4,6 +4,7 @@ base:
     - unattended-upgrades
   'virtual:physical':
     - match: grain
+    - cockpit
     - ntp
     - sudo
   steevie.strugee.net:
@@ -12,7 +13,6 @@ base:
     - apt.equivs
     - bugzilla
     - certbot
-    - cockpit
     - ejabberd
     - fail2ban
     - gopher
