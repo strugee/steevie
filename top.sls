@@ -2,8 +2,9 @@ base:
   '*':
     - etckeeper
     - unattended-upgrades
-  'virtual:physical':
-    - match: grain
+  # Droplets register as KVM
+  'virtual:(physical|kvm)':
+    - match: grain_pcre
     - cockpit
     - ntp
     - sudo
