@@ -1,0 +1,4 @@
+{
+    "secret": "change me",
+    "keysFile": "/var/lib/local/minecraft-switcher/keys.json"
+}

@@ -53,6 +53,7 @@ base:
     - java
     - minecraft
     - node.base
+    - node.minecraft-switcher
     - node.npm
   failover.strugee.net:
     - apt.backports
