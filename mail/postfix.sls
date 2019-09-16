@@ -4,6 +4,7 @@ postfix-debconf:
     - data:
         postfix/main_mailer_type: {'type': 'select', 'value': 'Internet Site'}
         postfix/mailname: {'type': 'string', 'value': 'strugee.net'}
+        # TODO make this only apply to steevie
         postfix/protocols: {'type': 'select', 'value': 'ipv4'}
         postfix/root_address: {'type': 'string', 'value': 'alex'}
         # TODO pull this from Pillar
