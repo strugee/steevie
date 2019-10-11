@@ -1,0 +1,48 @@
+# TODO how are we handling the following situations:
+# * Installing an arbitrary package from stable contrib should FAIL (done)
+# * Installing a safelisted package from stable contrib should SUCCEED
+# * Installing an arbitrary package from backports contrib should FAIL (done)
+# * Installing a safelisted package from backports contrib should SUCCEED
+# * Upgrading a stable contrib package SHOULD NOT select the backport version of that package (done)
+# * Upgrading a stable contrib package SHOULD select a newer stable version of that package
+# * Upgrading a backported contrib package SHOULD select the backport version of that package
+
+# Dep
+Package: libnvpair1linux
+Pin: release a=stable, c=contrib
+Pin-Priority: 50
+
+# Dep
+Package: libuutil1linux
+Pin: release r=stable c=contrib
+Pin-Priority: 50
+
+# Dep
+Package: libzfs2linux
+Pin: release r=stable c=contrib
+Pin-Priority: 50
+
+# Dep
+Package: libzpool2linux
+Pin: release r=stable c=contrib
+Pin-Priority: 50
+
+Package: zfs-dkms
+Pin: release r=stable c=contrib
+Pin-Priority: 50
+
+Package: zfs-initramfs
+Pin: release r=stable c=contrib
+Pin-Priority: 50
+
+Package: zfs-zed
+Pin: release r=stable c=contrib
+Pin-Priority: 50
+
+Package: zfsutils-linux
+Pin: release r=stable c=contrib
+Pin-Priority: 50
+
+Package: *
+Pin: release c=contrib
+Pin-Priority: -1
