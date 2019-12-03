@@ -3,3 +3,9 @@
 {{ pkg }}:
   pkg.installed
 {% endfor %}
+
+{% if grains['osmajorrelease'] > 10 %}
+cockpit-pcp:
+  pkg.installed
+{% endif %}
+
