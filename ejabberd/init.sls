@@ -29,3 +29,5 @@ erlang-p1-stun:
     - mode: 644
     - makedirs: True
     - source: salt://ejabberd/systemd-override.conf
+
+# TODO create MySQL database and user
