@@ -1,3 +1,6 @@
+debian-security-support:
+  pkg.installed
+
 debsecan:
   pkg.installed
 
