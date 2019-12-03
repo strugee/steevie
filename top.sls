@@ -1,6 +1,7 @@
 base:
   '*':
     - etckeeper
+    - security
     - unattended-upgrades
   # Droplets register as KVM
   'virtual:(physical|kvm)':
@@ -32,7 +33,6 @@ base:
     - redis
     - ruby
     - ruby.foreman
-    - security
     - smartmontools
     - snapd
     - ssh.client
