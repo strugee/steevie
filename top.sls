@@ -9,6 +9,7 @@ base:
     - cockpit
     - ntp
     - sudo
+    - watchdog
   steevie.strugee.net:
     - apt
     - apt.backports
