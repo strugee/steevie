@@ -10,6 +10,9 @@ base:
     - ntp
     - sudo
     - watchdog
+  'virtual:LXC':
+    - match: grain
+    - utils.essential
   steevie.strugee.net:
     - apt
     - apt.backports
