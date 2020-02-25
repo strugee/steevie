@@ -17,6 +17,8 @@
 ## as a relay, and not make any local application connections yourself.
 #SocksPort 9050 # Default: Bind to localhost:9050 for local connections.
 #SocksPort 192.168.0.1:9100 # Bind to this address:port too.
+# Need this disabled for HiddenServiceSingleHopMode
+SocksPort 0
 
 ## Entry policies to allow/deny SOCKS requests based on IP address.
 ## First entry that matches wins. If no SocksPolicy is set, we accept
@@ -68,8 +70,11 @@
 ## HiddenServicePort x y:z says to redirect requests on port x to the
 ## address y:z.
 
-#HiddenServiceDir /var/lib/tor/hidden_service/
-#HiddenServicePort 80 127.0.0.1:80
+HiddenServiceDir /var/lib/tor/hidden_service/
+HiddenServiceNonAnonymousMode 1
+HiddenServiceSingleHopMode 1
+HiddenServicePort 22 127.0.0.1:22
+HiddenServicePort 80 127.0.0.1:80
 
 #HiddenServiceDir /var/lib/tor/other_hidden_service/
 #HiddenServicePort 80 127.0.0.1:80
