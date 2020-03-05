@@ -62,6 +62,7 @@ base:
     - node.npm
   failover.strugee.net:
     - apt.backports
+    - certbot
     - mail-failover
     - misc.ca-certificates
     - ntp
