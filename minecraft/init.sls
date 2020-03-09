@@ -17,6 +17,8 @@
     - creates: /opt/spigot/spigot-1.14.4.jar
     - require:
       - pkg: default-jre-headless
+    - env:
+      - HOME: /opt/spigot
 
 /opt/spigot/eula.txt:
   file.managed:
