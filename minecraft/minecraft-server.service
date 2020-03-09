@@ -4,14 +4,28 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=java -jar spigot-1.14.4.jar
+ExecStartPre=+/usr/bin/mkfifo /var/run/spigot.in
+# Can't use systemd's native StandardInput= because it applies to ExecStartPre= too,
+#  which causes a chicken-and-egg problem that manifests as ENOENT (but for the FIFO,
+#  *not* for the binary)
+#StandardInput=file:/var/run/spigot.in
+ExecStart=/bin/sh -c 'java -jar spigot-1.15.2.jar < /var/run/spigot.in'
+ExecStartPost=+/bin/sh -c 'echo > /var/run/spigot.in'
+ExecStop=/bin/sh -c 'echo stop > /var/run/spigot.in'
+ExecStopPost=+/bin/rm -f /var/run/spigot.in
+TimeoutStopSec=2m30s
+
 WorkingDirectory=/opt/spigot
 Restart=on-failure
 
 PrivateDevices=true
 NoNewPrivileges=true
 ProtectHome=true
-ProtectSystem=true
+ProtectSystem=strict
+ReadWritePaths=/opt/spigot
+ReadWritePaths=/var/run
+ProtectKernelTunables=true
+ProtectControlGroups=true
 
 [Install]
 WantedBy=multi-user.target
