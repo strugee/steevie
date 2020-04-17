@@ -60,6 +60,13 @@ base:
     - node.bunyan
     - node.minecraft-switcher
     - node.npm
+  minecraft-beta.lxd:
+    - apt
+    - java
+    - node.base
+    - node.bunyan
+    - node.minecraft-switcher
+    - node.npm
   failover.strugee.net:
     - apt.backports
     - certbot
