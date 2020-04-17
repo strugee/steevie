@@ -14,22 +14,22 @@ libmkldnn-dev:
 libx11-dev:
   pkg.installed
 
-"chown -R nobody . && sudo -u nobody sh -c 'mkdir -p build && cd build && cmake -DBUILD_SHARED_LIBS=ON .. && make'; chown -R root .":
+dlib-build:
   cmd.run:
+    - name: "chown -R nobody . && sudo -u nobody sh -c 'mkdir -p build && cd build && cmake -DBUILD_SHARED_LIBS=ON .. && make'; chown -R root ."
     - cwd: /usr/local/src/dlib/dlib
     - creates: build/libdlib.so.19.19.0
     - require:
       - git: https://github.com/davisking/dlib.git
-      - pkg:
-        - cmake
-        - libmkldnn-dev
+      - pkg: cmake
+      - pkg: libmkldnn-dev
 
 'make install':
   cmd.run:
     - cwd: /usr/local/src/dlib/dlib/build
     - creates: /usr/local/lib/libdlib.so.19.19.0
     - require:
-      - cmd: # TODO the above one
+      - cmd: dlib-build
 
 php7.3-dev:
   pkg.installed
@@ -42,11 +42,19 @@ https://github.com/goodspb/pdlib.git:
       - pkg: php7.3-dev
 #      - pkg: git
 
+pdlib-clean:
+  cmd.run:
+    - name: git clean -dfx
+    - cwd: /usr/local/src/pdlib
+    - onchanges:
+      - git: pdlib
+
 'phpize':
   cmd.run:
     - creates: configure
+    - cwd: /usr/local/src/pdlib
     - require:
-      - cmd: 'make install'
+      - git: pdlib
 
 './configure --prefix=/usr/local --enable-debug':
   cmd.run:
@@ -55,19 +63,22 @@ https://github.com/goodspb/pdlib.git:
     - require:
       - cmd: phpize
 
-'chown -R nobody . && sudo -u nobody make && chown -R root .':
+pdlib-make:
   cmd.run:
+    - name: 'chown -R nobody . && sudo -u nobody make && chown -R root .'
     - cwd: /usr/local/src/pdlib
 #    - creates: config.h
 # TODO requres
 
 # XXX TODO XXX VERY BAD THIS PUTS FILES IN /usr NOT /usr/local!!!!!
-'make install':
+# TODO make this run if stuff has changed...
+make-install-pdlib:
   cmd.run:
+    - name: make install
     - cwd: /usr/local/src/pdlib
     - creates: /usr/lib/php/20180731/pdlib.so
     - require:
-      - cmd: # TODO the above one
+      - cmd: pdlib-make
 
 /etc/php/7.3/mods-available/pdlib.ini:
   file.managed:
