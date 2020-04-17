@@ -34,10 +34,13 @@ dlib-build:
 php7.3-dev:
   pkg.installed
 
-https://github.com/goodspb/pdlib.git:
+# TODO switch back to goodspb/pdlib
+pdlib:
   git.detached:
-    - rev: v1.0
+    - name: https://github.com/matiasdelellis/pdlib.git
+    - rev: dfd6a952fb259525b9adf03968b129c318799c07
     - target: /usr/local/src/pdlib
+    - fetch_remote: True
     - require:
       - pkg: php7.3-dev
 #      - pkg: git
