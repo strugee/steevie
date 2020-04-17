@@ -37,7 +37,7 @@ https://github.com/strugee/strugee.github.com.git:
 cryptoparty-{{ data[0] }}:
   git.detached:
     - name: https://github.com/strugee/cryptoparty-seattle.git
-    - ref: {{ data[1] }}
+    - rev: {{ data[1] }}
     - target: /srv/http/default/cryptoparty/{{ data[0] }}
     - require:
       - pkg: git
@@ -47,7 +47,7 @@ cryptoparty-{{ data[0] }}:
 pumpio-lfnw:
   git.detached:
     - name: https://github.com/strugee/presentation-pumpio.git
-    - ref: lfnw-2016-build
+    - rev: lfnw-2016-build
     - target: /srv/http/default/presentation-pumpio
     - require:
       - pkg: git
