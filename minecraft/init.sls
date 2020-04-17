@@ -5,8 +5,8 @@
 
 /opt/spigot/BuildTools.jar:
   file.managed:
-    - source: https://hub.spigotmc.org/jenkins/job/BuildTools/108/artifact/target/BuildTools.jar
-    - source_hash: sha512=9982554fbdadf8dab00c7cdafe312d124d0be1ffdc56b56fcc450e2bbecd5e863cadeb48f4f9add01b24e27a58693c2bca5015a285044579fc5f22883047a9d9
+    - source: https://hub.spigotmc.org/jenkins/job/BuildTools/112/artifact/target/BuildTools.jar
+    - source_hash: sha512=20b5e905f7978f488bd5a4cf3cbfa497bd3307f5176cb6776ed382d45ed3c53a803c368299c465ac46ab855167fd3ca0a779fc6646db8dc6a751e5b37bc5b6b8
     - require:
       - file: /opt/spigot
 
