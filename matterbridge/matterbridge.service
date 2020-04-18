@@ -1,0 +1,12 @@
+[Unit]
+Description=matterbridge
+After=network.target
+
+[Service]
+ExecStart=/opt/matterbridge/bin/matterbridge -conf /etc/matterbridge.toml
+Restart=always
+User=matterbridge
+Group=matterbridge
+
+[Install]
+WantedBy=multi-user.target
