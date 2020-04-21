@@ -73,8 +73,8 @@ SocksPort 0
 HiddenServiceDir /var/lib/tor/hidden_service/
 HiddenServiceNonAnonymousMode 1
 HiddenServiceSingleHopMode 1
-HiddenServicePort 22 127.0.0.1:22
-HiddenServicePort 80 127.0.0.1:80
+HiddenServicePort 22 216.160.72.225:22
+HiddenServicePort 80 216.160.72.225:80
 
 #HiddenServiceDir /var/lib/tor/other_hidden_service/
 #HiddenServicePort 80 127.0.0.1:80
