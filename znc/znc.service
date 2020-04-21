@@ -3,8 +3,8 @@ Description=ZNC IRC bouncer
 After=syslog.target network.target
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/znc
+Type=simple
+ExecStart=/usr/bin/znc -f
 User=znc
 Group=znc
 
