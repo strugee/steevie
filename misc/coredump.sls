@@ -1,0 +1,2 @@
+systemd-coredump:
+  pkg.installed

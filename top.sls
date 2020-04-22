@@ -29,6 +29,7 @@ base:
     - mariadb
     - misc.build-essential
     - misc.ca-certificates
+    - misc.coredump
     - motd
     - nextcloud.elasticsearch
     - nextcloud.onlyoffice-db
