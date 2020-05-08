@@ -38,7 +38,7 @@ php7.3-dev:
 pdlib:
   git.detached:
     - name: https://github.com/matiasdelellis/pdlib.git
-    - rev: dfd6a952fb259525b9adf03968b129c318799c07
+    - rev: d3b91453bb94b7b9ddbd9fcdce56d76e687c56c9
     - target: /usr/local/src/pdlib
     - fetch_remote: True
     - require:
