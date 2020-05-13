@@ -8,6 +8,7 @@ base:
     - match: grain_pcre
     - cockpit
     - firewall
+    - misc.coredump
     - ntp
     - sudo
     - watchdog
@@ -30,7 +31,6 @@ base:
     - mariadb
     - misc.build-essential
     - misc.ca-certificates
-    - misc.coredump
     - motd
     - nextcloud.elasticsearch
     - nextcloud.onlyoffice-db
