@@ -69,6 +69,7 @@ base:
     - node.minecraft-switcher
     - node.npm
   failover.strugee.net:
+    - apt
     - apt.backports
     - certbot
     - mail-failover
