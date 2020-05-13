@@ -3,6 +3,7 @@
   pkg.installed
 {% endfor %}
 
+# TODO install from backports
 zfs-zed:
   pkg.installed: []
   service.running:
