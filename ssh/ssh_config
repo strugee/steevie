@@ -53,3 +53,7 @@ Host *
     SendEnv LANG LC_*
     HashKnownHosts yes
     GSSAPIAuthentication yes
+
+Host *.strugee.net
+   HostbasedAuthentication yes
+   EnableSSHKeysign

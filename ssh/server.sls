@@ -15,6 +15,13 @@ openssh-server:
     - mode: 644
     - source: salt://ssh/ssh_known_hosts
 
+/etc/ssh/shosts.equiv:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 644
+    - source: salt://ssh/shosts.equiv
+
 ssh:
   service.enabled:
     - require:
