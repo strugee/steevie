@@ -52,4 +52,4 @@ Host *
 
 Host *.strugee.net
    HostbasedAuthentication yes
-   EnableSSHKeysign
+   EnableSSHKeysign yes
