@@ -7,6 +7,7 @@ base:
   'virtual:(physical|kvm)':
     - match: grain_pcre
     - cockpit
+    - firewall
     - ntp
     - sudo
     - watchdog
