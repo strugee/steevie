@@ -14,6 +14,7 @@ base:
     - watchdog
   'virtual:LXC':
     - match: grain
+    - misc.fakesudo
     - utils.essential
   steevie.strugee.net:
     - apt
