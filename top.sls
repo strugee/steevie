@@ -70,6 +70,8 @@ base:
     - node.bunyan
     - node.minecraft-switcher
     - node.npm
+  zerotier.lxd:
+    - zerotier
   failover.strugee.net:
     - apt
     - apt.backports
