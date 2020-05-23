@@ -31,7 +31,7 @@
 #LoginGraceTime 2m
 #PermitRootLogin prohibit-password
 #StrictModes yes
-MaxAuthTries 3
+#MaxAuthTries 3
 #MaxSessions 10
 
 #PubkeyAuthentication yes
@@ -104,7 +104,8 @@ PrintMotd no
 #Compression delayed
 #ClientAliveInterval 0
 #ClientAliveCountMax 3
-#UseDNS no
+# Need this to properly resolve remote hosts for hostbased auth
+UseDNS yes
 #PidFile /var/run/sshd.pid
 #MaxStartups 10:30:100
 #PermitTunnel no
