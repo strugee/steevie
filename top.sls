@@ -38,6 +38,7 @@ base:
     - node
     - postgres
     - redis
+    - rsync
     - ruby
     - ruby.foreman
     - smartmontools
@@ -79,6 +80,7 @@ base:
     - mail-failover
     - misc.ca-certificates
     - ntp
+    - rsync
     - static
     - utils
     - utils.apt
