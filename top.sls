@@ -1,12 +1,12 @@
 base:
   '*':
+    - cockpit
     - etckeeper
     - security
     - unattended-upgrades
   # Droplets register as KVM
   'virtual:(physical|kvm)':
     - match: grain_pcre
-    - cockpit
     - firewall
     - misc.coredump
     - ntp
