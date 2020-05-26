@@ -36,11 +36,9 @@ znc:
 znc-dev:
   pkg.installed
 
-# TODO pin to a specific commit
 https://github.com/jpnurmi/znc-playback.git:
-  git.latest:
-    - rev: master
-    - branch: master
+  git.detached:
+    - rev: 2e32d508aa975c0a307d09575a0198f8c56c11fa
     - target: /usr/local/src/znc-playback
     - require:
       - pkg: git
