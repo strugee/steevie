@@ -54,6 +54,22 @@ https://github.com/jpnurmi/znc-playback.git:
     - require:
       - file: /usr/local/lib/znc/
 
+https://github.com/CyberShadow/znc-clientbuffer.git:
+  git.detached:
+    - rev: 2e32d508aa975c0a307d09575a0198f8c56c11fa
+    - target: /usr/local/src/znc-clientbuffer
+    - require:
+      - pkg: git
+
+# TODO chmod -x clientbuffer.so
+'znc-buildmod /usr/local/src/znc-clientbuffer/clientbuffer.cpp':
+  cmd.run:
+    - cwd: /usr/local/lib/znc/
+    - creates: /usr/local/lib/znc/clientbuffer.so
+    - require:
+      - file: /usr/local/lib/znc/
+      - git: https://github.com/CyberShadow/znc-clientbuffer.git
+
 /var/lib/znc/.znc/modules:
   file.symlink:
     - target: /usr/local/lib/znc
