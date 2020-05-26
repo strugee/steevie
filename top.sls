@@ -71,6 +71,11 @@ base:
     - node.bunyan
     - node.minecraft-switcher
     - node.npm
+  thelounge.lxd:
+    - apt
+    - node.base
+    - sudo
+    - thelounge
   zerotier.lxd:
     - zerotier
   failover.strugee.net:
