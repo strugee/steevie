@@ -2,7 +2,7 @@
 
 # Preamble
 
-This repository will (eventually) contain Puppet configuration files for steevie, my server.
+This repository contains SaltStack configuration files for steevie, my server.
 
 # LFAQ (less frequently asked questions)
 
