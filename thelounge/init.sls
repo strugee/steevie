@@ -13,3 +13,11 @@
 /etc/thelounge/config.js:
   file.managed:
     - source: salt://thelounge/config.js
+
+{% for themename in ['solarized', 'crypto', 'classic', 'zenburn'] %}
+'/usr/bin/sudo -u thelounge thelounge install thelounge-theme-{{ themename }}':
+  cmd.run:
+    - creates: /etc/thelounge/packages/node_modules/thelounge-theme-{{ themename }}
+    - require:
+      - pkg: /usr/local/src/thelounge/thelounge_{{ version }}_all.deb
+{% endfor %}
