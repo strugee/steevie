@@ -71,6 +71,8 @@ base:
     - node.bunyan
     - node.minecraft-switcher
     - node.npm
+  jellyfin.lxd:
+    - jellyfin
   thelounge.lxd:
     - apt
     - node.base
