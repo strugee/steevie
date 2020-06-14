@@ -518,6 +518,18 @@ acl:
       - "dalunet.cz"
       - "jabb.im"
       - "jabbim.pl"
+      - "jabber.tokkee.org"
+      - "jabber.freenet.de"
+      - "lain.church"
+      - "xmpprene.xyz"
+      - "xmpp.international"
+      - "elektrollart.org"
+      - "bitcheese.net"
+      - "jabber.bitactive.com"
+      - "jabber.juze-cr.de"
+      - "labas.biz"
+      - "xmpp.hk"
+      - "sibnsk.net"
 
   bad_users:
     user_regexp:
