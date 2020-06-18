@@ -2,7 +2,15 @@ debian-security-support:
   pkg.installed
 
 debsecan:
-  pkg.installed
+  debconf.set:
+    - data:
+        debsecan/suite: { type: 'select', value: '{{ grains['oscodename'] }}' }
+        debsecan/source: { type: 'string', value: '' }
+        debsecan/mailto: { type: 'string', value: 'root' }
+        debsecan/report: { type: 'boolean', value: 'true' }
+  pkg.installed:
+    - require:
+      - debconf: debsecan
 
 # TODO check out pkg Recommends and fine-tune
 # TODO this installs Tripwire which requires interactive installation (for now)
