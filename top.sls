@@ -2,6 +2,7 @@ base:
   '*':
     - cockpit
     - etckeeper
+    - osquery
     - security
     - unattended-upgrades
   # Droplets register as KVM
