@@ -11,7 +11,7 @@ Package: nextcloud
 Maintainer: AJ Jordan <alex@strugee.net>
 # Pre-Depends: <comma-separated list of packages>
 # TODO expand
-Depends: php-intl
+Depends: php-intl, php-gmp, php-bcmath
 # Recommends: <comma-separated list of packages>
 # Suggests: <comma-separated list of packages>
 # Provides: <comma-separated list of packages>
