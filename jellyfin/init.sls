@@ -14,3 +14,5 @@ jellyfin:
     - require:
       - pkg: jellyfin
 
+vainfo:
+  pkg.installed
