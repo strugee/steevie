@@ -16,6 +16,7 @@
     - cwd: /opt/spigot
     - creates: /opt/spigot/spigot-1.16.1.jar
     - require:
+      - file: /opt/spigot/BuildTools.jar
       - pkg: default-jre-headless
     - env:
       - HOME: /opt/spigot
