@@ -30,6 +30,7 @@ base:
     - huginn
     - java
     - mail.postfix
+    - mail.mailman
     - mariadb
     - misc.build-essential
     - misc.ca-certificates
