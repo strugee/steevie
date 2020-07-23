@@ -7,5 +7,5 @@
     - user: root
     - group: root
     - contents: |
-        exec $@
         #!/bin/sh
+        exec $@
