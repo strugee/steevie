@@ -38,6 +38,7 @@ base:
     - nextcloud.elasticsearch
     - nextcloud.onlyoffice-db
     - node
+    - peertube
     - postgres
     - redis
     - rsync
