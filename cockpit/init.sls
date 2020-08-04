@@ -15,3 +15,11 @@ cockpit-pcp:
     - require:
       - pkg: cockpit
 {% endfor %}
+
+wpa_supplicant:
+  service.masked
+
+wpa_supplicant_dead:
+  service.dead:
+    - name: wpa_supplicant
+    - enable: False
