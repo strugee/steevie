@@ -11,7 +11,7 @@
       - file: /opt/spigot
 
 # TODO should we make this require git? It's pulled in by etckeeper and it's annoying to put here
-'java -jar BuildTools.jar --rev 1.16.1':
+'java -jar BuildTools.jar --rev 1.16.2':
   cmd.run:
     - cwd: /opt/spigot
     - creates: /opt/spigot/spigot-1.16.1.jar
