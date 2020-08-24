@@ -1,5 +1,7 @@
 # TODO LXD proxy0 device
 
+{% set version = '1.16.2' %}
+
 /opt/spigot:
   file.directory
 
@@ -11,10 +13,10 @@
       - file: /opt/spigot
 
 # TODO should we make this require git? It's pulled in by etckeeper and it's annoying to put here
-'java -jar BuildTools.jar --rev 1.16.2':
+'java -jar BuildTools.jar --rev {{ version }}':
   cmd.run:
     - cwd: /opt/spigot
-    - creates: /opt/spigot/spigot-1.16.1.jar
+    - creates: /opt/spigot/spigot-{{ version }}.jar
     - require:
       - file: /opt/spigot/BuildTools.jar
       - pkg: default-jre-headless
@@ -27,15 +29,18 @@
     - require:
       - file: /opt/spigot
 
-/opt/spigot/server.properties:
-  file.managed:
-    - source: salt:///minecraft/server.properties
-    - require:
-      - file: /opt/spigot
+#/opt/spigot/server.properties:
+#  file.managed:
+#    - source: salt:///minecraft/server.properties
+#    - require:
+#      - file: /opt/spigot
 
 /etc/systemd/system/minecraft-server.service:
   file.managed:
     - source: salt:///minecraft/minecraft-server.service
+    - template: jinja
+    - defaults:
+      version: {{ version }}
 
 minecraft-systemd-reload:
   cmd.run:

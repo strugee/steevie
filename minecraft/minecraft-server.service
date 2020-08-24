@@ -9,7 +9,7 @@ ExecStartPre=+/usr/bin/mkfifo /var/run/spigot.in
 #  which causes a chicken-and-egg problem that manifests as ENOENT (but for the FIFO,
 #  *not* for the binary)
 #StandardInput=file:/var/run/spigot.in
-ExecStart=/bin/sh -c 'java -jar spigot-1.16.1.jar < /var/run/spigot.in'
+ExecStart=/bin/sh -c 'java -jar spigot-{{ version }}.jar < /var/run/spigot.in'
 ExecStartPost=+/bin/sh -c 'echo > /var/run/spigot.in'
 ExecStop=/bin/sh -c 'echo stop > /var/run/spigot.in'
 ExecStopPost=+/bin/rm -f /var/run/spigot.in
