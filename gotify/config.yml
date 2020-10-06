@@ -1,0 +1,10 @@
+server:
+  listenaddr: '127.0.0.1'
+  port: 56488
+  ssl:
+    enabled: false
+database:
+  dialect: sqlite3
+  connection: /var/lib/local/gotify/gotify.db
+uploadedimagesdir: /var/lib/local/gotify/data/images
+pluginsdir: /var/lib/local/gotify/data/plugins

@@ -26,6 +26,7 @@ base:
     - ejabberd
     - fail2ban
     - gopher
+    - gotify
     - httpd
     - huginn
     - java

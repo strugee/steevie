@@ -1,0 +1,14 @@
+[Unit]
+Description=gotify push notification service
+After=network.target
+
+[Service]
+ExecStart=/opt/gotify/gotify-linux-amd64
+Restart=always
+User=gotify
+Group=gotify
+
+[Install]
+WantedBy=multi-user.target
+
+# TODO security directives
