@@ -1,3 +1,4 @@
+# TODO add LXD's devices to the 'trusted' zone
 # TODO actually manage what ports are open
 
 firewalld:
