@@ -23,5 +23,6 @@ dpkg-divert-{{ path }}:
 {%- endmacro %}
 
 {{ arm_binary('/usr/bin/x86_64-linux-gnu-gcc-8', 'GCC') }}
-
-# TODO arm more binaries
+{{ arm_binary('/usr/bin/x86_64-linux-gnu-g++-8', 'G++') }}
+{{ arm_binary('/bin/nc.openbsd', 'nc(1)') }}
+{{ arm_binary('/bin/nc.traditional', 'nc(1)') }}
