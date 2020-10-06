@@ -1,3 +1,6 @@
+include:
+  - security.canary
+
 debian-security-support:
   pkg.installed
 
