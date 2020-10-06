@@ -42,9 +42,9 @@ done
 ATTACH_ARGS=''
 for i in *; do
 	ATTACH_ARGS="$ATTACH_ARGS --content-type=$(file -b --mime-type $i) -A $i"
-	#ATTACH_ARGS="$ATTACH_ARGS -A $i"
 done
 
+# TODO this is sending the heredoc as an attachment for some reason
 mail -s '[SECURITY] Suspicious {{ bin_desc }} invocation' $ATTACH_ARGS --content-type=text/plain security@strugee.net ajord17@u.rochester.edu <<EOF
 A canary-armed {{ bin_desc }} binary was triggered on host $(hostname -f) $(date) by user $(whoami).
 
@@ -53,12 +53,9 @@ This likely represents a security violation, so this should be investigated yest
 The current working directory is $OLDPWD. More details are attached.
 EOF
 
-# curl http://canarytokens.com/images/articles/static/k7u2gjxfs6hhiz7edwqfdb9v5/index.html > /dev/null
-
 cd - >/dev/null
 rm -rf $OLDPWD # The /tmp dir
 
 # TODO: make gcc think it's being invoked with the name in $0
 
 exec $(realpath -e $0).nocanary $@
-
