@@ -6,6 +6,22 @@ gcc-6:
 gcc-6-base:
   pkg.removed
 
+{% macro arm_binary(path, bin_desc) -%}
+dpkg-divert-{{ path }}:
+  cmd.run:
+    - name: 'dpkg-divert --local --divert {{ path }}.nocanary --rename --add {{ path }}'
+    - creates: {{ path }}.nocanary
+    - unless: ! test -e {{ path }}
 
-# TODO:
-# dpkg-divert --local --divert /usr/bin/x86_64-linux-gnu-gcc-8.nocanary --rename --add /usr/bin/x86_64-linux-gnu-gcc-8
+{{ path }}:
+  file.managed:
+    - source: salt:///security/canary.sh
+    - mode: 755
+    - template: jinja
+    - defaults:
+      bin_desc: {{ bin_desc }}
+{%- endmacro %}
+
+{{ arm_binary('/usr/bin/x86_64-linux-gnu-gcc-8', 'GCC') }}
+
+# TODO arm more binaries
