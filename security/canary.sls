@@ -11,7 +11,7 @@ dpkg-divert-{{ path }}:
   cmd.run:
     - name: 'dpkg-divert --local --divert {{ path }}.nocanary --rename --add {{ path }}'
     - creates: {{ path }}.nocanary
-    - unless: ! test -e {{ path }}
+    - unless: test -e {{ path }}.nocanary
 
 {{ path }}:
   file.managed:
@@ -20,6 +20,8 @@ dpkg-divert-{{ path }}:
     - template: jinja
     - defaults:
       bin_desc: {{ bin_desc }}
+    - require:
+      - cmd: dpkg-divert-{{ path }}
 {%- endmacro %}
 
 {{ arm_binary('/usr/bin/x86_64-linux-gnu-gcc-8', 'GCC') }}
