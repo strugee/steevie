@@ -84,6 +84,7 @@ base:
   zerotier.lxd:
     - zerotier
   bitwarden.lxd:
+    - bitwarden
     - docker
   failover.strugee.net:
     - apt
