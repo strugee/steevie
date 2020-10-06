@@ -83,6 +83,8 @@ base:
     - thelounge
   zerotier.lxd:
     - zerotier
+  bitwarden.lxd:
+    - docker
   failover.strugee.net:
     - apt
     - apt.backports
