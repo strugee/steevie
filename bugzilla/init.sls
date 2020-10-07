@@ -13,5 +13,15 @@ https://github.com/bugzilla/bugzilla.git:
     - require:
       - pkg: git
 
+/srv/http/bugzilla/localconfig:
+  file.managed:
+    - source: salt:///bugzilla/localconfig
+    - user: root
+    - group: www-data
+    - mode: 640
+    - template: jinja
+    - require:
+      - git: https://github.com/bugzilla/bugzilla.git
+
 libmariadbclient-dev:
   pkg.installed
