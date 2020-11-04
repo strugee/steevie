@@ -33,6 +33,7 @@ base:
     - mail.postfix
     - mail.mailman
     - mariadb
+    - mindustry
     - misc.build-essential
     - misc.ca-certificates
     - motd

@@ -1,0 +1,23 @@
+[Unit]
+Description=Mindustry multiplayer server
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=+/usr/bin/mkfifo /var/run/local/mindustry/mindustry.in
+# Can't use systemd's native StandardInput= because it applies to ExecStartPre= too,
+#  which causes a chicken-and-egg problem that manifests as ENOENT (but for the FIFO,
+#  *not* for the binary)
+#StandardInput=file:/var/run/local/mindustry/mindustry.in
+ExecStart=/bin/sh -c 'java -jar /opt/mindustry/mindustry-v104.6.jar host < /var/run/local/mindustry/mindustry.in'
+ExecStop=/bin/sh -c 'echo exit > /var/run/local/mindustry/mindustry.in'
+ExecStopPost=+/bin/rm -f /var/run/local/mindustry/mindustry.in
+TimeoutStopSec=1m
+Restart=always
+User=mindustry
+Group=mindustry
+
+[Install]
+WantedBy=multi-user.target
+
+# TODO security directives
