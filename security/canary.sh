@@ -2,6 +2,10 @@
 
 set -eu
 
+if test -f /run/disarm-canary-binaries; then
+	exec $(realpath -e $0).nocanary $@
+fi
+
 # Kick this off in the background so it doesn't slow down the real binary's execution
 echo '{{ bin_desc }} canary triggered. Possible security violation. Report is being prepared and mailed.' | systemd-cat -p warning -t '{{ bin_desc }} canary output' mail 7607054581@tmomail.net
 

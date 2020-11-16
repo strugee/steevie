@@ -1,0 +1,7 @@
+DPkg::Pre-Invoke      { "touch /run/disarm-canary-binaries"; };
+
+RPM::Pre-Invoke      { "touch /run/disarm-canary-binaries"; };
+
+DPkg::Post-Invoke      { "rm /run/disarm-canary-binaries"; };
+
+RPM::Post-Invoke      { "rm /run/disarm-canary-binaries"; };

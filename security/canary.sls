@@ -28,3 +28,10 @@ dpkg-divert-{{ path }}:
 {{ arm_binary('/usr/bin/x86_64-linux-gnu-g++-8', 'G++') }}
 {{ arm_binary('/bin/nc.openbsd', 'nc(1)') }}
 {{ arm_binary('/bin/nc.traditional', 'nc(1)') }}
+
+/etc/apt/apt.conf.d/00disarm-canary-binaries:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 644
+    - source: salt://security/00disarm-canary-binaries
