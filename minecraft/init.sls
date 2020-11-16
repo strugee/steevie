@@ -1,6 +1,6 @@
 # TODO LXD proxy0 device
 
-{% set version = '1.16.3' %}
+{% set version = '1.16.4' %}
 
 /opt/spigot:
   file.directory
