@@ -1,0 +1,2 @@
+linux-doc:
+  pkg.installed

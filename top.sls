@@ -10,6 +10,7 @@ base:
     - match: grain_pcre
     - firewall
     - misc.coredump
+    - misc.doc
     - ntp
     - sudo
     - watchdog
