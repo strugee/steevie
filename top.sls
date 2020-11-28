@@ -11,6 +11,7 @@ base:
     - firewall
     - misc.coredump
     - misc.doc
+    - misc.sysctl
     - ntp
     - sudo
     - watchdog
