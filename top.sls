@@ -12,6 +12,7 @@ base:
     - misc.coredump
     - misc.doc
     - misc.sysctl
+    - misc.systemd-crash-reboot
     - ntp
     - sudo
     - watchdog
