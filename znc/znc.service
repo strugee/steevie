@@ -8,5 +8,21 @@ ExecStart=/usr/bin/znc -f
 User=znc
 Group=znc
 
+# Security directives
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/znc
+ProtectControlGroups=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+PrivateDevices=true
+RestrictRealtime=true
+PrivateTmp=true
+PrivateUsers=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
 [Install]
 WantedBy=multi-user.target
