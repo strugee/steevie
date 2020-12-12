@@ -10,6 +10,9 @@ php-intl:
 php-imagick:
   pkg.installed
 
+composer:
+  pkg.installed
+
 /etc/php/7.3/apache2/conf.d/99-nextcloud-memory-limit.ini:
   file.managed:
     - user: root
