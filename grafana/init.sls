@@ -15,3 +15,13 @@ grafana-server:
     - enable: True
     - require:
       - pkg: grafana
+
+/etc/grafana/grafana.ini:
+  file.managed:
+    - source: salt:///grafana/grafana.ini
+    - user: root
+    - group: grafana
+    - mode: 640
+    - template: jinja
+    - require:
+      - pkg: grafana
