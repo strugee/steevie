@@ -16,6 +16,7 @@ grafana-server:
     - require:
       - pkg: grafana
 
+# TODO `systemctl restart` after this changes
 /etc/grafana/grafana.ini:
   file.managed:
     - source: salt:///grafana/grafana.ini
