@@ -19,6 +19,7 @@ base:
   'virtual:LXC':
     - match: grain
     - misc.fakesudo
+    - utils.nano
     - utils.essential
   steevie.strugee.net:
     - apt
