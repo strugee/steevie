@@ -41,4 +41,13 @@ scrape_configs:
     # If prometheus-node-exporter is installed, grab stats about the local
     # machine by default.
     static_configs:
-      - targets: ['localhost:9100']
+      # TODO pull this list from Salt Pillar or something
+      - targets: ['localhost:9100',
+                  'host.lxd:9100',
+                  'bitwarden.lxd:9100',
+                  'grafana.lxd:9100',
+                  'jellyfin.lxd:9100',
+                  'minecraft.lxd:9100',
+                  'minecraft-beta.lxd:9100',
+                  'thelounge.lxd:9100',
+                  'zerotier.lxd:9100']
