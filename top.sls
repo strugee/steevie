@@ -95,6 +95,8 @@ base:
     - docker
   prometheus.lxd:
     - prometheus
+  grafana.lxd:
+    - grafana
   failover.strugee.net:
     - apt
     - apt.backports
