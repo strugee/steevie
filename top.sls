@@ -3,6 +3,7 @@ base:
     - cockpit
     - etckeeper
     - osquery
+    - prometheus.node-exporter
     - security
     - unattended-upgrades
   # Droplets register as KVM
