@@ -1,5 +1,7 @@
 prometheus:
-  pkg.installed
+  pkg.installed:
+    - require:
+      - service: cockpit.socket
 
 cockpit.socket:
   service.dead:
