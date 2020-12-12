@@ -92,6 +92,8 @@ base:
   bitwarden.lxd:
     - bitwarden
     - docker
+  prometheus.lxd:
+    - prometheus
   failover.strugee.net:
     - apt
     - apt.backports
