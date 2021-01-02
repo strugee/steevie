@@ -1,0 +1,17 @@
+[Unit]
+Description=LibrePhotos uWSGI backend server
+
+[Service]
+ExecStartPre=+/bin/mkdir -p /run/librephotos
+ExecStartPre=/bin/chown librephotos:librephotos /run/librephotos
+ExecStart=/usr/bin/uwsgi --plugin python3 --ini /etc/uwsgi/apps-available/librephotos.ini
+Restart=on-failure
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+User=root
+Group=root
+EnvironmentFile=/etc/librephotos.env
+
+[Install]
+WantedBy=multi-user.target

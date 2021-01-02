@@ -36,6 +36,7 @@ base:
     - httpd
     - huginn
     - java
+    - librephotos
     - mail.postfix
     - mail.mailman
     - mariadb

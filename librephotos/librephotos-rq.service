@@ -1,0 +1,15 @@
+[Unit]
+Description=LibrePhotos RQ background job worker
+Requires=redis-server@librephotos.service
+After=redis-server@librephotos.service
+
+[Service]
+User=librephotos
+Group=librephotos
+Type=simple
+WorkingDirectory=/srv/http/librephotos
+EnvironmentFile=/etc/librephotos.env
+ExecStart=/usr/local/bin/librephotosctl rqworker default
+
+[Install]
+WantedBy=multi-user.target
