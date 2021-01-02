@@ -40,7 +40,7 @@ polr-composer:
     - onchanges:
       - git: polr-clone
     - require:
-      - file: /usr/local/src/equivs/hugin
+      - file: /usr/local/src/equivs/polr
       - git: polr-clone
       - user: polr
 #      - pkg: composer
