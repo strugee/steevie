@@ -1,6 +1,8 @@
 #!/bin/sh
 
-set -eu
+# Do *not* use set -e here
+# If run as an unprivileged user, then things like `journalctl` fail and crash the script
+set -u
 
 if test -f /run/disarm-canary-binaries; then
 	exec $(realpath -e $0).nocanary $@
