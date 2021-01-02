@@ -5,7 +5,7 @@
 set -u
 
 if test -f /run/disarm-canary-binaries; then
-	exec $(realpath -e $0).nocanary $@
+	exec $(realpath -e $0).nocanary "$@"
 fi
 
 # Kick this off in the background so it doesn't slow down the real binary's execution
@@ -39,7 +39,7 @@ for i in /proc/$PPID/fd/*; do
 done
 
 # Search for filenames passed as args
-for i in $@; do
+for i in "$@"; do
 	if test -e "$OLDPWD"/"$i"; then
 		cp "$OLDPWD"/"$i" args_file_$(basename "$i")
 	fi
@@ -64,4 +64,4 @@ rm -rf $OLDPWD # The /tmp dir
 
 # TODO: make gcc think it's being invoked with the name in $0
 
-exec $(realpath -e $0).nocanary $@
+exec $(realpath -e $0).nocanary "$@"
