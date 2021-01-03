@@ -221,7 +221,7 @@ librephotos-frontend-npm:
         #!/bin/sh
         
         # If we are not running as the librephotos user, reexecute as that user
-        [ $(whoami) != librephotos ] && exec sudo -u librephotos "$0" "$@"
+        [ $(whoami) != librephotos ] && exec sudo -Eu librephotos "$0" "$@"
         
         cd /srv/http/librephotos
         . bin/activate
