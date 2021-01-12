@@ -51,3 +51,7 @@ scrape_configs:
                   'minecraft-beta.lxd:9100',
                   'thelounge.lxd:9100',
                   'zerotier.lxd:9100']
+
+  - job_name: apache
+    static_configs:
+      - targets: ['host.lxd:9117']
