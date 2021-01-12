@@ -13,16 +13,13 @@ php-imagick:
 composer:
   pkg.installed
 
-/etc/php/7.3/apache2/conf.d/99-nextcloud-memory-limit.ini:
+{% for context in ['apache2', 'cli'] %}
+
+/etc/php/7.3/{{ context }}/conf.d/99-nextcloud-memory-limit.ini:
   file.managed:
     - user: root
     - group: root
     - mode: 644
     - source: salt://httpd/99-nextcloud-memory-limit.ini
 
-/etc/php/7.3/cli/conf.d/99-nextcloud-memory-limit.ini:
-  file.managed:
-    - user: root
-    - group: root
-    - mode: 644
-    - source: salt://httpd/99-nextcloud-memory-limit.ini
+{% endfor %}
