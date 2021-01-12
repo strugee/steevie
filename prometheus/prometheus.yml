@@ -37,6 +37,11 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
+  - job_name: 'grafana'
+    scheme: https
+    static_configs:
+      - targets: ['grafana.strugee.net:443']
+
   - job_name: node
     # If prometheus-node-exporter is installed, grab stats about the local
     # machine by default.
