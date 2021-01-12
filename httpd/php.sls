@@ -13,7 +13,7 @@ php-imagick:
 composer:
   pkg.installed
 
-{% for context in ['apache2', 'cli'] %}
+{% for context in ['apache2', 'cli', 'fpm'] %}
 
 /etc/php/7.3/{{ context }}/conf.d/99-nextcloud-memory-limit.ini:
   file.managed:
