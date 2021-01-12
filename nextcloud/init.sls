@@ -22,6 +22,9 @@ nextcloud-equivs:
     - onchanges:
       - cmd: nextcloud-equivs
 
+php-apcu:
+  pkg.installed
+
 # TODO base install
 
 # TODO multibyte database
@@ -29,3 +32,5 @@ nextcloud-equivs:
 # TODO innodb_large_prefix=on
 # TODO innodb_file_format=Barracuda
 # Run occ maintenance:repair after these too.
+
+# TODO APCu in config.php
