@@ -101,6 +101,8 @@ base:
     - prometheus
   grafana.lxd:
     - grafana
+  lxdui.lxd:
+    - lxdui
   failover.strugee.net:
     - apt
     - apt.backports
