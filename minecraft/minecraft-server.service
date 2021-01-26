@@ -3,14 +3,18 @@ Description=Spigot Minecraft Server
 After=network.target
 
 [Service]
-Type=simple
+Type=notify
 ExecStartPre=+/usr/bin/mkfifo /var/run/spigot.in
+# For some reason Spigot doesn't like to boot without a newline in stdin
+# Need & cause the echo hangs and blocks execution of Spigot itself
+ExecStartPre=+/bin/sh -c 'echo > /var/run/spigot.in &'
 # Can't use systemd's native StandardInput= because it applies to ExecStartPre= too,
 #  which causes a chicken-and-egg problem that manifests as ENOENT (but for the FIFO,
 #  *not* for the binary)
 #StandardInput=file:/var/run/spigot.in
-ExecStart=/bin/sh -c 'java -jar spigot-{{ version }}.jar < /var/run/spigot.in'
-ExecStartPost=+/bin/sh -c 'echo > /var/run/spigot.in'
+# The `exec` here is VERY important so that this doesn't look like a forking daemon to
+# systemd
+ExecStart=/bin/sh -c 'exec java -jar spigot-{{ version }}.jar < /var/run/spigot.in'
 ExecStop=/bin/sh -c 'echo stop > /var/run/spigot.in'
 ExecStopPost=+/bin/rm -f /var/run/spigot.in
 TimeoutStopSec=2m30s
@@ -26,6 +30,7 @@ ReadWritePaths=/opt/spigot
 ReadWritePaths=/var/run
 ProtectKernelTunables=true
 ProtectControlGroups=true
+PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
