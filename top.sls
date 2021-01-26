@@ -80,6 +80,7 @@ base:
   minecraft-beta.lxd:
     - apt
     - java
+    - minecraft
     - node.base
     - node.bunyan
     - node.minecraft-switcher
