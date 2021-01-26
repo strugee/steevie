@@ -72,20 +72,20 @@ base:
     - apt
     - java
     - minecraft
+    - misc.unzip
     - node.base
     - node.bunyan
     - node.minecraft-switcher
     - node.npm
-    - misc.unzip
   minecraft-beta.lxd:
     - apt
     - java
     - minecraft
+    - misc.unzip
     - node.base
     - node.bunyan
     - node.minecraft-switcher
     - node.npm
-    - misc.unzip
   jellyfin.lxd:
     - jellyfin
   thelounge.lxd:
