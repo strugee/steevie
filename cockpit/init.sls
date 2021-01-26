@@ -23,3 +23,5 @@ wpa_supplicant_dead:
   service.dead:
     - name: wpa_supplicant
     - enable: False
+
+# TODO Cockpit motd
