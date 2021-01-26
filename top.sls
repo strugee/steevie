@@ -76,7 +76,7 @@ base:
     - node.bunyan
     - node.minecraft-switcher
     - node.npm
-    - unzip
+    - misc.unzip
   minecraft-beta.lxd:
     - apt
     - java
@@ -84,7 +84,7 @@ base:
     - node.bunyan
     - node.minecraft-switcher
     - node.npm
-    - unzip
+    - misc.unzip
   jellyfin.lxd:
     - jellyfin
   thelounge.lxd:
