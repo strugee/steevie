@@ -1,3 +1,6 @@
+# TODO LXD Unix socket proxy device
+# lxc config device add lxdui lxdsocket proxy connect=unix:/var/snap/lxd/common/lxd/unix.socket listen=unix:/var/lib/lxd/unix.socket bind=instance uid=0 gid=0 mode=0660
+
 git:
   pkg.installed
 
