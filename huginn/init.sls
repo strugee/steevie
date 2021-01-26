@@ -187,6 +187,7 @@ huginn-assets-precompile:
     - require:
       - git: huginn-clone
 
+# XXX TODO!! integrate the systemd security directives now in production into this export
 huginn-foreman:
   cmd.run:
     # Web concurrency is managed at the Unicorn level, not systemd
