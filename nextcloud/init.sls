@@ -34,3 +34,5 @@ php-apcu:
 # Run occ maintenance:repair after these too.
 
 # TODO APCu in config.php
+# TODO preview generator expansion in config.php
+# TODO sudo apt-get install libreoffice --no-install-recommends fonts-liberation2
