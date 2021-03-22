@@ -48,6 +48,7 @@ base:
     - nextcloud.onlyoffice-db
     - node
     - peertube
+    - pixelfed
     - postgres
     - redis
     - rsync
