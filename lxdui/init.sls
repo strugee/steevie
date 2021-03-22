@@ -13,6 +13,7 @@ python3:
 python3-pip:
   pkg.installed
 
+# TODO move this to /usr/local/src since setup.py copies instead of links these files
 lxdui-clone:
   git.detached:
     - name: https://github.com/AdaptiveScale/lxdui.git
