@@ -16,8 +16,8 @@ python3-pip:
 # TODO move this to /usr/local/src since setup.py copies instead of links these files
 lxdui-clone:
   git.detached:
-    - name: https://github.com/AdaptiveScale/lxdui.git
-    - rev: v2.1.3
+    - name: https://github.com/strugee/lxdui.git
+    - rev: v2.1.3-strugeesecpatches
     - target: /opt/lxdui
     - require:
       - pkg: git
