@@ -6,8 +6,8 @@
 polr-clone:
   git.latest:
     - name: https://github.com/cydrobolt/polr.git
-    - rev: 2.2.0
-    - branch: 2.2.0
+    - rev: 2.3.0
+    - branch: 2.3.0
     - target: /srv/http/polr
 #    - require:
 #      - pkg: git
