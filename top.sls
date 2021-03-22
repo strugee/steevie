@@ -54,6 +54,7 @@ base:
     - rsync
     - ruby
     - ruby.foreman
+    - salt
     - smartmontools
     - snapd
     - ssh.client
