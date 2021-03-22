@@ -33,3 +33,23 @@ lxdui-clone:
       - pkg: python3
       - pkg: python3-pip
       - git: lxdui-clone
+
+/etc/systemd/system/lxdui.service:
+  file.copy:
+    - source: /opt/lxdui/lxdui.service
+    - user: root
+    - group: root
+    - require:
+      - git: lxdui-clone
+
+lxdui-systemd-reload:
+  cmd.run:
+    - name: 'systemctl daemon-reload'
+    - onchanges:
+      - file: /etc/systemd/system/lxdui.service
+
+lxdui:
+  service.running:
+    - enable: True
+    - require:
+      - file: /etc/systemd/system/lxdui.service
