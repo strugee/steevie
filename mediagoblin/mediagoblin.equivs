@@ -1,0 +1,22 @@
+# Source: <source package name; defaults to package name>
+Section: network
+Priority: optional
+Homepage: http://mediagoblin.org/
+Standards-Version: 3.9.2
+
+Package: mediagoblin
+Version: 0.10.0
+Maintainer: AJ Jordan <alex@strugee.net>
+# Pre-Depends: <comma-separated list of packages>
+Depends: git-core, python3, python3-dev, python3-gi, python3-gst-1.0, python3-lxml, python3-pil, virtualenv, nodejs, automake
+Recommends: postgresql, postgresql-client, python3-psycopg2, npm
+Suggests: nginx
+# Provides: <comma-separated list of packages>
+# Replaces: <comma-separated list of packages>
+Architecture: all
+# Changelog: <changelog file; defaults to a generic changelog>
+# Readme: <README.Debian file; defaults to a generic one>
+# Extra-Files: <comma-separated list of additional files for the doc directory>
+# Files: <pair of space-separated paths; First is file to include, second is destination>
+#  <more pairs, if there's more than one file to include. Notice the starting space>
+Description: a free software media publishing platform that anyone can run

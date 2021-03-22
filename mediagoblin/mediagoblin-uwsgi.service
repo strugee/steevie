@@ -1,0 +1,16 @@
+[Unit]
+Description=MediaGoblin uWSGI backend server
+
+[Service]
+ExecStartPre=+/bin/mkdir -p /run/mediagoblin
+ExecStartPre=/bin/chown mediagoblin:mediagoblin /run/mediagoblin
+ExecStart=/usr/bin/uwsgi --plugin python --ini /etc/uwsgi/apps-available/mediagoblin.ini
+Restart=on-failure
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
