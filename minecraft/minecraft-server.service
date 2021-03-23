@@ -1,5 +1,5 @@
 [Unit]
-Description=Spigot Minecraft Server
+Description=Paper Minecraft Server
 After=network.target
 
 [Service]
@@ -14,7 +14,7 @@ ExecStartPre=+/bin/sh -c 'echo > /var/run/spigot.in &'
 #StandardInput=file:/var/run/spigot.in
 # The `exec` here is VERY important so that this doesn't look like a forking daemon to
 # systemd
-ExecStart=/bin/sh -c 'exec java -jar spigot-{{ version }}.jar < /var/run/spigot.in'
+ExecStart=/bin/sh -c 'exec java -jar paper-{{ version }}-{{ paperversion }}.jar < /var/run/spigot.in'
 ExecStop=/bin/sh -c 'echo stop > /var/run/spigot.in'
 ExecStopPost=+/bin/rm -f /var/run/spigot.in
 TimeoutStopSec=2m30s
@@ -36,3 +36,4 @@ PrivateTmp=true
 WantedBy=multi-user.target
 Alias=spigot.service
 Alias=minecraft.service
+Alias=papermc.service

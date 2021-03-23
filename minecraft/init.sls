@@ -1,27 +1,17 @@
 # TODO LXD proxy0 device
 
 {% set version = '1.16.5' %}
+{% set paperversion = '564' %}
 
 /opt/spigot:
   file.directory
 
-/opt/spigot/BuildTools.jar:
+/opt/spigot/paper-{{ version }}-{{ paperversion }}.jar:
   file.managed:
-    - source: https://hub.spigotmc.org/jenkins/job/BuildTools/126/artifact/target/BuildTools.jar
-    - source_hash: sha512=92fe99a967d3899cd7415c867128d755ab23dfd2cbb945806db52013c21105e694ec30ddd9e1599bd7b47101ceb2b5a73f8034f4ce09e1d9b97d29af9183e82a
+    - source: https://papermc.io/api/v2/projects/paper/versions/{{ version }}/builds/{{ paperversion}}/downloads/paper-{{ version }}-{{ paperversion }}.jar
+    - source_hash: sha512=1a5135974aa44c82eb1588cd69e7266ca8f8d42b3fc093bd021255b4864634a60027c6dd77af572eee4a2a682ba215596616f2cc013f22b5e15329fe0e45dc73
     - require:
       - file: /opt/spigot
-
-# TODO should we make this require git? It's pulled in by etckeeper and it's annoying to put here
-'java -jar BuildTools.jar --rev {{ version }}':
-  cmd.run:
-    - cwd: /opt/spigot
-    - creates: /opt/spigot/spigot-{{ version }}.jar
-    - require:
-      - file: /opt/spigot/BuildTools.jar
-      - pkg: default-jre-headless
-    - env:
-      - HOME: /opt/spigot
 
 /opt/spigot/eula.txt:
   file.managed:
@@ -67,6 +57,7 @@
     - template: jinja
     - defaults:
       version: {{ version }}
+      paperversion: {{ paperversion }}
 
 minecraft-systemd-reload:
   cmd.run:
