@@ -19,6 +19,12 @@
     - require:
       - file: /opt/spigot
 
+/opt/spigot/paper.yml:
+  file.managed:
+    - source: salt:///minecraft/paper.yml
+    - require:
+      - file: /opt/spigot
+
 # TODO restart spigot after? Idk
 /opt/spigot/plugins/SpigotSystemd.jar:
   file.managed:
