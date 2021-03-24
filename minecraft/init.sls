@@ -19,6 +19,7 @@
     - require:
       - file: /opt/spigot
 
+# TODO restart server onchanges
 /opt/spigot/paper.yml:
   file.managed:
     - source: salt:///minecraft/paper.yml
