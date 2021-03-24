@@ -16,3 +16,6 @@ jellyfin:
 
 vainfo:
   pkg.installed
+
+# TODO web UI settings? question mark?
+# TODO <EnableMetrics>true</EnableMetrics>

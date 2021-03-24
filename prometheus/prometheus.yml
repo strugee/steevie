@@ -69,3 +69,7 @@ scrape_configs:
       - targets: ['minecraft-beta.lxd:9225']
         labels:
           server_name: 'Beta server'
+
+  - job_name: jellyfin
+    static_configs:
+      - targets: ['jellyfin.lxd:8096']
