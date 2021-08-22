@@ -106,6 +106,9 @@ base:
     - grafana
   lxdui.lxd:
     - lxdui
+  photoprism.lxd:
+    - docker
+    - photoprism
   failover.strugee.net:
     - apt
     - apt.backports
