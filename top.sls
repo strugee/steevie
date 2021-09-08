@@ -19,6 +19,7 @@ base:
     - watchdog
   'virtual:LXC':
     - match: grain
+    - lxd.container
     - misc.fakesudo
     - misc.disable-smartd
     - utils.nano

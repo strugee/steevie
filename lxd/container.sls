@@ -1,0 +1,2 @@
+smartmontools:
+  pkg.purged
