@@ -1,4 +1,4 @@
-host: 0.0.0.0
+host: localhost
 port: 9225
 enable_metrics:
   entities_total: true
