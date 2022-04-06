@@ -39,7 +39,7 @@ services:
     # Only enable automatic restarts once your installation is properly
     # configured as it otherwise may get stuck in a restart loop:
     # https://docs.photoprism.org/getting-started/faq/#why-is-photoprism-getting-stuck-in-a-restart-loop
-    # restart: unless-stopped
+    restart: unless-stopped
     security_opt:
       - seccomp:unconfined
       - apparmor:unconfined
