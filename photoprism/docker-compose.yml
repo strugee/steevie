@@ -47,6 +47,7 @@ services:
     ports:
       - 2342:2342 # [local port]:[container port]
     environment:
+      PHOTOPRISM_SPONSOR: "true"
       PHOTOPRISM_ADMIN_PASSWORD: "{{ pillar['photoprism']['admin_password'] }}"          # PLEASE CHANGE: Your initial admin password (min 4 characters)
       PHOTOPRISM_ORIGINALS_LIMIT: 2000               # File size limit for originals in MB (increase for high-res video)
       PHOTOPRISM_HTTP_COMPRESSION: "none"            # Improves transfer speed and bandwidth utilization (none or gzip)
