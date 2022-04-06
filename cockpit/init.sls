@@ -24,4 +24,13 @@ wpa_supplicant_dead:
     - name: wpa_supplicant
     - enable: False
 
+# Prevent NetworkManager from interfering with system DNS
+/etc/NetworkManager/conf.d/10-disable-dns-management.conf:
+  file.managed:
+    - contents: |
+        [main]
+        dns=none
+  require:
+    - pkg: cockpit
+
 # TODO Cockpit motd
