@@ -1,5 +1,5 @@
-{% set version = '4.2.0' %}
-{% set debhash = '10d17c199fef595c46ba55f36ab7aa0a7469448603482eb780284e05532f5d69302d47bdc9c558badc30b0a026767a24b7065a4fe8d7c865f1737b0041420208' %}
+{% set version = '4.3.0' %}
+{% set debhash = 'fd2ad9a5b0f0f54bfc85163b13968d5856c82ace0d26843f41997f4cb90ce7bf8eb6ced00277cc87a306216901c7a6b6b23eaf093ade100e263719c16e331ca2' %}
 
 /usr/local/src/thelounge/thelounge_{{ version }}_all.deb:
   file.managed:
