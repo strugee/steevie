@@ -21,3 +21,7 @@ A: The entire point of steevie is to escape centralization and closed-source net
 Q: Then why is this on GitHub at all?
 
 A: Because there is no danger, and it's convenient. Git's design ensures that cryptographically, GitHub can't screw with data without someone noticing. And Git's distributed nature ensures that even if GitHub chooses to (or is forced to) censor part of this repo, I can easily move somewhere else.
+
+## License
+
+AGPL
