@@ -1,10 +1,10 @@
 # steevie
 
-# Preamble
+## Preamble
 
 This repository contains SaltStack configuration files for steevie, my server.
 
-# LFAQ (less frequently asked questions)
+## LFAQ (less frequently asked questions)
 
 Q: Is this file the same as /etc/README on steevie?
 
