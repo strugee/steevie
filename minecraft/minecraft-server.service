@@ -22,15 +22,16 @@ TimeoutStopSec=2m30s
 WorkingDirectory=/opt/spigot
 Restart=on-failure
 
-PrivateDevices=true
-NoNewPrivileges=true
-ProtectHome=true
-ProtectSystem=strict
-ReadWritePaths=/opt/spigot
-ReadWritePaths=/var/run
-ProtectKernelTunables=true
-ProtectControlGroups=true
-PrivateTmp=true
+# TODO reenable - these cause systemd spawn failures.
+#PrivateDevices=true
+#NoNewPrivileges=true
+#ProtectHome=true
+#ProtectSystem=strict
+#ReadWritePaths=/opt/spigot
+#ReadWritePaths=/var/run
+#ProtectKernelTunables=true
+#ProtectControlGroups=true
+#PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
