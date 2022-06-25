@@ -35,12 +35,12 @@
     - require:
       - file: /opt/spigot
 
-# TODO verify that this JAR corresponds to the source I audited at 88eaacd0c1812e2845e2243cddff74efb548106a
+# TODO audit source for this upgraded version
 # TODO restart spigot after? Idk
 /opt/spigot/plugins/prometheus-exporter.jar:
   file.managed:
-    - source: https://github.com/sladkoff/minecraft-prometheus-exporter/releases/download/v2.4.0/minecraft-prometheus-exporter-2.4.0.jar
-    - source_hash: sha512=e84d09eb04ab63635f2fe23134f968c5fc10a20f8fc3f53ebe5c46fd51dbe928c639008818ce9b737c0a32e50452964ad6ae0824e126b995eb3e0c7372f27443
+    - source: https://github.com/sladkoff/minecraft-prometheus-exporter/releases/download/v2.5.0/minecraft-prometheus-exporter-2.5.0.jar
+    - source_hash: sha512=131aa90ed7c8437e8ff87fa4b10e5c17313a6b851814df2cdcde1d0fb5948e3b468d25d3073b96914febcf836abcd54caec71845db5b702ff640bc9354381d8a
     - make_dirs: True
     - require:
       - file: /opt/spigot
