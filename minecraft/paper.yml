@@ -1,10 +1,10 @@
 # This is the main configuration file for Paper.
 # As you can see, there's tons to configure. Some options may impact gameplay, so use
 # with caution, and make sure you know what each option does before configuring.
-# 
+#
 # If you need help with the configuration or have any questions related to Paper,
 # join us in our Discord or IRC channel.
-# 
+#
 # Discord: https://discord.gg/papermc
 # IRC: #paper @ irc.esper.net ( https://webchat.esper.net/?channels=paper ) 
 # Website: https://papermc.io/ 
@@ -12,8 +12,37 @@
 
 verbose: false
 use-display-name-in-quit-message: false
-config-version: 20
+config-version: 25
 settings:
+  fix-target-selector-tag-completion: true
+  lag-compensate-block-breaking: true
+  send-full-pos-for-hard-colliding-entities: true
+  time-command-affects-all-worlds: false
+  use-dimension-type-for-custom-spawners: false
+  log-player-ip-addresses: true
+  console:
+    enable-brigadier-highlighting: true
+    enable-brigadier-completions: true
+  loggers:
+    deobfuscate-stacktraces: true
+  item-validation:
+    display-name: 8192
+    loc-name: 8192
+    lore-line: 8192
+    book:
+      title: 8192
+      author: 8192
+      page: 16384
+  chunk-loading:
+    min-load-radius: 2
+    max-concurrent-sends: 2
+    autoconfig-send-distance: true
+    target-player-chunk-send-rate: 100.0
+    global-max-chunk-send-rate: -1.0
+    enable-frustum-priority: false
+    global-max-chunk-load-rate: -1.0
+    player-max-concurrent-loads: 20.0
+    global-max-concurrent-loads: 500.0
   use-alternative-luck-formula: false
   load-permissions-yml-before-plugins: true
   bungee-online-mode: true
@@ -34,6 +63,7 @@ settings:
     online-mode: false
     secret: ''
   unsupported-settings:
+    perform-username-validation: true
     allow-headless-pistons: false
     allow-permanent-block-break-exploits: false
     allow-piston-duplication: false
@@ -58,6 +88,17 @@ settings:
     total-multiplier: 0.98
   async-chunks:
     threads: -1
+  use-display-name-in-quit-message: false
+  packet-limiter:
+    kick-message: '&cSent too many packets'
+    limits:
+      all:
+        interval: 7.0
+        max-packet-rate: 500.0
+      PacketPlayInAutoRecipe:
+        interval: 4.0
+        max-packet-rate: 5.0
+        action: DROP
 messages:
   no-permission: '&cI''m sorry, but you do not have permission to perform this command.
     Please contact the server administrators if you believe that this is in error.'
@@ -67,6 +108,7 @@ messages:
     flying-player: Flying is not enabled on this server
     flying-vehicle: Flying is not enabled on this server
 timings:
+  url: https://timings.aikar.co/
   enabled: true
   verbose: true
   server-name-privacy: false
@@ -79,6 +121,36 @@ timings:
   server-name: Unknown Server
 world-settings:
   default:
+    fix-items-merging-through-walls: false
+    show-sign-click-command-failure-msgs-to-player: false
+    wateranimal-spawn-height:
+      maximum: default
+      minimum: default
+    unsupported-settings:
+      fix-invulnerable-end-crystal-exploit: true
+    map-item-frame-cursor-limit: 128
+    split-overstacked-loot: true
+    piglins-guard-chests: true
+    slime-spawn-height:
+      swamp-biome:
+        maximum: 70.0
+        minimum: 50.0
+      slime-chunk:
+        maximum: 40.0
+    mob-effects:
+      undead-immune-to-certain-effects: true
+      spiders-immune-to-poison-effect: true
+      immune-to-wither-effect:
+        wither: true
+        wither-skeleton: true
+    map-item-frame-cursor-update-interval: 10
+    allow-player-cramming-damage: false
+    anticheat:
+      obfuscation:
+        items:
+          hide-itemmeta: false
+          hide-durability: false
+    monster-spawn-max-light-level: -1
     optimize-explosions: false
     baby-zombie-movement-modifier: 0.5
     disable-teleportation-suffocation-check: false
@@ -89,7 +161,7 @@ world-settings:
     prevent-moving-into-unloaded-chunks: false
     max-auto-save-chunks-per-tick: 24
     count-all-mobs-for-spawning: false
-    per-player-mob-spawns: false
+    per-player-mob-spawns: true
     delay-chunk-unloads-by: 10s
     should-remove-dragon: false
     ender-dragons-death-always-places-dragon-egg: false
@@ -164,6 +236,8 @@ world-settings:
           per-player: false
           day: 5
     entity-per-chunk-save-limit:
+      fireball: -1
+      small_fireball: -1
       experience_orb: -1
       snowball: -1
       ender_pearl: -1
@@ -178,8 +252,30 @@ world-settings:
       MinimumTicks: 100
       MaximumTicks: 600
     despawn-ranges:
-      soft: 32
-      hard: 128
+      monster:
+        soft: 32
+        hard: 128
+      creature:
+        soft: 32
+        hard: 128
+      ambient:
+        soft: 32
+        hard: 128
+      axolotls:
+        soft: 32
+        hard: 128
+      underground_water_creature:
+        soft: 32
+        hard: 128
+      water_creature:
+        soft: 32
+        hard: 128
+      water_ambient:
+        soft: 32
+        hard: 64
+      misc:
+        soft: 32
+        hard: 128
     frosted-ice:
       enabled: true
       delay:
@@ -200,6 +296,7 @@ world-settings:
       items:
         COBBLESTONE: 300
     hopper:
+      ignore-occluding-blocks: false
       cooldown-when-full: true
       disable-move-event: false
     lightning-strike-distance-limit:
@@ -219,6 +316,7 @@ world-settings:
       - NORMAL
       - HARD
     anti-xray:
+      max-block-height: 64
       enabled: false
       engine-mode: 1
       max-chunk-section-index: 3
@@ -247,3 +345,20 @@ world-settings:
       maximum: 0.0
     generator-settings:
       flat-bedrock: false
+    feature-seeds:
+      generate-random-seeds-for-all: false
+    tick-rates:
+      sensor:
+        villager:
+          secondarypoisensor: 40
+      behavior:
+        villager:
+          validatenearbypoi: -1
+    spawn-limits:
+      monster: -1
+      creature: -1
+      ambient: -1
+      axolotls: -1
+      underground_water_creature: -1
+      water_creature: -1
+      water_ambient: -1
