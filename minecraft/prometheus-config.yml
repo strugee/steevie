@@ -1,6 +1,7 @@
 host: localhost
 port: 9225
 enable_metrics:
+  world_size: true
   entities_total: true
   villagers_total: true
   loaded_chunks_total: true
