@@ -1,7 +1,7 @@
 # TODO LXD proxy0 device
 
-{% set version = '1.19' %}
-{% set paperversion = '39' %}
+{% set version = '1.19.1' %}
+{% set paperversion = '91' %}
 
 /opt/spigot:
   file.directory
@@ -9,7 +9,7 @@
 /opt/spigot/paper-{{ version }}-{{ paperversion }}.jar:
   file.managed:
     - source: https://papermc.io/api/v2/projects/paper/versions/{{ version }}/builds/{{ paperversion}}/downloads/paper-{{ version }}-{{ paperversion }}.jar
-    - source_hash: sha512=cafc8edd6326e4849fa17ef15f96c0ece473716cdd1923d9a042471bffa435f12f10670ffa1557f03080ea88163ac343ac583aa493a1ea89de387d4bdb882de3
+    - source_hash: sha512=4d1eb280caa58db2572688976a16cc6ee8cd288a93f936bc05439e2ff0be3b8ff890c86ecfbe613c0098dce5d14cd3da56825fa19a60226d3368e807448b0813
     - require:
       - file: /opt/spigot
 
