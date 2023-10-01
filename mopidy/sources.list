@@ -1,0 +1,4 @@
+# Mopidy APT archive
+# Built on Debian 11 (bullseye), compatible with Ubuntu 22.04 LTS and newer
+deb [signed-by=/etc/apt/keyrings/mopidy-archive-keyring.gpg] https://apt.mopidy.com/ bullseye main contrib non-free
+deb-src [signed-by=/etc/apt/keyrings/mopidy-archive-keyring.gpg] https://apt.mopidy.com/ bullseye main contrib non-free

@@ -110,6 +110,8 @@ base:
   photoprism.lxd:
     - docker
     - photoprism
+  mopidy.lxd:
+    - mopidy
   failover.strugee.net:
     - apt
     - apt.backports
