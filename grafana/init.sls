@@ -1,10 +1,18 @@
 grafana-repo:
   pkgrepo.managed:
-    - name: "deb https://packages.grafana.com/oss/deb stable main"
+    - name: "deb [signed-by=/etc/apt/keyrings/grafana.key] https://apt.grafana.com stable main"
     - file: /etc/apt/sources.list.d/grafana.list
-    - key_url: salt://grafana/repo_key.asc
     - require_in:
       - pkg: grafana
+    - require:
+      - file: /etc/apt/keyrings/grafana.key
+
+/etc/apt/keyrings/grafana.key:
+  file.managed:
+    - source: salt://grafana/repo_key.asc
+    - user: root
+    - group: root
+    - mode: 644
 
 grafana:
   pkg.installed:
