@@ -17,7 +17,7 @@ ExecStartPre=+/bin/sh -c 'echo > /var/run/spigot.in &'
 ExecStart=/bin/sh -c 'exec java -jar paper-{{ version }}-{{ paperversion }}.jar < /var/run/spigot.in'
 ExecStop=/bin/sh -c 'echo stop > /var/run/spigot.in'
 ExecStopPost=+/bin/rm -f /var/run/spigot.in
-imeoutStartSec=3m30s
+TimeoutStartSec=3m30s
 TimeoutStopSec=1m
 
 WorkingDirectory=/opt/spigot
