@@ -19,3 +19,6 @@ vainfo:
 
 # TODO web UI settings? question mark?
 # TODO <EnableMetrics>true</EnableMetrics>
+# TODO LXD devices
+# TODO /etc/default/jellyfin
+# TODO /etc/network/interfaces

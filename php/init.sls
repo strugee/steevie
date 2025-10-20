@@ -15,3 +15,5 @@ php-fpm:
     - user: root
     - group: root
     - mode: 700
+
+# TODO usermod -G redis -a www-data

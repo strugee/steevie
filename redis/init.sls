@@ -1,5 +1,7 @@
 # TODO configure Redis config file
 
+# TODO redis-nextcloud.conf, others
+
 # TODO Redis auth
 
 redis-server:

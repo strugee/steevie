@@ -36,3 +36,5 @@ php-apcu:
 # TODO APCu in config.php
 # TODO preview generator expansion in config.php
 # TODO sudo apt-get install libreoffice --no-install-recommends fonts-liberation2
+
+# TODO Redis in config.php
