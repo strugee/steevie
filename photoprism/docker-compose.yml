@@ -83,6 +83,7 @@ services:
       PHOTOPRISM_SITE_CAPTION: "AI-Powered Photos App"
       PHOTOPRISM_SITE_DESCRIPTION: ""                # meta site description
       PHOTOPRISM_SITE_AUTHOR: "AJ Jordan"            # meta site author
+      PHOTOPRISM_INDEX_SCHEDULE: "@every 1h"
       ## Run/install on first startup (options: update, gpu, tensorflow, davfs, clitools, clean):
       # PHOTOPRISM_INIT: "gpu tensorflow"
       ## Hardware Video Transcoding (for sponsors only due to high maintenance and support costs):
