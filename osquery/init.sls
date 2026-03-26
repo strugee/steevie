@@ -6,6 +6,8 @@ osquery-repo:
     - keyserver: hkps://keyserver.ubuntu.com
     - require_in:
       - pkg: osquery
+    - require:
+      - pkg: apt-key
 
 osquery:
   pkg.installed

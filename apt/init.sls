@@ -10,5 +10,8 @@ apt-transport-https:
 apt-listchanges:
   pkg.installed
 
+apt-key:
+  pkg.installed
+
 gnupg:
   pkg.installed
