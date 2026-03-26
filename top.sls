@@ -73,7 +73,7 @@ base:
   collabora-online.lxd:
     - nextcloud.collabora-online
   minecraft.lxd:
-    - java
+    - java.microsoft-jdk
     - minecraft
     - misc.unzip
     - node.base
