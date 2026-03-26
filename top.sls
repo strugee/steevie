@@ -17,7 +17,8 @@ base:
     - ntp
     - sudo
     - watchdog
-  'virtual:LXC':
+    - zerotier
+  'virtual_subtype:LXC':
     - match: grain
     - apt
     - lxd.container
