@@ -19,6 +19,7 @@ base:
     - watchdog
   'virtual:LXC':
     - match: grain
+    - apt
     - lxd.container
     - misc.fakesudo
     - misc.disable-smartd
@@ -72,7 +73,6 @@ base:
   collabora-online.lxd:
     - nextcloud.collabora-online
   minecraft.lxd:
-    - apt
     - java
     - minecraft
     - misc.unzip
@@ -81,7 +81,6 @@ base:
     - node.minecraft-switcher
     - node.npm
   minecraft-beta.lxd:
-    - apt
     - java
     - minecraft
     - misc.unzip
@@ -92,7 +91,6 @@ base:
   jellyfin.lxd:
     - jellyfin
   thelounge.lxd:
-    - apt
     - node.base
     - sudo
     - thelounge
