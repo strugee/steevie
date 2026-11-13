@@ -7,6 +7,10 @@ apache2:
     - require:
       - pkg: apache2
 
+# TODO I had to manually patch this
+libapache2-mod-authn-yubikey:
+  pkg.installed: []
+
 /etc/apache2:
   file.recurse:
     - user: root
